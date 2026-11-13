@@ -373,6 +373,19 @@
         }
         .mobile-nav .nav-item svg { width: 14px; height: 14px; }
       }
+      .lf-tabs { display:flex; gap:8px; margin:16px 0; }
+      .lf-tabs button { border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink); padding:8px 16px; cursor:pointer; }
+      .lf-tabs button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+      .lf-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px; }
+      .lf-card { background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
+      .lf-card img { display:block; width:100%; height:180px; object-fit:cover; background:var(--bg-soft); }
+      .lf-card-body { padding:16px; }
+      .lf-card h3 { font-size:17px; line-height:1.45; margin:7px 0; }
+      .lf-card p { color:var(--muted); font-size:13px; line-height:1.6; margin:6px 0; }
+      .lf-card a { color:var(--accent); font-weight:700; }
+      .lf-badge { display:inline-block; padding:3px 8px; background:var(--accent-ghost); border-radius:999px; color:var(--accent); font-size:12px; }
+      .lf-note { color:var(--muted); font-size:13px; line-height:1.6; }
+      .lf-empty { padding:24px; border:1px dashed var(--line); border-radius:14px; color:var(--muted); }
     </style>
   </head>
   <body>
@@ -611,6 +624,22 @@
           <div id="hot-list"></div>
         </section>
 
+        <section class="panel-view" id="view-lowfan">
+          <div class="view-head">
+            <h1>低粉爆文候选</h1>
+            <p>从搜狗微信和今日头条搜索近 14 天的文章，排除已知头部账号，找可参考的选题与封面。</p>
+            <div class="hot-meta" id="lf-meta">正在读取文章快照…</div>
+          </div>
+          <p class="lf-note">微信和头条未公开粉丝数，这里的“低粉”只是候选，粉丝数均未验证。微信没有公开阅读数；头条阅读数仅作参考。配图墙使用文章原有封面，不代表“低粉爆图”。点标题打开来源页面核对内容与发布时间。</p>
+          <div class="lf-tabs" aria-label="文章与配图切换">
+            <button type="button" id="lf-articles" class="active">文章候选</button>
+            <button type="button" id="lf-images">配图墙</button>
+          </div>
+          <div class="hot-search"><input type="text" id="lf-search" placeholder="搜索标题、账号或关键词…" aria-label="搜索文章候选" /></div>
+          <div class="filter-row" id="lf-sources"></div>
+          <div id="lf-list" class="lf-grid" aria-live="polite"></div>
+        </section>
+
         <!-- ===== 我的 ===== -->
         <section class="panel-view" id="view-mine">
           <div class="view-head">
@@ -682,6 +711,7 @@ plaza: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="ro
 hot: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
 titles: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5h16v2M9 20h6M12 5v15"/></svg>'
 };
+ICONS.lowfan = ICONS.hot;
 var NAV = [
 { id: "home", label: "工作台", group: null},
 { id: "write", label: "公众号写作", group: "创作"},
@@ -690,6 +720,7 @@ var NAV = [
 { id: "fuke", label: "爆款贴图复刻", group: "创作"},
 { id: "plaza", label: "灵感广场", group: "找灵感"},
 { id: "hot", label: "热点广场", group: "找灵感"},
+{ id: "lowfan", label: "爆文候选", group: "找灵感"},
 { id: "topics", label: "选题灵感库", group: "找灵感"},
 { id: "titles", label: "标题工坊", group: "找灵感"}
 ];
@@ -713,7 +744,7 @@ b.addEventListener("click", function () { gotoView(b.getAttribute("data-view"));
 });
 markNav();
 }
-var BNAV_BY_VIEW = { home: "home", hot: "inspire", plaza: "inspire", topics: "inspire", titles: "inspire", write: "create", cards: "create", tietu: "create", fuke: "fuke", mine: "mine" };
+var BNAV_BY_VIEW = { home: "home", hot: "inspire", lowfan: "inspire", plaza: "inspire", topics: "inspire", titles: "inspire", write: "create", cards: "create", tietu: "create", fuke: "fuke", mine: "mine" };
 function markNav() {
 $$(".nav-item").forEach(function (b) {
 b.classList.toggle("active", b.getAttribute("data-view") === currentView);
@@ -1579,5 +1610,6 @@ renderTopics();
 updateStats();
 gotoView("home");
 </script>
+<script src="lowfan.js"></script>
 </body>
 </html>
