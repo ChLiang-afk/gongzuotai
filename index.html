@@ -386,6 +386,27 @@
       .lf-badge { display:inline-block; padding:3px 8px; background:var(--accent-ghost); border-radius:999px; color:var(--accent); font-size:12px; }
       .lf-note { color:var(--muted); font-size:13px; line-height:1.6; }
       .lf-empty { padding:24px; border:1px dashed var(--line); border-radius:14px; color:var(--muted); }
+      .writer-layout { display:grid; grid-template-columns:minmax(290px,.84fr) minmax(0,1.4fr); gap:18px; align-items:start; }
+      .writer-brief { position:sticky; top:18px; }
+      .writer-brief h2 { margin:0 0 8px; font-size:22px; }
+      .writer-brief p { margin:0 0 16px; color:var(--muted); font-size:14px; line-height:1.6; }
+      .writer-brief textarea { min-height:108px; }
+      .writer-brief input[type="number"] { width:130px; }
+      .writer-brief .btn.primary { width:100%; margin-top:12px; }
+      .writer-status { margin-top:12px; min-height:42px; padding:10px 12px; border-radius:12px; background:var(--accent-ghost); color:var(--ink-2); font-size:13px; line-height:1.5; }
+      .writer-status.error { background:var(--warn-bg); color:var(--warn); }
+      .writer-status a { color:inherit; text-decoration:underline; }
+      .writer-document .ed-tabs { display:flex; gap:8px; margin:10px 0 14px; }
+      .writer-document .ed-tabs button { border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:999px; padding:7px 14px; cursor:pointer; }
+      .writer-document .ed-tabs button.active { background:var(--accent); color:#fff; }
+      .writer-preview { min-height:340px; padding:24px; border:1px solid var(--line); border-radius:16px; background:var(--card); color:var(--ink); line-height:1.8; overflow-wrap:anywhere; }
+      .writer-preview h2 { font-size:21px; margin:18px 0 8px; }
+      .writer-preview p { margin:0 0 16px; }
+      .writer-preview .empty-note { text-align:center; padding:60px 15px; }
+      .writer-versions { margin-top:18px; border-top:1px solid var(--line); padding-top:12px; }
+      .writer-versions h3 { margin:0 0 8px; font-size:15px; }
+      .writer-versions button { display:block; width:100%; text-align:left; margin:5px 0; padding:8px 10px; border:1px solid var(--line); border-radius:9px; background:var(--card); color:var(--ink); cursor:pointer; }
+      @media (max-width:900px) { .writer-layout { grid-template-columns:1fr; } .writer-brief { position:static; } }
     </style>
   </head>
   <body>
@@ -448,7 +469,7 @@
 <div id="daily-box" style="margin-bottom:22px"></div>
 <div class="tool-grid" id="home-tools"></div>
 
-          <h2 class="section-title">草稿箱 <span class="hint">本次打开期间写下的稿子，关掉页面就清空</span></h2>
+          <h2 class="section-title">草稿箱 <span class="hint">保存在本设备浏览器，重要稿件请另行导出</span></h2>
           <div class="draft-list" id="draft-list"></div>
 
           <p class="foot-note">让灵感慢慢成为作品。IDEAS TO WORKS</p>
@@ -457,16 +478,39 @@
         <!-- ===== 写作台 ===== -->
         <section class="panel-view" id="view-write">
           <div class="view-head">
-            <h1>公众号写作台</h1>
-            <p>先选结构模板起稿，写完跑一遍禁用词自查，再复制或导出。深度干货稿的目标篇幅是 900–1400 字。</p>
+            <h1>公众号创作</h1>
+            <p>讲清主题、读者和事实，让 AI 生成初稿；在右侧修改、预览、复核并导出。生成前需登录管理员并配置模型。</p>
           </div>
-          <div class="editor-card">
+          <div class="writer-layout">
+          <div class="editor-card writer-brief">
+            <h2>这篇想写什么？</h2>
+            <p>先说具体问题。涉及政策、利率或案例，请在素材里提供可核实的依据。</p>
+            <label class="field-label" for="wr-topic">文章主题</label>
+            <input type="text" id="wr-topic" maxlength="240" placeholder="例如：经营贷到期前怎么准备续贷" />
+            <label class="field-label" for="wr-audience">写给谁看</label>
+            <input type="text" id="wr-audience" maxlength="300" placeholder="例如：首次续贷的小微企业主" />
+            <label class="field-label" for="wr-facts">事实与素材（可选）</label>
+            <textarea id="wr-facts" maxlength="6000" placeholder="贴上政策原文、真实业务细节或你确认过的数字；没有依据的内容会标待核实。"></textarea>
+            <label class="field-label" for="wr-length">目标字数</label>
+            <input type="number" id="wr-length" min="300" max="2000" step="100" value="1000" />
+            <label class="field-label" for="wr-instruction">补充要求 / 修改意见</label>
+            <textarea id="wr-instruction" maxlength="1500" placeholder="例如：开头从借款人的疑问切入，结尾给行动清单；已有正文时可要求改写。"></textarea>
+            <label class="field-label"><input type="checkbox" id="wr-revise" /> 以右侧现有正文为基础改写</label>
+            <button class="btn primary" type="button" id="wr-generate">生成初稿</button>
+            <div class="writer-status" id="wr-status" role="status">正在检查写作服务…</div>
+          </div>
+          <div class="editor-card writer-document">
             <label class="field-label" for="ed-title">文章标题</label>
             <input type="text" id="ed-title" placeholder="先写个工作标题，写完再改也行" />
             <label class="field-label">结构模板（点一下插入骨架，再往里填事实）</label>
             <div class="tpl-row" id="tpl-row"></div>
             <label class="field-label" for="ed-body">正文</label>
+            <div class="ed-tabs" role="tablist" aria-label="正文与预览">
+              <button type="button" id="wr-edit-tab" class="active" role="tab" aria-selected="true">编辑正文</button>
+              <button type="button" id="wr-preview-tab" role="tab" aria-selected="false">排版预览</button>
+            </div>
             <textarea id="ed-body" placeholder="从一个真实的业务场景写起：谁来问、卡在哪、行里怎么看……"></textarea>
+            <div id="wr-preview" class="writer-preview" role="tabpanel" hidden></div>
             <div class="stat-row">
               <span>正文字数 <b id="st-chars">0</b></span>
               <span>段落 <b id="st-paras">0</b></span>
@@ -481,6 +525,8 @@
               <button class="btn" id="btn-export-md">导出 Markdown</button>
               <button class="btn" id="btn-to-cards">转成贴图 →</button>
             </div>
+            <div class="writer-versions"><h3>历史版本</h3><div id="wr-versions">尚无版本。生成或保存后会留在本设备浏览器。</div></div>
+          </div>
           </div>
         </section>
 
@@ -644,7 +690,7 @@
         <section class="panel-view" id="view-mine">
           <div class="view-head">
             <h1>我的</h1>
-            <p>草稿箱和收藏的热点都在这里。草稿只存在本次打开期间，写完记得导出 Markdown 或复制全文存好。</p>
+            <p>草稿箱和收藏的热点都在这里。草稿保存在本设备浏览器，重要文章仍建议导出 Markdown 备份。</p>
           </div>
           <h2 class="section-title">草稿箱 <span class="hint">点「打开」回写作台继续写</span></h2>
           <div class="draft-list" id="mine-draft-list"></div>
@@ -813,8 +859,10 @@ document.body.appendChild(a); a.click();
 setTimeout(function () { URL.revokeObjectURL(a.href); a.remove();}, 400);
 }
 
-/* ---------- 草稿箱（仅本次会话） ---------- */
+/* ---------- 草稿箱（本设备浏览器） ---------- */
 var drafts = [];
+try { drafts = JSON.parse(localStorage.getItem("gongzuotai-drafts") || "[]"); if (!Array.isArray(drafts)) drafts = []; } catch (e) { drafts = []; }
+function persistDrafts() { try { localStorage.setItem("gongzuotai-drafts", JSON.stringify(drafts.slice(0, 30))); } catch (e) {} }
 function renderDrafts() {
 var box = $("#draft-list");
 var badge = $("#nav-draft-badge");
@@ -837,6 +885,7 @@ var open = document.createElement("button");
 open.className = "btn small"; open.textContent = "打开";
 open.addEventListener("click", function () {
 $("#ed-title").value = d.title;
+$("#wr-topic").value = d.title;
 $("#ed-body").value = d.body;
 updateStats(); hideCheck();
 gotoView("write");
@@ -844,7 +893,7 @@ gotoView("write");
 var del = document.createElement("button");
 del.className = "btn small"; del.textContent = "删除";
 del.addEventListener("click", function () {
-drafts.splice(i, 1); renderDrafts(); toast("草稿已删除");
+      drafts.splice(i, 1); persistDrafts(); renderDrafts(); toast("草稿已删除");
 });
 item.appendChild(open); item.appendChild(del);
 box.appendChild(item);
@@ -853,7 +902,7 @@ box.appendChild(item);
 
 /* ---------- 首页工具卡 ---------- */
 var HOME_TOOLS = [
-{ id: "write", tag: "主力工具", title: "公众号写作 Plus", desc: "结构模板起稿、实时字数、禁用词自查，写完直接导出 Markdown。"},
+{ id: "write", tag: "主力工具", title: "公众号创作", desc: "主题和素材生成初稿，修改、预览、复核并导出 Markdown。"},
 { id: "cards", tag: "一键拆卡", title: "爆文转贴图", desc: "文章正文自动拆成 3:4 图卡，三套配色，逐张导出 PNG 发贴图号。"},
 { id: "topics", tag: "五条业务线", title: "选题灵感库", desc: "信贷政策、房抵贷、征信风控、公积金个税、监管处罚，选题带切入角度。"},
 { id: "tietu", tag: "短文案成组", title: "贴图号", desc: "一行一张卡，第一行做封面，把一条实操经验拆成一组图发出去。"},
@@ -944,6 +993,7 @@ if (!title &&!body.trim()) { toast("先写点内容再存草稿"); return;}
 var now = new Date();
 var hh = ("0" + now.getHours()).slice(-2), mm = ("0" + now.getMinutes()).slice(-2);
 drafts.unshift({ title: title, body: body, chars: countBody(body), time: hh + ":" + mm});
+persistDrafts();
 renderDrafts();
 toast("已存入草稿箱");
 });
@@ -1156,6 +1206,7 @@ var write = document.createElement("button");
 write.className = "btn small primary"; write.textContent = "写这篇";
 write.addEventListener("click", function () {
 $("#ed-title").value = t.title;
+$("#wr-topic").value = t.title;
 $("#ed-body").value = topicSkeleton(t);
 updateStats(); hideCheck();
 gotoView("write");
@@ -1214,6 +1265,7 @@ item.querySelector(".tt").textContent = title;
 item.addEventListener("click", function () {
 copyText(title, "标题已复制");
 $("#ed-title").value = title;
+$("#wr-topic").value = title;
 });
 box.appendChild(item);
 });
@@ -1333,6 +1385,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
         write.className = "btn small primary"; write.textContent = "写这篇";
         write.addEventListener("click", function () {
           $("#ed-title").value = t.title;
+          $("#wr-topic").value = t.title;
           $("#ed-body").value = topicSkeleton(t);
           updateStats(); hideCheck();
           gotoView("write");
@@ -1380,6 +1433,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
         write.className = "btn small primary"; write.textContent = "今天就写这篇";
         write.addEventListener("click", function () {
           $("#ed-title").value = t.title;
+          $("#wr-topic").value = t.title;
           $("#ed-body").value = topicSkeleton(t);
           updateStats(); hideCheck();
           gotoView("write");
@@ -1490,6 +1544,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             go.className = "btn small primary"; go.textContent = "去创作";
             go.addEventListener("click", function () {
               $("#ed-title").value = it.title;
+              $("#wr-topic").value = it.title;
               $("#ed-body").value = hotSkeleton();
               updateStats(); hideCheck();
               gotoView("write");
@@ -1536,6 +1591,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             open.className = "btn small"; open.textContent = "打开";
             open.addEventListener("click", function () {
               $("#ed-title").value = d.title;
+              $("#wr-topic").value = d.title;
               $("#ed-body").value = d.body;
               updateStats(); hideCheck();
               gotoView("write");
@@ -1572,6 +1628,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             go.className = "btn small primary"; go.textContent = "去创作";
             go.addEventListener("click", function () {
               $("#ed-title").value = title;
+              $("#wr-topic").value = title;
               $("#ed-body").value = hotSkeleton();
               updateStats(); hideCheck();
               gotoView("write");
@@ -1611,5 +1668,6 @@ updateStats();
 gotoView("home");
 </script>
 <script src="lowfan.js"></script>
+<script src="writer.js"></script>
 </body>
 </html>

@@ -75,6 +75,18 @@
       if (Number.isFinite(item.read_count) && item.source === "今日头条") details += " · 阅读 " + item.read_count.toLocaleString("zh-CN");
       body.appendChild(el("p", "", details));
       if (mode === "articles" && item.summary) body.appendChild(el("p", "", item.summary));
+      if (mode === "articles") {
+        var use = el("button", "btn small", "用这个选题创作");
+        use.type = "button";
+        use.addEventListener("click", function () {
+          document.getElementById("wr-topic").value = item.title;
+          document.getElementById("ed-title").value = item.title;
+          document.getElementById("ed-body").value = "";
+          if (typeof updateStats === "function") updateStats();
+          if (typeof gotoView === "function") gotoView("write");
+        });
+        body.appendChild(use);
+      }
       card.appendChild(body);
       list.appendChild(card);
     });

@@ -1,0 +1,23 @@
+[Unit]
+Description=Gongzuotai AI writer API
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=gongzuotai
+Group=gongzuotai
+EnvironmentFile=/etc/gongzuotai-writer.env
+Environment=WRITER_USAGE_DB=/var/lib/gongzuotai-writer/usage.sqlite
+StateDirectory=gongzuotai-writer
+WorkingDirectory=/var/www/tools/gongzuotai
+ExecStart=/usr/bin/python3 /var/www/tools/gongzuotai/server/writer_api.py
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
