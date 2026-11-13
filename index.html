@@ -479,23 +479,22 @@
         <section class="panel-view" id="view-write">
           <div class="view-head">
             <h1>公众号创作</h1>
-            <p>讲清主题、读者和事实，让 AI 生成初稿；在右侧修改、预览、复核并导出。生成前需登录管理员并配置模型。</p>
+            <p>使用 GEOFlow 的知识库、正文提示词和模型生成初稿；在右侧修改、预览、复核并导出。</p>
           </div>
           <div class="writer-layout">
           <div class="editor-card writer-brief">
             <h2>这篇想写什么？</h2>
-            <p>先说具体问题。涉及政策、利率或案例，请在素材里提供可核实的依据。</p>
+            <p>先在 GEOFlow 后台准备业务知识库和模型，再从这里选用。涉及政策、利率或案例，请核对生成内容。</p>
             <label class="field-label" for="wr-topic">文章主题</label>
             <input type="text" id="wr-topic" maxlength="240" placeholder="例如：经营贷到期前怎么准备续贷" />
-            <label class="field-label" for="wr-audience">写给谁看</label>
-            <input type="text" id="wr-audience" maxlength="300" placeholder="例如：首次续贷的小微企业主" />
-            <label class="field-label" for="wr-facts">事实与素材（可选）</label>
-            <textarea id="wr-facts" maxlength="6000" placeholder="贴上政策原文、真实业务细节或你确认过的数字；没有依据的内容会标待核实。"></textarea>
-            <label class="field-label" for="wr-length">目标字数</label>
-            <input type="number" id="wr-length" min="300" max="2000" step="100" value="1000" />
-            <label class="field-label" for="wr-instruction">补充要求 / 修改意见</label>
-            <textarea id="wr-instruction" maxlength="1500" placeholder="例如：开头从借款人的疑问切入，结尾给行动清单；已有正文时可要求改写。"></textarea>
-            <label class="field-label"><input type="checkbox" id="wr-revise" /> 以右侧现有正文为基础改写</label>
+            <label class="field-label" for="wr-keyword">关键词（可选）</label>
+            <input type="text" id="wr-keyword" maxlength="200" placeholder="例如：经营贷 续贷 小微企业" />
+            <label class="field-label" for="wr-knowledge">业务知识库</label>
+            <select id="wr-knowledge"><option value="">正在读取 GEOFlow…</option></select>
+            <label class="field-label" for="wr-prompt">正文提示词</label>
+            <select id="wr-prompt"><option value="">正在读取 GEOFlow…</option></select>
+            <label class="field-label" for="wr-model">AI 模型</label>
+            <select id="wr-model"><option value="">正在读取 GEOFlow…</option></select>
             <button class="btn primary" type="button" id="wr-generate">生成初稿</button>
             <div class="writer-status" id="wr-status" role="status">正在检查写作服务…</div>
           </div>
@@ -1671,3 +1670,4 @@ gotoView("home");
 <script src="writer.js"></script>
 </body>
 </html>
+
