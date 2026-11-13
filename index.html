@@ -254,6 +254,10 @@
       .hot-row { display: flex; align-items: center; gap: 8px; margin-top: 9px; flex-wrap: wrap; }
       .hot-rank { font-size: 13px; color: var(--muted); margin-right: auto; }
       .hot-rank b { color: var(--warn); font-weight: 700; }
+      .hot-toolbar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+      .hot-toolbar-hint { font-size: 13px; color: var(--muted); margin-right: auto; }
+      .hot-group-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 12px 0 6px; margin-top: 2px; border-top: 1px solid var(--line-soft); }
+      .hot-more-count { font-size: 13px; color: var(--muted); margin-right: auto; font-weight: 600; }
       .star-btn { border: 0; background: transparent; font-size: 21px; line-height: 1; color: var(--line); cursor: pointer; padding: 4px 8px; font-family: inherit; }
       .star-btn.on { color: var(--warn); }
       /* 标题工坊 */
@@ -373,40 +377,211 @@
         }
         .mobile-nav .nav-item svg { width: 14px; height: 14px; }
       }
-      .lf-tabs { display:flex; gap:8px; margin:16px 0; }
-      .lf-tabs button { border:1px solid var(--line); border-radius:999px; background:var(--card); color:var(--ink); padding:8px 16px; cursor:pointer; }
-      .lf-tabs button.active { background:var(--accent); color:#fff; border-color:var(--accent); }
-      .lf-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:14px; }
-      .lf-card { background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
-      .lf-card img { display:block; width:100%; height:180px; object-fit:cover; background:var(--bg-soft); }
-      .lf-card-body { padding:16px; }
-      .lf-card h3 { font-size:17px; line-height:1.45; margin:7px 0; }
-      .lf-card p { color:var(--muted); font-size:13px; line-height:1.6; margin:6px 0; }
-      .lf-card a { color:var(--accent); font-weight:700; }
-      .lf-badge { display:inline-block; padding:3px 8px; background:var(--accent-ghost); border-radius:999px; color:var(--accent); font-size:12px; }
-      .lf-note { color:var(--muted); font-size:13px; line-height:1.6; }
-      .lf-empty { padding:24px; border:1px dashed var(--line); border-radius:14px; color:var(--muted); }
-      .writer-layout { display:grid; grid-template-columns:minmax(290px,.84fr) minmax(0,1.4fr); gap:18px; align-items:start; }
-      .writer-brief { position:sticky; top:18px; }
-      .writer-brief h2 { margin:0 0 8px; font-size:22px; }
-      .writer-brief p { margin:0 0 16px; color:var(--muted); font-size:14px; line-height:1.6; }
-      .writer-brief textarea { min-height:108px; }
-      .writer-brief input[type="number"] { width:130px; }
-      .writer-brief .btn.primary { width:100%; margin-top:12px; }
-      .writer-status { margin-top:12px; min-height:42px; padding:10px 12px; border-radius:12px; background:var(--accent-ghost); color:var(--ink-2); font-size:13px; line-height:1.5; }
-      .writer-status.error { background:var(--warn-bg); color:var(--warn); }
-      .writer-status a { color:inherit; text-decoration:underline; }
-      .writer-document .ed-tabs { display:flex; gap:8px; margin:10px 0 14px; }
-      .writer-document .ed-tabs button { border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:999px; padding:7px 14px; cursor:pointer; }
-      .writer-document .ed-tabs button.active { background:var(--accent); color:#fff; }
-      .writer-preview { min-height:340px; padding:24px; border:1px solid var(--line); border-radius:16px; background:var(--card); color:var(--ink); line-height:1.8; overflow-wrap:anywhere; }
-      .writer-preview h2 { font-size:21px; margin:18px 0 8px; }
-      .writer-preview p { margin:0 0 16px; }
-      .writer-preview .empty-note { text-align:center; padding:60px 15px; }
-      .writer-versions { margin-top:18px; border-top:1px solid var(--line); padding-top:12px; }
-      .writer-versions h3 { margin:0 0 8px; font-size:15px; }
-      .writer-versions button { display:block; width:100%; text-align:left; margin:5px 0; padding:8px 10px; border:1px solid var(--line); border-radius:9px; background:var(--card); color:var(--ink); cursor:pointer; }
-      @media (max-width:900px) { .writer-layout { grid-template-columns:1fr; } .writer-brief { position:static; } }
+      /* ===== 改版：鼠尾草绿视觉 + 桌面边栏 + 首页四张大卡 ===== */
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #E8EDE6;
+          --bg-soft: #F3FBF5;
+          --panel: #F7FBF7;
+          --card: #F7FBF7;
+          --ink: #102F25;
+          --ink-2: #33473B;
+          --muted: #5F7267;
+          --line: #C4D8C6;
+          --line-soft: #DCE9DC;
+          --accent: #205C45;
+          --accent-deep: #173F30;
+          --accent-soft: #DDEEE1;
+          --accent-ghost: #EDF5ED;
+          --shadow: 0 8px 24px rgba(16, 47, 37, .06);
+        }
+        body::before {
+          content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+          background: radial-gradient(760px 480px at 106% -80px, #F8F2E6 0%, rgba(248, 242, 230, 0) 62%);
+        }
+        .btn { background: #fff; }
+        body { color: #3D5145; }
+      }
+      h1, h2, h3, .brand-name { color: var(--ink); }
+      /* 主按钮：深绿、圆角 12px、高约 48px */
+      .btn.primary:not(.small) { border-radius: 12px; min-height: 48px; padding: 11px 24px; font-size: 15px; }
+      .btn.small { border-radius: 999px; }
+      /* 边栏待接入与底部动作 */
+      .nav-item.disabled { color: var(--muted); opacity: .55; cursor: default; }
+      .nav-item.disabled:hover { background: transparent; }
+      .nav-soon { margin-left: auto; font-size: 11px; font-weight: 700; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; flex: none; }
+      .sidebar .nav-item.active { background: var(--accent-soft); color: var(--ink); font-weight: 700; }
+      .side-actions { display: flex; align-items: center; gap: 10px; padding: 16px 4px 4px; margin-top: auto; }
+      .sidebar .sidebar-foot { margin-top: 10px; }
+      .side-quick {
+        flex: 1; border: 1.5px solid var(--accent); background: transparent; color: var(--accent);
+        border-radius: 999px; padding: 9px 10px; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+      }
+      .side-quick:hover { background: var(--accent-ghost); }
+      .side-gear {
+        width: 42px; height: 42px; flex: none; border-radius: 50%;
+        border: 1px solid var(--line); background: var(--card); color: var(--ink-2);
+        display: grid; place-items: center; cursor: pointer; padding: 0;
+      }
+      .side-gear svg { width: 20px; height: 20px; stroke: currentColor; }
+      .side-gear:hover { border-color: var(--accent); color: var(--accent); }
+      /* ---------- 首页新头区 ---------- */
+      .home-head { position: relative; margin: 6px 0 30px; padding: 12px 4px 4px; overflow: visible; }
+      .hh-deco { position: absolute; inset: 0; pointer-events: none; }
+      .hh-ellipse {
+        position: absolute; right: -30px; top: -34px; width: 480px; height: 190px;
+        border: 1.5px solid rgba(32, 92, 69, .22); border-radius: 50%; transform: rotate(-9deg);
+      }
+      .hh-deco i { position: absolute; border-radius: 50%; background: var(--accent); }
+      .hh-deco .d1 { width: 9px; height: 9px; right: 120px; top: 6px; }
+      .hh-deco .d2 { width: 6px; height: 6px; right: 300px; top: 118px; opacity: .65; }
+      .hh-deco .d3 { width: 7px; height: 7px; right: 36px; top: 128px; opacity: .45; }
+      .hh-deco .d4 { width: 5px; height: 5px; left: 46%; top: -6px; opacity: .5; }
+      .hh-eyebrow { position: relative; font-size: 13px; font-weight: 700; letter-spacing: .34em; color: var(--accent); margin-bottom: 14px; }
+      .hh-title {
+        position: relative; font-family: "Noto Serif SC", serif; font-weight: 900;
+        font-size: clamp(42px, 6.2vw, 60px); line-height: 1.18; margin: 0 0 14px; color: var(--ink);
+      }
+      .hh-dot { color: #8FBC94; }
+      .hh-sub { position: relative; margin: 0 0 26px; font-size: 16.5px; color: var(--muted); }
+      .home-head .btn.primary { position: relative; }
+      /* ---------- 首页四张大卡 ---------- */
+      .big-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 34px; }
+      .big-card {
+        position: relative; overflow: hidden; text-align: left; font: inherit; cursor: pointer;
+        background: var(--card); border: 1px solid var(--line-soft); border-radius: 20px;
+        box-shadow: var(--shadow); padding: 28px 30px; color: var(--ink);
+        display: flex; flex-direction: column;
+      }
+      .big-card:hover { border-color: var(--accent); }
+      .big-card.bc-tall { aspect-ratio: 1.9 / 1; }
+      .big-card.bc-wide { aspect-ratio: 3.6 / 1; }
+      .big-card h3 { margin: 0 0 8px; font-size: 20px; font-weight: 800; }
+      .big-card p { margin: 0; font-size: 14.5px; color: var(--muted); max-width: 15em; }
+      .bc-arrow {
+        position: absolute; left: 30px; bottom: 24px; width: 46px; height: 46px; border-radius: 50%;
+        border: 1px solid var(--line); background: #fff; color: var(--accent);
+        display: grid; place-items: center; font-size: 19px; font-weight: 700;
+      }
+      .big-card:hover .bc-arrow { background: var(--accent); border-color: var(--accent); color: #fff; }
+      .bc-aa {
+        position: absolute; right: 26px; top: 50%; transform: translateY(-54%);
+        font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 118px; line-height: 1;
+        color: var(--accent-soft); pointer-events: none;
+      }
+      .bc-illus { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); pointer-events: none; }
+      .illus-stack3 { width: 128px; height: 96px; }
+      .illus-stack3 i { position: absolute; width: 74px; height: 92px; border-radius: 12px; border: 1px solid var(--line); background: var(--accent-ghost); }
+      .illus-stack3 i:nth-child(1) { left: 0; top: 2px; transform: rotate(-7deg); }
+      .illus-stack3 i:nth-child(2) { left: 27px; top: 0; transform: rotate(0deg); background: var(--accent-soft); }
+      .illus-stack3 i:nth-child(3) { left: 54px; top: 2px; transform: rotate(7deg); }
+      .illus-stack2 { width: 104px; height: 62px; }
+      .illus-stack2 i { position: absolute; width: 62px; height: 62px; border-radius: 12px; border: 1px solid var(--line); background: var(--accent-ghost); }
+      .illus-stack2 i:nth-child(1) { left: 0; top: 0; transform: rotate(-6deg); }
+      .illus-stack2 i:nth-child(2) { left: 40px; top: 0; transform: rotate(6deg); background: var(--accent-soft); }
+      .illus-grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; width: 75px; height: 75px; transform: translateY(-50%); }
+      .illus-grid4 i { border-radius: 9px; border: 1px solid var(--line); background: var(--accent-ghost); }
+      .illus-grid4 i:nth-child(2), .illus-grid4 i:nth-child(3) { background: var(--accent-soft); }
+      /* ---------- 灵感会员横条 ---------- */
+      .member-strip { margin: 6px 0 34px; padding: 0 4px; }
+      .ms-line1 { font-size: 13px; font-weight: 700; letter-spacing: .22em; color: var(--accent); margin-bottom: 10px; }
+      .ms-line2 { font-family: "Noto Serif SC", serif; font-weight: 900; font-size: clamp(24px, 3.4vw, 32px); color: var(--ink); line-height: 1.3; }
+      .ms-line3 { margin: 8px 0 16px; font-size: 14.5px; color: var(--muted); }
+      .ms-links { display: flex; flex-wrap: wrap; gap: 8px 26px; }
+      .ms-link {
+        border: 0; background: transparent; padding: 4px 0; font: inherit; font-size: 15px; font-weight: 700;
+        color: var(--accent); cursor: pointer;
+      }
+      .ms-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+      /* ---------- 股东群横幅 ---------- */
+      .group-banner {
+        display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+        background: #fff; border: 1px solid var(--line-soft); border-radius: 20px;
+        box-shadow: var(--shadow); padding: 22px 26px; margin-bottom: 8px;
+      }
+      @media (prefers-color-scheme: dark) { .group-banner { background: var(--card); } }
+      .gb-icon {
+        width: 52px; height: 52px; flex: none; border-radius: 14px;
+        background: var(--accent); color: #fff; display: grid; place-items: center;
+      }
+      .gb-icon svg { width: 27px; height: 27px; stroke: currentColor; }
+      .gb-text { flex: 1; min-width: 200px; }
+      .gb-title { font-size: 17.5px; font-weight: 800; color: var(--ink); }
+      .gb-sub { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+      .gb-btn { border-radius: 999px !important; min-height: 44px !important; }
+      /* ---------- 入群弹窗 ---------- */
+      .modal-backdrop {
+        position: fixed; inset: 0; z-index: 90; display: grid; place-items: center;
+        background: rgba(9, 18, 13, .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+        padding: 20px;
+      }
+      .modal-backdrop[hidden] { display: none; }
+      .modal-card {
+        position: relative; width: min(340px, 92vw); background: #101312; color: #EDF3EE;
+        border-radius: 20px; padding: 40px 30px 34px; text-align: center;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+      }
+      .modal-close {
+        position: absolute; top: 10px; right: 12px; width: 38px; height: 38px; border: 0; border-radius: 50%;
+        background: transparent; color: #B9C8BD; font-size: 24px; line-height: 1; cursor: pointer;
+      }
+      .modal-close:hover { color: #fff; }
+      .qr-placeholder {
+        width: 200px; height: 200px; margin: 0 auto 18px; border: 1.5px dashed #5A6E60; border-radius: 14px;
+        background: rgba(255, 255, 255, .05); color: #C9D6CC; font-size: 14.5px;
+        display: grid; place-items: center; padding: 18px;
+      }
+      .modal-text { margin: 0; font-size: 15px; color: #DCE7DD; }
+      /* ---------- 首页页脚 ---------- */
+      .home-foot {
+        margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line-soft);
+        display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
+        font-size: 13.5px; color: var(--muted);
+      }
+      .home-foot .hf-en { letter-spacing: .26em; font-size: 12px; font-weight: 700; }
+      /* ---------- 选中态：2px 深绿描边 + 推荐标签 + ✓圆标 ---------- */
+      .swatch { position: relative; overflow: visible; }
+      .swatch.active { border: 2px solid var(--accent); box-shadow: none; }
+      .swatch.active::after {
+        content: "✓"; position: absolute; right: -7px; bottom: -7px; width: 19px; height: 19px;
+        border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700;
+        display: grid; place-items: center;
+      }
+      .rec-tag {
+        position: absolute; top: -10px; right: -12px; z-index: 2;
+        background: var(--accent); color: #fff; font-size: 10px; font-weight: 700;
+        border-radius: 999px; padding: 1px 7px; line-height: 1.5; pointer-events: none;
+      }
+      .topic-card h3 { font-size: 17.5px; }
+      /* ---------- 桌面端：固定边栏布局 ---------- */
+      @media (min-width: 1021px) {
+        .layout {
+          display: grid; grid-template-columns: 255px minmax(0, 1fr); gap: 32px;
+          max-width: 1472px; margin: 0 auto; padding: 22px 32px 0; align-items: start;
+        }
+        .sidebar {
+          display: flex !important; position: sticky; top: 22px; height: calc(100vh - 44px);
+          border-radius: 24px; border: 1px solid var(--line-soft); background: var(--bg-soft);
+          padding: 24px 16px 18px; overflow-y: auto;
+        }
+        .sidebar .nav { overflow-y: auto; }
+        .mobile-bar { display: none !important; }
+        .bottom-nav { display: none !important; }
+        .main { max-width: 1090px; margin: 0; padding: 16px 4px 64px; }
+      }
+      @media (max-width: 1020px) {
+        .big-cards { gap: 16px; }
+      }
+      @media (max-width: 640px) {
+        .big-cards { grid-template-columns: 1fr; }
+        .big-card.bc-tall, .big-card.bc-wide { aspect-ratio: auto; min-height: 168px; }
+        .bc-aa { font-size: 84px; }
+        .group-banner { padding: 18px 20px; }
+        .gb-btn { width: 100%; justify-content: center; }
+        .hh-ellipse { width: 320px; height: 140px; right: -70px; }
+      }
+      /* ===== 宽卡防遮挡：正文底部预留圆形按钮的空间 ===== */
+      .big-card.bc-wide { padding-bottom: 92px; min-height: 200px; }
     </style>
   </head>
   <body>
@@ -420,7 +595,7 @@
           </div>
           <div>
             <div class="brand-name">创作工作台</div>
-            <div class="brand-sub">Creator OS</div>
+            <div class="brand-sub">居间好帮手</div>
           </div>
         </div>
         <nav class="mobile-nav" id="mobile-nav" aria-label="工具导航"></nav>
@@ -434,10 +609,16 @@
           </div>
           <div>
             <div class="brand-name">创作工作台</div>
-            <div class="brand-sub">Creator OS</div>
+            <div class="brand-sub">居间好帮手</div>
           </div>
         </div>
         <nav class="nav" id="side-nav" aria-label="工具导航"></nav>
+        <div class="side-actions">
+          <button class="side-quick" id="btn-quick" type="button">快点我</button>
+          <button class="side-gear" id="btn-gear" type="button" aria-label="设置">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.55V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.51 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.23.6.85 1 1.51 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+          </button>
+        </div>
         <div class="sidebar-foot">
           公众号：<b>居间好帮手</b><br />V：chen_hnar
         </div>
@@ -446,70 +627,92 @@
       <main class="main">
         <!-- ===== 首页 ===== -->
         <section class="panel-view" id="view-home">
-          <div class="hero">
-            <h1>今天开始创作，<br />把灵感变成<em>一篇能发的文章</em>。</h1>
-            <p>选题、写作、转贴图，一条线走完。写贷款内容最怕空话和编案例，这里每个工具都按实操口径来：先立结构，再填事实，最后自查一遍再发。</p>
-            <div class="hero-actions">
-              <button class="btn primary" data-goto="write">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-                从一个想法开始
-              </button>
-              <button class="btn" data-goto="cards">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-4.5-4.5L6 21"/></svg>
-                爆文转贴图
-              </button>
-              <button class="btn" data-goto="topics">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.7 1 1.5 1 2.5h6c0-1 .2-1.8 1-2.5A6 6 0 0 0 12 3Z"/></svg>
-                去选题库看看
-              </button>
+          <div class="home-head">
+            <div class="hh-deco" aria-hidden="true">
+              <span class="hh-ellipse"></span>
+              <i class="d1"></i><i class="d2"></i><i class="d3"></i><i class="d4"></i>
             </div>
+            <div class="hh-eyebrow">居间好帮手</div>
+            <h1 class="hh-title">创作工作台<span class="hh-dot">.</span></h1>
+            <p class="hh-sub">你的想法，不必止于想想。</p>
+            <button class="btn primary" data-goto="write">从一个想法开始 ↗</button>
+          </div>
+
+          <div class="big-cards">
+            <button class="big-card bc-tall" data-goto="write" type="button">
+              <h3>公众号写作台</h3>
+              <p>从一个想法开始，写出你的表达。</p>
+              <span class="bc-aa" aria-hidden="true">Aa</span>
+              <span class="bc-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="big-card bc-tall" data-goto="cards" type="button">
+              <h3>爆文转贴图</h3>
+              <p>把文章转化为贴图内容。</p>
+              <span class="bc-illus illus-stack3" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="bc-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="big-card bc-wide" data-goto="tietu" type="button">
+              <h3>贴图号</h3>
+              <p>把想法做成一组图。</p>
+              <span class="bc-illus illus-stack2" aria-hidden="true"><i></i><i></i></span>
+              <span class="bc-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button class="big-card bc-wide" data-goto="fuke" type="button">
+              <h3>爆款贴图复刻</h3>
+              <p>拆解参考，寻找创作思路。</p>
+              <span class="bc-illus illus-grid4" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+              <span class="bc-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <div class="member-strip">
+            <div class="ms-line1">灵感会员 · 一份会员三项共用</div>
+            <div class="ms-line2">爆文 + 爆图 + 选题灵感库</div>
+            <p class="ms-line3">一个会员，覆盖图文选题发现与参考。</p>
+            <div class="ms-links">
+              <button class="ms-link" data-goto="hot" type="button">低粉爆文 ↗</button>
+              <button class="ms-link" data-goto="hot" type="button">低粉爆图 ↗</button>
+              <button class="ms-link" data-goto="hot" type="button">选题灵感库 ↗</button>
+              <button class="ms-link" data-goto="hot" type="button">热点广场免费 · 实时找灵感 ↗</button>
+            </div>
+          </div>
+
+          <div class="group-banner">
+            <div class="gb-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 15.2c2.3.3 4.1 1.7 4.9 4.3"/></svg>
+            </div>
+            <div class="gb-text">
+              <div class="gb-title">加入居间好帮手创作交流群</div>
+              <div class="gb-sub">新功能优先体验 · 与站长直接对话</div>
+            </div>
+            <button class="btn primary gb-btn" id="btn-group-join" type="button">查看入群方式</button>
           </div>
 
           <h2 class="section-title">每日一题 <span class="hint">每天一道，写完就是一篇存货</span></h2>
 <div id="daily-box" style="margin-bottom:22px"></div>
-<div class="tool-grid" id="home-tools"></div>
 
-          <h2 class="section-title">草稿箱 <span class="hint">保存在本设备浏览器，重要稿件请另行导出</span></h2>
+          <h2 class="section-title">草稿箱 <span class="hint">本次打开期间写下的稿子，关掉页面就清空</span></h2>
           <div class="draft-list" id="draft-list"></div>
 
-          <p class="foot-note">让灵感慢慢成为作品。IDEAS TO WORKS</p>
+          <footer class="home-foot">
+            <span>让灵感慢慢成为作品。</span>
+            <span class="hf-en">IDEAS TO WORKS</span>
+          </footer>
         </section>
 
         <!-- ===== 写作台 ===== -->
         <section class="panel-view" id="view-write">
           <div class="view-head">
-            <h1>公众号创作</h1>
-            <p>使用 GEOFlow 的知识库、正文提示词和模型生成初稿；在右侧修改、预览、复核并导出。</p>
+            <h1>公众号写作台</h1>
+            <p>先选结构模板起稿，写完跑一遍禁用词自查，再复制或导出。深度干货稿的目标篇幅是 900–1400 字。</p>
           </div>
-          <div class="writer-layout">
-          <div class="editor-card writer-brief">
-            <h2>这篇想写什么？</h2>
-            <p>先在 GEOFlow 后台准备业务知识库和模型，再从这里选用。涉及政策、利率或案例，请核对生成内容。</p>
-            <label class="field-label" for="wr-topic">文章主题</label>
-            <input type="text" id="wr-topic" maxlength="240" placeholder="例如：经营贷到期前怎么准备续贷" />
-            <label class="field-label" for="wr-keyword">关键词（可选）</label>
-            <input type="text" id="wr-keyword" maxlength="200" placeholder="例如：经营贷 续贷 小微企业" />
-            <label class="field-label" for="wr-knowledge">业务知识库</label>
-            <select id="wr-knowledge"><option value="">正在读取 GEOFlow…</option></select>
-            <label class="field-label" for="wr-prompt">正文提示词</label>
-            <select id="wr-prompt"><option value="">正在读取 GEOFlow…</option></select>
-            <label class="field-label" for="wr-model">AI 模型</label>
-            <select id="wr-model"><option value="">正在读取 GEOFlow…</option></select>
-            <button class="btn primary" type="button" id="wr-generate">生成初稿</button>
-            <div class="writer-status" id="wr-status" role="status">正在检查写作服务…</div>
-          </div>
-          <div class="editor-card writer-document">
+          <div class="editor-card">
             <label class="field-label" for="ed-title">文章标题</label>
             <input type="text" id="ed-title" placeholder="先写个工作标题，写完再改也行" />
             <label class="field-label">结构模板（点一下插入骨架，再往里填事实）</label>
             <div class="tpl-row" id="tpl-row"></div>
             <label class="field-label" for="ed-body">正文</label>
-            <div class="ed-tabs" role="tablist" aria-label="正文与预览">
-              <button type="button" id="wr-edit-tab" class="active" role="tab" aria-selected="true">编辑正文</button>
-              <button type="button" id="wr-preview-tab" role="tab" aria-selected="false">排版预览</button>
-            </div>
             <textarea id="ed-body" placeholder="从一个真实的业务场景写起：谁来问、卡在哪、行里怎么看……"></textarea>
-            <div id="wr-preview" class="writer-preview" role="tabpanel" hidden></div>
             <div class="stat-row">
               <span>正文字数 <b id="st-chars">0</b></span>
               <span>段落 <b id="st-paras">0</b></span>
@@ -524,8 +727,6 @@
               <button class="btn" id="btn-export-md">导出 Markdown</button>
               <button class="btn" id="btn-to-cards">转成贴图 →</button>
             </div>
-            <div class="writer-versions"><h3>历史版本</h3><div id="wr-versions">尚无版本。生成或保存后会留在本设备浏览器。</div></div>
-          </div>
           </div>
         </section>
 
@@ -544,7 +745,7 @@
               <div class="opt">
                 <label class="field-label" style="margin-top:0">配色</label>
                 <div class="swatches" id="swatches">
-                  <button class="swatch active" data-theme="mint" style="background:#eef6f0" aria-label="薄荷绿"></button>
+                  <button class="swatch active" data-theme="mint" style="background:#eef6f0" aria-label="薄荷绿"><span class="rec-tag">推荐</span></button>
                   <button class="swatch" data-theme="ink" style="background:#1d2420" aria-label="墨色"></button>
                   <button class="swatch" data-theme="paper" style="background:#f7f2e7" aria-label="米纸"></button>
                 </div>
@@ -666,30 +867,18 @@
           </div>
           <div class="filter-row" id="hot-chips"></div>
           <p class="hot-note">点标题可跳转到对应平台搜索查看原文与讨论。微博、知乎、抖音、今日头条、百度、哔哩哔哩、豆瓣、虎扑为今日实榜前 N 条；快手、小红书、微信、雪球为内置快照；每天会变，非实时。</p>
+          <div class="hot-toolbar">
+            <span class="hot-toolbar-hint">每个平台先看 4 条，换一批轮着看，展开看全部</span>
+            <button class="btn small" id="hot-batch-all" type="button">全部换一批 ↻</button>
+          </div>
           <div id="hot-list"></div>
-        </section>
-
-        <section class="panel-view" id="view-lowfan">
-          <div class="view-head">
-            <h1>低粉爆文候选</h1>
-            <p>从搜狗微信和今日头条搜索近 14 天的文章，排除已知头部账号，找可参考的选题与封面。</p>
-            <div class="hot-meta" id="lf-meta">正在读取文章快照…</div>
-          </div>
-          <p class="lf-note">微信和头条未公开粉丝数，这里的“低粉”只是候选，粉丝数均未验证。微信没有公开阅读数；头条阅读数仅作参考。配图墙使用文章原有封面，不代表“低粉爆图”。点标题打开来源页面核对内容与发布时间。</p>
-          <div class="lf-tabs" aria-label="文章与配图切换">
-            <button type="button" id="lf-articles" class="active">文章候选</button>
-            <button type="button" id="lf-images">配图墙</button>
-          </div>
-          <div class="hot-search"><input type="text" id="lf-search" placeholder="搜索标题、账号或关键词…" aria-label="搜索文章候选" /></div>
-          <div class="filter-row" id="lf-sources"></div>
-          <div id="lf-list" class="lf-grid" aria-live="polite"></div>
         </section>
 
         <!-- ===== 我的 ===== -->
         <section class="panel-view" id="view-mine">
           <div class="view-head">
             <h1>我的</h1>
-            <p>草稿箱和收藏的热点都在这里。草稿保存在本设备浏览器，重要文章仍建议导出 Markdown 备份。</p>
+            <p>草稿箱和收藏的热点都在这里。草稿只存在本次打开期间，写完记得导出 Markdown 或复制全文存好。</p>
           </div>
           <h2 class="section-title">草稿箱 <span class="hint">点「打开」回写作台继续写</span></h2>
           <div class="draft-list" id="mine-draft-list"></div>
@@ -724,6 +913,13 @@
         <span>我的</span>
       </button>
     </nav>
+    <div class="modal-backdrop" id="group-modal" hidden>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-label="加入居间好帮手创作交流群">
+        <button class="modal-close" id="group-modal-close" type="button" aria-label="关闭">×</button>
+        <div class="qr-placeholder">群二维码占位，待上传</div>
+        <p class="modal-text">微信扫一扫加入群聊</p>
+      </div>
+    </div>
     <div class="toast" id="toast" role="status"></div>
 <script>
 "use strict";
@@ -754,9 +950,10 @@ tietu: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="ro
 fuke: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>',
 plaza: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4 0 7-3 7-7 0-3-2-5-3-6-1-1-2-3-2-5-3 2-6 5-6 9-1-1-2-2-2-4-1 2-1 4-1 6 0 4 3 7 7 7Z"/></svg>',
 hot: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>',
-titles: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5h16v2M9 20h6M12 5v15"/></svg>'
+titles: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5h16v2M9 20h6M12 5v15"/></svg>',
+draft: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6M9 13h6M9 17h4"/></svg>',
+fav: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9Z"/></svg>'
 };
-ICONS.lowfan = ICONS.hot;
 var NAV = [
 { id: "home", label: "工作台", group: null},
 { id: "write", label: "公众号写作", group: "创作"},
@@ -765,19 +962,36 @@ var NAV = [
 { id: "fuke", label: "爆款贴图复刻", group: "创作"},
 { id: "plaza", label: "灵感广场", group: "找灵感"},
 { id: "hot", label: "热点广场", group: "找灵感"},
-{ id: "lowfan", label: "爆文候选", group: "找灵感"},
 { id: "topics", label: "选题灵感库", group: "找灵感"},
 { id: "titles", label: "标题工坊", group: "找灵感"}
 ];
+var SIDE_NAV = [
+{ id: "home", label: "首页", icon: "home" },
+{ group: "选题灵感" },
+{ id: "hot", label: "热点广场", icon: "hot" },
+{ id: "topics", label: "选题灵感库", icon: "topics" },
+{ label: "低粉爆文", icon: "plaza", soon: true },
+{ label: "低粉爆图", icon: "cards", soon: true },
+{ group: "创作" },
+{ id: "write", label: "公众号写作台", icon: "write" },
+{ id: "cards", label: "爆文转贴图", icon: "cards" },
+{ id: "tietu", label: "贴图号", icon: "tietu" },
+{ id: "fuke", label: "爆款贴图复刻", icon: "fuke" },
+{ id: "titles", label: "标题工坊", icon: "titles" },
+{ group: "我的" },
+{ id: "mine", label: "草稿箱", icon: "draft", minePart: "draft" },
+{ id: "mine", label: "收藏热点", icon: "fav", minePart: "fav" }
+];
 var currentView = "home";
 function buildNav() {
-var side = $("#side-nav"), mob = $("#mobile-nav"), html = "", lastGroup = "__";
-NAV.forEach(function (n) {
-if (n.group!== lastGroup) {
-if (n.group) html += '<div class="nav-label">' + n.group + "</div>";
-lastGroup = n.group;
+var side = $("#side-nav"), mob = $("#mobile-nav"), html = "";
+SIDE_NAV.forEach(function (n) {
+if (n.group) { html += '<div class="nav-label">' + n.group + "</div>"; return; }
+if (n.soon) {
+html += '<button class="nav-item disabled" type="button" disabled aria-disabled="true">' + ICONS[n.icon] + "<span>" + n.label + '</span><span class="nav-soon">待接入</span></button>';
+return;
 }
-html += '<button class="nav-item" data-view="' + n.id + '">' + ICONS[n.id] + "<span>" + n.label + "</span>" +
+html += '<button class="nav-item" data-view="' + n.id + '"' + (n.minePart? ' data-mine-part="' + n.minePart + '"': "") + ">" + ICONS[n.icon] + "<span>" + n.label + "</span>" +
 (n.id === "write"? '<span class="nav-badge" id="nav-draft-badge" style="display:none"></span>': "") + "</button>";
 });
 side.innerHTML = html;
@@ -785,11 +999,19 @@ mob.innerHTML = NAV.map(function (n) {
 return '<button class="nav-item" data-view="' + n.id + '">' + ICONS[n.id] + "<span>" + n.label + "</span></button>";
 }).join("");
 $$(".nav-item").forEach(function (b) {
-b.addEventListener("click", function () { gotoView(b.getAttribute("data-view"));});
+b.addEventListener("click", function () {
+var v = b.getAttribute("data-view");
+if (!v) return;
+gotoView(v);
+if (b.getAttribute("data-mine-part") === "fav") {
+var favList = document.getElementById("mine-fav-list");
+if (favList) setTimeout(function () { favList.scrollIntoView({ block: "center", behavior: "auto" }); }, 30);
+}
+});
 });
 markNav();
 }
-var BNAV_BY_VIEW = { home: "home", hot: "inspire", lowfan: "inspire", plaza: "inspire", topics: "inspire", titles: "inspire", write: "create", cards: "create", tietu: "create", fuke: "fuke", mine: "mine" };
+var BNAV_BY_VIEW = { home: "home", hot: "inspire", plaza: "inspire", topics: "inspire", titles: "inspire", write: "create", cards: "create", tietu: "create", fuke: "fuke", mine: "mine" };
 function markNav() {
 $$(".nav-item").forEach(function (b) {
 b.classList.toggle("active", b.getAttribute("data-view") === currentView);
@@ -858,10 +1080,8 @@ document.body.appendChild(a); a.click();
 setTimeout(function () { URL.revokeObjectURL(a.href); a.remove();}, 400);
 }
 
-/* ---------- 草稿箱（本设备浏览器） ---------- */
+/* ---------- 草稿箱（仅本次会话） ---------- */
 var drafts = [];
-try { drafts = JSON.parse(localStorage.getItem("gongzuotai-drafts") || "[]"); if (!Array.isArray(drafts)) drafts = []; } catch (e) { drafts = []; }
-function persistDrafts() { try { localStorage.setItem("gongzuotai-drafts", JSON.stringify(drafts.slice(0, 30))); } catch (e) {} }
 function renderDrafts() {
 var box = $("#draft-list");
 var badge = $("#nav-draft-badge");
@@ -884,7 +1104,6 @@ var open = document.createElement("button");
 open.className = "btn small"; open.textContent = "打开";
 open.addEventListener("click", function () {
 $("#ed-title").value = d.title;
-$("#wr-topic").value = d.title;
 $("#ed-body").value = d.body;
 updateStats(); hideCheck();
 gotoView("write");
@@ -892,7 +1111,7 @@ gotoView("write");
 var del = document.createElement("button");
 del.className = "btn small"; del.textContent = "删除";
 del.addEventListener("click", function () {
-      drafts.splice(i, 1); persistDrafts(); renderDrafts(); toast("草稿已删除");
+drafts.splice(i, 1); renderDrafts(); toast("草稿已删除");
 });
 item.appendChild(open); item.appendChild(del);
 box.appendChild(item);
@@ -901,7 +1120,7 @@ box.appendChild(item);
 
 /* ---------- 首页工具卡 ---------- */
 var HOME_TOOLS = [
-{ id: "write", tag: "主力工具", title: "公众号创作", desc: "主题和素材生成初稿，修改、预览、复核并导出 Markdown。"},
+{ id: "write", tag: "主力工具", title: "公众号写作 Plus", desc: "结构模板起稿、实时字数、禁用词自查，写完直接导出 Markdown。"},
 { id: "cards", tag: "一键拆卡", title: "爆文转贴图", desc: "文章正文自动拆成 3:4 图卡，三套配色，逐张导出 PNG 发贴图号。"},
 { id: "topics", tag: "五条业务线", title: "选题灵感库", desc: "信贷政策、房抵贷、征信风控、公积金个税、监管处罚，选题带切入角度。"},
 { id: "tietu", tag: "短文案成组", title: "贴图号", desc: "一行一张卡，第一行做封面，把一条实操经验拆成一组图发出去。"},
@@ -992,7 +1211,6 @@ if (!title &&!body.trim()) { toast("先写点内容再存草稿"); return;}
 var now = new Date();
 var hh = ("0" + now.getHours()).slice(-2), mm = ("0" + now.getMinutes()).slice(-2);
 drafts.unshift({ title: title, body: body, chars: countBody(body), time: hh + ":" + mm});
-persistDrafts();
 renderDrafts();
 toast("已存入草稿箱");
 });
@@ -1205,7 +1423,6 @@ var write = document.createElement("button");
 write.className = "btn small primary"; write.textContent = "写这篇";
 write.addEventListener("click", function () {
 $("#ed-title").value = t.title;
-$("#wr-topic").value = t.title;
 $("#ed-body").value = topicSkeleton(t);
 updateStats(); hideCheck();
 gotoView("write");
@@ -1264,7 +1481,6 @@ item.querySelector(".tt").textContent = title;
 item.addEventListener("click", function () {
 copyText(title, "标题已复制");
 $("#ed-title").value = title;
-$("#wr-topic").value = title;
 });
 box.appendChild(item);
 });
@@ -1384,7 +1600,6 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
         write.className = "btn small primary"; write.textContent = "写这篇";
         write.addEventListener("click", function () {
           $("#ed-title").value = t.title;
-          $("#wr-topic").value = t.title;
           $("#ed-body").value = topicSkeleton(t);
           updateStats(); hideCheck();
           gotoView("write");
@@ -1432,7 +1647,6 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
         write.className = "btn small primary"; write.textContent = "今天就写这篇";
         write.addEventListener("click", function () {
           $("#ed-title").value = t.title;
-          $("#wr-topic").value = t.title;
           $("#ed-body").value = topicSkeleton(t);
           updateStats(); hideCheck();
           gotoView("write");
@@ -1443,17 +1657,17 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
 
       /* ---------- 热点广场 ---------- */
       var HOT_PLATFORMS = [
-        { name: "微博", rank: "热搜", color: "#c0452f", items: ["飞秒手术全球1000万例中国750万例", "王忠林被查", "青春华章我们的新长征", "腾势N8上市价26.99万元起", "王晶电影麻将女王票房4455元", "葡萄牙全队将穿7号球服致敬C罗", "飞秒手术要降价了", "大众5X超能上市9万99起", "梓渝run it高音", "EDG官宣nobody离队", "快递员花40多万闪婚女子48天后跑了", "半飞秒适用1200度以内近视", "大美晒与高迪聊天记录", "芒果把这段放出来", "深夜徐老师怀孕", "爽哥心疼大美", "广州地铁", "白小纯这段可以纳入北影教材了", "梓渝演唱会", "华为PuraXView激活销量破百万", "零元面馆最新调整仅4类人免费", "曝魏晨被雪藏的原因", "七人几乎不带文吉儿玩", "教师长期集体赌博学校监管去哪了", "杨超越供读同母异父的妹妹", "Faker冲击S17冠军", "九成美起诉阿渔的渔", "白小纯成绩", "女子跳广场舞子宫掉出卡在裤子里", "厉娜转发区"]},
-        { name: "知乎", rank: "热榜", color: "#1772d6", items: ["前两年平价牛肉餐饮疯狂开店，现如今牛肉价格涨幅已达 27% ，牛肉为何吃不起了？", "国铁规定 Z 字头列车不再读「直」改用英文字母发音，如何看待这种转变？", "为什么人到中年，很多人会觉得友情没那么重要？还有些人会觉得这是成熟的表现？", "为什么国内止痛药普遍使用布洛芬而不是阿司匹林？", "网友称高铁座椅 USB 口充手机越充越掉电，12306 称电压更低，用于应急补电，这个设计合理吗？", "前字节美团招聘负责人称「给大模型人才开1亿年薪不贵」如何看待此观点？给大模型人才开上亿年薪，算天价吗？", "首款 NS2 模拟器已成功在 PC 运行独占游戏，将带来哪些影响？", "如何看待央视足球之夜为成都蓉城做的专题片《梦的溃败》？", "东鹏饮料开始卖酒了，名字就叫好厉害，你看好吗？", "郭树清再度建议尽快启动「遗产税」与「赠与税」，新增税收补助基本养老金，如何解读？", "高架上汽车撞上风筝线，车顶、雷达等多处被割坏，为什么一根线能有这么大威力？遇到这种情况该怎么办？", "Fable 5.2生成FPS游戏《Saltline》成本约为550美元，如果换成人工，大概需要多少钱？", "重庆通报「帮连吃 7 碗米饭母女放钱」视频系摆拍已立案，这类虚假摆拍该承担哪些法律责任？", "黄仁勋算是美国中期选举的牺牲品吗？为什么偏偏是他？", "在图书馆里面看闲书而不是刷题/工作/自习的人，到底是怎么想的？", "明明跟梁家辉一起演的《捕风追影》，戏份也不少，为啥成龙没有奖项提名？", "为什么刘欢在死亡证明上的死因是「感染性休克」而非「膀胱癌」呢？", "导演白雪认为如果停止思考和阅读，只依靠大脑存量内容和 AI 对话，长期一定会出问题，你碰过类似情况吗？", "在宇宙大尺度环境下，光子红移所失去的能量去哪了？", "《后会友期》聊天提及写序时，王子璇说「我下次还会收费」，如何看待这一态度？这算彻底放下了吗？"]},
-        { name: "抖音", rank: "热榜", color: "#3a3f4a", items: ["油价下调 加满一箱油少花约26元", "手工敲虾到底有多好吃", "解锁APEC限定“寻宝”路线", "湖北省委原书记王忠林被查", "情呀爱呀手势舞", "课本里的逍遥游有画面了", "银杏的故事不止一树金黄", "以我之名为LPL加油", "阿根廷vs乌拉圭", "德国小伙从唐诗悟出人生智慧", "2027研究生报考人数347万", "76人战胜猛龙", "“大同采空区塌陷引发强震”不实", "京东收购CECONOMY59.8%股权", "这口猪刨花拌面吃商极高", "为何说许飞厉娜可能不需要和解", "覆面系转场挑战", "昊天武道会扬州线下总决赛开战", "星期一是红色的怎么说呢", "我们再发光开播啦", "蒋一帆沈阳为爱而歌歌友会", "跟青稚一起跳手势舞吧", "高校学子为BLG助威", "我的脸不接受锐评谢谢", "吴磊更新了47张骑行日记", "和范丞丞一起看昊天武道会", "火影手游楔二川木实战", "停车楼飘移帅炸了", "影视飓风Tim开通个人账号", "罗云熙为BLG加油"]},
-        { name: "今日头条", rank: "热榜", color: "#d43a2f", items: ["正部级王忠林被查", "和平饭店账单造假事件15人被抓", "APEC“中国年”遇见“十五五”开局之年", "兰州新一届市委领导班子亮相", "一级英模陈清洲病逝 享年56岁", "冬天洗澡多久一次最好", "湖北连夜开会就王忠林被查表态", "医生用AI发现41名无症状肠癌患者", "飞秒手术要降价了", "专家：黄金价格迎来新一轮调整压力", "山西大同采空区塌陷引地震不实", "赛力斯豪掷15亿元爆改问界M8", "评论员：日本开始为新型战争布局", "新一轮大范围雨雪明夜起来袭", "常卫魏任中国女足主帅", "女子静脉曲张找中医扎针血直往外喷", "深圳特警战狼突击队硬核护航APEC", "奚梦瑶何猷君女儿5岁身高", "我国严禁任何形式代孕", "美国前驻华大使：中国的优势在于规划", "南京零元面馆改为仅4类人群免费", "叶倩文在南京档案馆找到家人户籍卡", "男子花4千多元做AI短剧火了", "零元面馆老板：愿全额补偿受损商户", "向太疑惑许飞为何当时不解开误会", "日民间人士：政府扩军致战争风险上升", "A股海南板块大幅飘绿", "维持在高位的美国利率会引爆AI泡沫吗", "郭晶晶现身杭州参加活动", "Outlook崩了日本政府改用电话工作"]},
-        { name: "百度", rank: "热搜", color: "#315efb", items: ["习近平将出席APEC深圳会议", "双11的时代结束了", "凭“一件衣服”怒赚100亿", "带你探访全国首家科技成果超市", "王毅：中国不是也不会成为另一个美国", "王忠林被查", "刘德华回应梅艳芳骨灰被盗", "中学生手搓时速350公里拦截机", "叶倩文在南京档案馆找到家人户籍卡", "南京“零元面馆”调整就餐规则", "绿泡泡能逆袭红果吗", "山西大同采空区塌陷引发强震系谣言", "比亚迪悬赏黑公关：最高奖励500万", "房贷断供 唯一一套房会被拍卖吗", "女儿晒近9旬父亲早餐：咸鸭蛋泡咖啡", "被举报性骚扰女生 教师赵某彦被开除", "央行出手！2000亿元买断式逆回购来了", "一款中国抗癌药把全球“药王”拉下马", "山姆开始“卷”技术了", "一张地图 怎么就逼疯了酒店", "95后少年白手起家 买了一家上市公司", "金价下跌买金人数减半", "“上车穿棉袄下车穿短袖”", "Anthropic终将奔向10万亿", "满级小孩 打败99.9%同龄人", "导游强迫消费称断人财路如杀人父母", "这是课间操还是哪吒训练营", "飞秒手术要降价了", "鲜花都捧手里了 车在4S店被偷了", "特惠车、一口价 逼“疯”网约车司机"]},
+        { name: "微博", rank: "热搜", color: "#c0452f", items: ["飞秒手术全球1000万例中国750万例", "曝Zeus和T1签约3年打到Faker退役", "青春华章我们的新长征", "问界新M8正式上市", "主人提醒邻居别给猫按电梯", "葡萄牙全队将穿7号球服致敬C罗", "王晶回应麻将女王票房", "九寨非遗活态传承季", "华为五界顺序调整", "张萌王子璇别试探了有市场", "飞秒手术要降价了", "教师长期集体赌博学校监管去哪了", "芒果把这段放出来", "深夜徐老师怀孕", "王晶电影麻将女王票房4455元", "杨超越供读同母异父的妹妹", "王忠林被查", "2027款全新领克03热血来袭", "爽哥心疼大美", "快递员花40多万闪婚女子48天后跑了", "曝魏晨被雪藏的原因", "医院称数据无法恢复却又神奇恢复", "刘宇宁胸肌腹肌没白练", "白小纯这段可以纳入北影教材了", "七人几乎不带文吉儿玩", "肖战我不是肖战", "睡前有这5种表现可能是脑梗", "足协辟谣禁止董路团队参赛", "年年体检血糖正常却查出糖尿病", "曾毓群喊你来体验99秒极速换电"]},
+        { name: "知乎", rank: "热榜", color: "#1772d6", items: ["前两年平价牛肉餐饮疯狂开店，现如今牛肉价格涨幅已达 27% ，牛肉为何吃不起了？", "国铁规定 Z 字头列车不再读「直」改用英文字母发音，如何看待这种转变？", "前字节美团招聘负责人称「给大模型人才开1亿年薪不贵」如何看待此观点？给大模型人才开上亿年薪，算天价吗？", "为什么国内止痛药普遍使用布洛芬而不是阿司匹林？", "如何看待央视足球之夜为成都蓉城做的专题片《梦的溃败》？", "Fable 5.2生成FPS游戏《Saltline》成本约为550美元，如果换成人工，大概需要多少钱？", "东鹏饮料开始卖酒了，名字就叫好厉害，你看好吗？", "重庆通报「帮连吃 7 碗米饭母女放钱」视频系摆拍已立案，这类虚假摆拍该承担哪些法律责任？", "明明跟梁家辉一起演的《捕风追影》，戏份也不少，为啥成龙没有奖项提名？", "在图书馆里面看闲书而不是刷题/工作/自习的人，到底是怎么想的？", "高架上汽车撞上风筝线，车顶、雷达等多处被割坏，为什么一根线能有这么大威力？遇到这种情况该怎么办？", "李彦宏称公司不会仅用 AI 就更有竞争力，这一说法有何依据？", "首款 NS2 模拟器已成功在 PC 运行独占游戏，将带来哪些影响？", "黄仁勋算是美国中期选举的牺牲品吗？为什么偏偏是他？", "小学的家庭作业到底要不要帮孩子检查？", "为什么黑格尔说中国没有历史？", "为什么刘欢在死亡证明上的死因是「感染性休克」而非「膀胱癌」呢？", "为什么linux没有PE盘？", "房子已经过剩，为什么一直还在新盖楼盘？", "《后会友期》聊天提及写序时，王子璇说「我下次还会收费」，如何看待这一态度？这算彻底放下了吗？"]},
+        { name: "抖音", rank: "热榜", color: "#3a3f4a", items: ["油价下调 加满一箱油少花约26元", "手工敲虾到底有多好吃", "解锁APEC限定“寻宝”路线", "情呀爱呀手势舞", "课本里的逍遥游有画面了", "阿根廷vs乌拉圭", "2027研究生报考人数347万", "以我之名为LPL加油", "国务院安委会约谈11个市级政府", "76人战胜猛龙", "上抖音看阿图什杯", "京东收购CECONOMY59.8%股权", "“大同采空区塌陷引发强震”不实", "EDG官宣CHICHOO离队", "库里腹斜肌撕裂 预计缺席4周", "昊天武道会扬州线下总决赛开战", "覆面系转场挑战", "我们再发光开播啦", "星期一是红色的怎么说呢", "蒋一帆沈阳为爱而歌歌友会", "当你被选中和吴彦祖一起嗦粉", "烂奇迹手势舞挑战", "高校学子为BLG助威", "我的脸不接受锐评谢谢", "吴磊更新了47张骑行日记", "和范丞丞一起看昊天武道会", "火影手游楔二川木实战", "停车楼飘移帅炸了", "影视飓风Tim开通个人账号", "你还是逃不过覆面系"]},
+        { name: "今日头条", rank: "热榜", color: "#d43a2f", items: ["和平饭店账单造假事件15人被抓", "湖北连夜开会就王忠林被查表态", "APEC“中国年”遇见“十五五”开局之年", "段永平：目前不会卖出英伟达", "专家：黄金价格迎来新一轮调整压力", "飞秒手术要降价了", "冬天洗澡多久一次最好", "新一轮大范围雨雪明夜起来袭", "叶倩文在南京档案馆找到家人户籍卡", "吉林省委书记：持续推进扫黑除恶", "山西大同采空区塌陷引地震不实", "赛力斯豪掷15亿元爆改问界M8", "核动力月球车是噱头还是硬货", "我国严禁任何形式代孕", "APEC是深圳开放能力的终极检验", "医生用AI发现41名无症状肠癌患者", "楼上5个娃跑跳制造噪音楼下反击", "奚梦瑶何猷君女儿5岁身高", "向太疑惑许飞为何当时不解开误会", "一级英模陈清洲病逝 享年56岁", "南京零元面馆改为仅4类人群免费", "郭晶晶现身杭州参加活动", "A股海南板块大幅飘绿", "酒后这3个信号说明不适合喝酒", "Outlook崩了日本政府改用电话工作", "葡萄牙全队将穿7号球衣比赛致敬C罗", "APEC峰会到底有多重要", "七国集团涉古巴声明会造成什么影响", "零元面馆老板：愿全额补偿受损商户", "印度股市反弹"]},
+        { name: "百度", rank: "热搜", color: "#315efb", items: ["习近平对国企党建工作作出重要指示", "王忠林被查 湖北省委表态", "凭“一件衣服”怒赚100亿", "带你探访全国首家科技成果超市", "“上车穿棉袄下车穿短袖”", "95后少年白手起家 买了一家上市公司", "一款中国抗癌药把全球“药王”拉下马", "女儿晒近9旬父亲早餐：咸鸭蛋泡咖啡", "磁带怎么突然打赢复活赛了", "大衣哥称不直播带货：把控不了产品", "曝Zeus和T1签约3年打到Faker退役", "山西大同采空区塌陷引发强震系谣言", "段永平：目前不会卖出英伟达", "王毅：中国不是也不会成为另一个美国", "黑人牙膏 别信口开河", "飞秒手术全球1000万例中国750万例", "央行出手！2000亿元买断式逆回购来了", "中学生手搓时速350公里拦截机", "大疆宣布涨价", "被举报性骚扰女生 教师赵某彦被开除", "特惠车、一口价 逼“疯”网约车司机", "南京“零元面馆”调整就餐规则", "苹果开始回收三星折叠屏了", "Anthropic终将奔向10万亿", "奔驰暂停在德所有投资 考虑关停工厂", "比亚迪悬赏黑公关：最高奖励500万", "叶倩文在南京档案馆找到家人户籍卡", "绿泡泡能逆袭红果吗", "山姆开始“卷”技术了", "房贷断供 唯一一套房会被拍卖吗"]},
         { name: "小红书", rank: "热议", color: "#e0342b", items: ["上岸日记：三年还清 40 万", "我的征信自查全过程（避雷版）", "深圳买房公积金能贷多少", "个体户第一次贷款被拒经历", "存钱搭子月存 5000 计划", "房贷审批被卡在流水这一步", "手把手查个人征信报告", "经营贷续贷提前半年准备清单"]},
-        { name: "哔哩哔哩", rank: "热门", color: "#e56a9a", items: ["假⚡️面⚡️难⚡️藏⚡️泪", "无烟酒吧倒闭、张美玉抑郁、大学生无偿代跑拒绝供出同学【抽象周刊】", "THANK YOU nobody", "【独家】《罗小黑战记》第43话 跟师父一起做任务啦【10月国创】", "THANK YOU CHICHOO", "他真的太优雅了！灰太狼&红太狼【非凡之爱】", "《蓝色星原：旅谣》公测预告PV", "永夜扉间PV及技能初探丨此身为烛", "竹子从来都不欺人，只要你顺着它的脾气，会给你惊喜！", "为什么是最后一期？影视飓风1800万粉丝Q&A！", "【烂奇迹】三毛：我的一生颠沛流离，活到现在算是个奇迹", "拿中老年病痛玩梗，还被44万人点赞，这是最近最让我恶心的烂梗！", "臣妾要线上告发熹贵妃 2.0", "提辖老妈《暴躁老妈》雷霆丧病配音1~8大合集", "这辅助塞恩太夸张了！", "MJ宇宙校园之末日降临第一集", "多兰：你是不是想踢了我？【AI全民制作人】", "【TF家族练习生】《千万分之一的我》02「幸会，再会」篇章三《青春客》", "极致的走线！", "工业曲线"]},
+        { name: "哔哩哔哩", rank: "热门", color: "#e56a9a", items: ["假⚡️面⚡️难⚡️藏⚡️泪", "【祸津神】被献祭的少女啊，为何露出微笑", "他真的太优雅了！灰太狼&红太狼【非凡之爱】", "【独家】《罗小黑战记》第43话 跟师父一起做任务啦【10月国创】", "无烟酒吧倒闭、张美玉抑郁、大学生无偿代跑拒绝供出同学【抽象周刊】", "【烂奇迹】三毛：我的一生颠沛流离，活到现在算是个奇迹", "THANK YOU nobody", "竹子从来都不欺人，只要你顺着它的脾气，会给你惊喜！", "提辖老妈《暴躁老妈》雷霆丧病配音1~8大合集", "《蓝色星原：旅谣》公测预告PV", "为什么是最后一期？影视飓风1800万粉丝Q&A！", "永夜扉间PV及技能初探丨此身为烛", "车长五米一五，腾势N8靠什么在高空集装箱上连闯7关？", "臣妾要线上告发熹贵妃 2.0", "拿中老年病痛玩梗，还被44万人点赞，这是最近最让我恶心的烂梗！", "THANK YOU CHICHOO", "耗资上万！我把匠魂做进了网页版mc... 【B站AI创造公开赛】", "动态视频｜全网最高画质第一人称逛展，会拍到啥？", "工业曲线", "极致的走线！"]},
         { name: "快手", rank: "热榜", color: "#e07b24", items: ["贷款中介的水到底有多深", "抵押老房子还能贷出钱吗", "流水不够怎么补才合规", "担保签了字要担多大事", "网贷结清证明怎么开", "银行卡限额去柜台这样说", "续贷被压额的真实原因", "公积金断缴影响贷款吗"]},
         { name: "微信", rank: "热文", color: "#2f9e5f", items: ["千万级罚单背后：中介展业红线清单", "无还本续贷政策落地的三个细节", "房抵贷评估价下调潮的应对顺序", "商贷按月对冲到底省不省钱", "央行三季度报告里的信贷信号", "担保圈穿透：共债共签怎么查", "借意险捆绑销售推高 IRR 的测算", "骗提公积金的黑名单后果"]},
-        { name: "豆瓣", rank: "热议", color: "#4a9e4d", items: ["奶奶在67岁交到了此生最好的朋友", "哎你也飞着呢26", "2026-11-10 9:46 a.m", "果壳里的日落", "推一些语言风格很搞笑的书", "新西兰，世界在别处。", "厦门最佳赏味期到了！非游客路线分享", "我在农村使用极其频繁的火炉子", "低粉账号成交的关键在于大胆报价（不要脸版）", "色彩之美——蓝喉蜂虎", "怕冷星人，我和老妈的冬日保暖", "别把面试当面试，你会发现这是一件稳赚不赔的事", "雅思考经：大学生低成本自学一个月速通雅思8.0", "162/98 📝 短发🍐每天穿什么", "德国婆婆亲自安排好了自己的葬礼，也让我重新了解她", "7天东京solo trip（纯溜达版）", "假装在江南", "一大波狸狸萌照来袭", "美衣美鞋｜新人入组分享一些150小个子穿搭", "旧金山｜马蒂斯《戴帽子的女人》：一场现代争议"]},
-        { name: "虎扑", rank: "热帖", color: "#b03a2e", items: ["腾讯这次内部会议，说是小马哥全程都没啥笑脸。", "黄仁勋辞职，CFO出任临时CEO", "鹅厂员工认为公司走到今天，是pony的失职。", "詹杜库暮年都被逐帧分析，没什么没有人分析暮年科比", "又罢工了，四百万人。这世界真乱啊，只有中国安全些", "黄仁勋妻子发言全文翻译：", "不是都说腾讯比字节跳动更厉害吗？为啥马化腾都说现在是生死存亡的时候了", "什么的腿才称得上极品美腿？", "如何评价隋坡点评长沙聚味瞿记后，被当地餐饮人在抖音围攻", "赵丽颖起诉红果短剧！", "黄仁勋与英伟达的33年", "给我四十年也想不出来这么干", "小仙女吸引两男的争夺", "逮着空眯了一会，咋手就不听使唤了呢", "郭老师：让她穿越回南京卢沟桥找找她的小确幸看看", "只有在这个时候，韩国人才会承认中国曾经是东亚的宗主国 ！", "优雅甜美的小鹿 展示一款国风改良旗袍", "香港jr,黄仁勋自己辞职，为何简中网都说他是被老美政府逼迫下台的？", "林生斌已故妻子朱小贞父母称女儿生前遭出轨家暴", "男人变老有什么明显的特征？"]},
+        { name: "豆瓣", rank: "热议", color: "#4a9e4d", items: ["奶奶在67岁交到了此生最好的朋友", "哎你也飞着呢26", "2026-11-10 9:46 a.m", "果壳里的日落", "推一些语言风格很搞笑的书", "新西兰，世界在别处。", "厦门最佳赏味期到了！非游客路线分享", "我在农村使用极其频繁的火炉子", "低粉账号成交的关键在于大胆报价（不要脸版）", "色彩之美——蓝喉蜂虎", "怕冷星人，我和老妈的冬日保暖", "别把面试当面试，你会发现这是一件稳赚不赔的事", "雅思考经：大学生低成本自学雅思8.0", "162/98 📝 短发🍐每天穿什么", "德国婆婆亲自安排好了自己的葬礼，也让我重新了解她", "7天东京solo trip（纯溜达版）", "假装在江南", "一大波狸狸萌照来袭", "美衣美鞋｜新人入组分享一些150小个子穿搭", "旧金山｜马蒂斯《戴帽子的女人》：一场现代争议"]},
+        { name: "虎扑", rank: "热帖", color: "#b03a2e", items: ["腾讯这次内部会议，说是小马哥全程都没啥笑脸。", "鹅厂员工认为公司走到今天，是pony的失职。", "黄仁勋辞职，CFO出任临时CEO", "詹杜库暮年都被逐帧分析，没什么没有人分析暮年科比", "又罢工了，四百万人。这世界真乱啊，只有中国安全些", "黄仁勋妻子发言全文翻译：", "不是都说腾讯比字节跳动更厉害吗？为啥马化腾都说现在是生死存亡的时候了", "什么的腿才称得上极品美腿？", "如何评价隋坡点评长沙聚味瞿记后，被当地餐饮人在抖音围攻", "赵丽颖起诉红果短剧！", "给我四十年也想不出来这么干", "小仙女吸引两男的争夺", "香港jr,黄仁勋自己辞职，为何简中网都说他是被老美政府逼迫下台的？", "逮着空眯了一会，咋手就不听使唤了呢", "只有在这个时候，韩国人才会承认中国曾经是东亚的宗主国 ！", "优雅甜美的小鹿 展示一款国风改良旗袍", "四川眉山，2019年160万买的房子，现在只能卖30多万", "郭老师：让她穿越回南京卢沟桥找找她的小确幸看看", "许多英伟达员工已经在要求让黄仁勋回归", "一场普通的医院处分，竟然意外炸出了中国的 “长跑女王”"]},
         { name: "雪球", rank: "热议", color: "#d4882a", items: ["银行股息率还能维持几年", "中小银行信用减值计提压力", "LPR 下行对净息差的挤压测算", "城投与地产链的信用风险", "存款利率下行资金去哪了", "消费贷利率战打到什么程度", "房贷早偿率回升说明什么", "普惠贷款不良率的真实口径"]}
       ];
       function hotSearchUrl(platformName, title) {
@@ -1478,6 +1692,8 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
       var hotKeyword = "";
       var hotFavOnly = false;
       var hotFavs = {};
+      var hotBatch = {};
+      var hotExpanded = {};
       function hotSkeleton() {
         return "（一）热点本身\n先把事情说清：发生了什么、涉及谁、进展到哪一步，只写能核实的事实，别转述评论区。\n\n---\n\n（二）和读者有什么关系\n这个热点落到借款人、小微企业主身上，影响的是额度、利率、准入还是征信，挑一条主线写透。\n\n---\n\n（三）行里和监管怎么看\n把风控口径和政策口径摆出来，这是你的专业部分，别只跟着热搜的情绪走。\n\n---\n\n（四）操作指引\n读者看完能直接照做的动作清单，按先后顺序排。";
       }
@@ -1491,13 +1707,13 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
           var b = document.createElement("button");
           b.className = "filter-chip" + (!hotFavOnly && hotPlatform === d.name ? " active" : "");
           b.textContent = d.name + " " + d.count;
-          b.addEventListener("click", function () { hotPlatform = d.name; hotFavOnly = false; renderHot(); });
+          b.addEventListener("click", function () { hotPlatform = d.name; hotFavOnly = false; hotBatch = {}; hotExpanded = {}; renderHot(); });
           box.appendChild(b);
         });
         var fav = document.createElement("button");
         fav.className = "filter-chip" + (hotFavOnly ? " active" : "");
         fav.textContent = "★ 收藏 " + Object.keys(hotFavs).length;
-        fav.addEventListener("click", function () { hotFavOnly = true; renderHot(); });
+        fav.addEventListener("click", function () { hotFavOnly = true; hotBatch = {}; hotExpanded = {}; renderHot(); });
         box.appendChild(fav);
       }
       function renderHot() {
@@ -1518,6 +1734,12 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
           });
           if (!items.length) return;
           shown += items.length;
+          var pageSize = 4;
+          var expanded = !!hotExpanded[p.name];
+          var batchCount = Math.max(1, Math.ceil(items.length / pageSize));
+          var batchIdx = ((hotBatch[p.name] || 0) % batchCount + batchCount) % batchCount;
+          hotBatch[p.name] = batchIdx;
+          var visibleItems = expanded ? items : items.slice(batchIdx * pageSize, batchIdx * pageSize + pageSize);
           var g = document.createElement("div");
           g.className = "hot-group";
           var head = document.createElement("div");
@@ -1525,9 +1747,9 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
           head.innerHTML = '<span class="hot-dot"></span><h3></h3><span class="hg-count"></span>';
           head.querySelector(".hot-dot").style.background = p.color;
           head.querySelector("h3").textContent = p.name;
-          head.querySelector(".hg-count").textContent = items.length + " 条";
+          head.querySelector(".hg-count").textContent = expanded ? items.length + " 条 · 全部" : (items.length > pageSize ? "先看 4 条 · 共 " + items.length + " 条" : items.length + " 条");
           g.appendChild(head);
-          items.forEach(function (it) {
+          visibleItems.forEach(function (it) {
             var row = document.createElement("div");
             row.className = "hot-item";
             row.innerHTML = '<div class="hot-title"><a class="hot-title-link" target="_blank" rel="noopener noreferrer"></a></div><div class="hot-row"><span class="hot-rank">' + p.rank + ' <b>#' + it.rank + "</b></span></div>";
@@ -1543,7 +1765,6 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             go.className = "btn small primary"; go.textContent = "去创作";
             go.addEventListener("click", function () {
               $("#ed-title").value = it.title;
-              $("#wr-topic").value = it.title;
               $("#ed-body").value = hotSkeleton();
               updateStats(); hideCheck();
               gotoView("write");
@@ -1561,6 +1782,29 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             acts.appendChild(cp); acts.appendChild(go); acts.appendChild(star);
             g.appendChild(row);
           });
+          if (items.length > pageSize) {
+            var foot = document.createElement("div");
+            foot.className = "hot-group-foot";
+            var more = document.createElement("span");
+            more.className = "hot-more-count";
+            more.textContent = expanded ? "已展开全部 " + items.length + " 条" : "还有 " + (items.length - visibleItems.length) + " 条";
+            foot.appendChild(more);
+            if (!expanded && batchCount > 1) {
+              var batchBtn = document.createElement("button");
+              batchBtn.className = "btn small";
+              batchBtn.type = "button";
+              batchBtn.textContent = "换一批 ↻";
+              batchBtn.addEventListener("click", (function (platName, nextIdx) { return function () { hotBatch[platName] = nextIdx; renderHot(); }; })(p.name, (batchIdx + 1) % batchCount));
+              foot.appendChild(batchBtn);
+            }
+            var expBtn = document.createElement("button");
+            expBtn.className = "btn small" + (expanded ? "" : " primary");
+            expBtn.type = "button";
+            expBtn.textContent = expanded ? "收起" : "展开全部";
+            expBtn.addEventListener("click", (function (platName, nowExpanded) { return function () { hotExpanded[platName] = !nowExpanded; renderHot(); }; })(p.name, expanded));
+            foot.appendChild(expBtn);
+            g.appendChild(foot);
+          }
           box.appendChild(g);
         });
         if (!shown) {
@@ -1570,7 +1814,16 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
           box.appendChild(empty);
         }
       }
-      $("#hot-kw").addEventListener("input", function () { hotKeyword = this.value; renderHot(); });
+      $("#hot-kw").addEventListener("input", function () { hotKeyword = this.value; hotBatch = {}; hotExpanded = {}; renderHot(); });
+      var hotBatchAllBtn = $("#hot-batch-all");
+      if (hotBatchAllBtn) {
+        hotBatchAllBtn.addEventListener("click", function () {
+          HOT_PLATFORMS.forEach(function (p) { hotBatch[p.name] = (hotBatch[p.name] || 0) + 1; });
+          hotExpanded = {};
+          renderHot();
+          toast("已全部换一批");
+        });
+      }
 
       /* ---------- 我的（草稿箱 + 收藏热点） ---------- */
       function renderMine() {
@@ -1590,7 +1843,6 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             open.className = "btn small"; open.textContent = "打开";
             open.addEventListener("click", function () {
               $("#ed-title").value = d.title;
-              $("#wr-topic").value = d.title;
               $("#ed-body").value = d.body;
               updateStats(); hideCheck();
               gotoView("write");
@@ -1627,7 +1879,6 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             go.className = "btn small primary"; go.textContent = "去创作";
             go.addEventListener("click", function () {
               $("#ed-title").value = title;
-              $("#wr-topic").value = title;
               $("#ed-body").value = hotSkeleton();
               updateStats(); hideCheck();
               gotoView("write");
@@ -1653,9 +1904,35 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
         });
       });
 
+      /* ---------- 边栏底部动作 + 入群弹窗 ---------- */
+      var quickBtn = $("#btn-quick");
+      if (quickBtn) {
+        quickBtn.addEventListener("click", function () {
+          gotoView("plaza");
+          var drawBtn = $("#btn-draw");
+          if (drawBtn) setTimeout(function () { drawBtn.click(); }, 30);
+        });
+      }
+      var gearBtn = $("#btn-gear");
+      if (gearBtn) {
+        gearBtn.addEventListener("click", function () { gotoView("mine"); });
+      }
+      var groupModal = $("#group-modal");
+      var groupJoinBtn = $("#btn-group-join");
+      if (groupJoinBtn && groupModal) {
+        groupJoinBtn.addEventListener("click", function () { groupModal.hidden = false; });
+      }
+      var groupCloseBtn = $("#group-modal-close");
+      if (groupCloseBtn && groupModal) {
+        groupCloseBtn.addEventListener("click", function () { groupModal.hidden = true; });
+      }
+      if (groupModal) {
+        groupModal.addEventListener("click", function (e) { if (e.target === groupModal) groupModal.hidden = true; });
+        document.addEventListener("keydown", function (e) { if (e.key === "Escape") groupModal.hidden = true; });
+      }
+
       /* ---------- 初始化 ---------- */
 buildNav();
-renderHomeTools();
 renderDrafts();
 renderTemplates();
 renderPlaza();
@@ -1666,8 +1943,5 @@ renderTopics();
 updateStats();
 gotoView("home");
 </script>
-<script src="lowfan.js"></script>
-<script src="writer.js"></script>
 </body>
 </html>
-
