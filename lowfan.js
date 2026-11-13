@@ -96,7 +96,9 @@
     data = snapshot.articles.filter(function (item) {
       return item && typeof item.title === "string" && typeof item.author === "string" && typeof item.published_at === "string";
     });
-    meta.textContent = "更新于 " + new Date(snapshot.generated_at).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" }) + " · " + data.length + " 篇文章 · " + data.filter(function (item) { return !!validImage(item.image); }).length + " 张配图";
+    var sourceStatus = snapshot.source_success || {};
+    var staleSources = ["微信搜索", "今日头条"].filter(function (name) { return sourceStatus[name] === 0; });
+    meta.textContent = "快照生成于 " + new Date(snapshot.generated_at).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" }) + " · " + data.length + " 篇文章 · " + data.filter(function (item) { return !!validImage(item.image); }).length + " 张配图" + (staleSources.length ? " · " + staleSources.join("、") + "本次受限，沿用近 14 天已抓内容" : "");
     renderSources();
     render();
   }).catch(function () {

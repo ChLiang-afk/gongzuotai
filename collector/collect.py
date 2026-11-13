@@ -158,10 +158,14 @@ def collect(output, now, sleep=True):
             old = json.loads(output.read_text(encoding="utf-8"))
         except (ValueError, OSError):
             pass
-    old_items = old.get("articles", []) if isinstance(old, dict) else []
+    if not isinstance(old, dict):
+        old = {}
+    old_items = old.get("articles", [])
+    # Keep recent discoveries when some queries are blocked or temporarily empty.
+    # New results win during deduplication below; stale records expire after 14 days.
     for source in by_source:
-        if not by_source[source]:
-            by_source[source] = [item for item in old_items if item.get("source") == source and fresh(item.get("published_at"), now)]
+        by_source[source].extend(item for item in old_items
+                                 if item.get("source") == source and fresh(item.get("published_at"), now))
     seen = set()
     articles = []
     for item in sorted(sum(by_source.values(), []), key=lambda x: (x["published_at"], x.get("read_count") or 0), reverse=True):
@@ -172,9 +176,15 @@ def collect(output, now, sleep=True):
         articles.append(item)
     if not articles:
         raise RuntimeError("No fresh articles; existing snapshot preserved")
+    articles = articles[:200]
+    previous_success = old.get("source_last_success", {})
+    source_last_success = {source: (now.isoformat(timespec="seconds") if success[source]
+                                    else previous_success.get(source, old.get("generated_at", "")))
+                           for source in by_source}
     payload = {"generated_at": now.isoformat(timespec="seconds"), "article_count": len(articles),
                "image_count": sum(bool(item["image"]) for item in articles),
-               "source_success": success, "articles": articles[:200]}
+               "source_success": success, "source_last_success": source_last_success,
+               "articles": articles}
     output.parent.mkdir(parents=True, exist_ok=True)
     fd, temporary = tempfile.mkstemp(prefix=".lowfan-", suffix=".json", dir=output.parent)
     try:
