@@ -245,6 +245,12 @@
       .hot-group-head .hg-count { margin-left: auto; font-size: 13px; color: var(--muted); }
       .hot-item { padding: 13px 0 11px; border-top: 1px solid var(--line-soft); }
       .hot-title { font-size: 16px; font-weight: 600; line-height: 1.5; }
+      .hot-title a { color: inherit; text-decoration: none; }
+      .hot-title a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+      .hot-title a::after { content: " ↗"; font-size: 13px; color: var(--muted); font-weight: 400; }
+      .hot-title a:hover::after { color: var(--accent); }
+      .draft-item .d-title a { color: inherit; text-decoration: none; }
+      .draft-item .d-title a:hover { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
       .hot-row { display: flex; align-items: center; gap: 8px; margin-top: 9px; flex-wrap: wrap; }
       .hot-rank { font-size: 13px; color: var(--muted); margin-right: auto; }
       .hot-rank b { color: var(--warn); font-weight: 700; }
@@ -601,7 +607,7 @@
             <input type="text" id="hot-kw" placeholder="搜索热点关键词…" aria-label="搜索热点关键词" />
           </div>
           <div class="filter-row" id="hot-chips"></div>
-          <p class="hot-note">微博、知乎、抖音、今日头条、百度、哔哩哔哩、豆瓣、虎扑为今日实榜前 N 条；快手、小红书、微信、雪球为内置快照；每天会变，非实时。</p>
+          <p class="hot-note">点标题可跳转到对应平台搜索查看原文与讨论。微博、知乎、抖音、今日头条、百度、哔哩哔哩、豆瓣、虎扑为今日实榜前 N 条；快手、小红书、微信、雪球为内置快照；每天会变，非实时。</p>
           <div id="hot-list"></div>
         </section>
 
@@ -1366,6 +1372,24 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
         { name: "虎扑", rank: "热帖", color: "#b03a2e", items: ["腾讯这次内部会议，说是小马哥全程都没啥笑脸。", "黄仁勋辞职，CFO出任临时CEO", "如何评价隋坡点评长沙聚味瞿记后，被当地餐饮人在抖音围攻", "黄仁勋不是英伟达创始人吗？为啥能被董事会罢免，腾讯阿里也能罢免了马云马化腾吗？", "不是都说腾讯比字节跳动更厉害吗？为啥马化腾都说现在是生死存亡的时候了", "什么的腿才称得上极品美腿？", "黄仁勋妻子发言全文翻译：", "又罢工了，四百万人。这世界真乱啊，只有中国安全些", "jr们，胸和臀，你更喜欢哪个", "南方一天一洗，北方人一周一洗，是因为地理气候还是因为性格问题？", "赵丽颖起诉红果短剧！", "玩这一套还有用吗", "知乎网友几天前发言：美国并没有因为他黄种人身份歧视他。今天黄仁勋辞去CEO…", "知心的小姐姐", "詹密也是牛逼，应该算是历史上最厉害的群体了吧", "梅西国家队退役，天下足球几乎不提，C罗国家队退役，天足反而做了专场", "我是火箭球迷，客观而论，我觉得火箭不是一支脏的球队。今天库里受伤，评论区全是骂火箭脏的。那不在专区问，来湿乎乎问，窝火是一支肮脏的球队吗？", "林生斌已故妻子朱小贞父母称女儿生前遭出轨家暴", "新认识的大专球友", "詹杜库暮年都被逐帧分析，没什么没有人分析暮年科比"]},
         { name: "雪球", rank: "热议", color: "#d4882a", items: ["银行股息率还能维持几年", "中小银行信用减值计提压力", "LPR 下行对净息差的挤压测算", "城投与地产链的信用风险", "存款利率下行资金去哪了", "消费贷利率战打到什么程度", "房贷早偿率回升说明什么", "普惠贷款不良率的真实口径"]}
       ];
+      function hotSearchUrl(platformName, title) {
+        var q = encodeURIComponent(title);
+        var map = {
+          "微博": "https://s.weibo.com/weibo?q=" + q,
+          "知乎": "https://www.zhihu.com/search?type=content&q=" + q,
+          "抖音": "https://www.douyin.com/search/" + q,
+          "今日头条": "https://www.toutiao.com/search/?keyword=" + q,
+          "百度": "https://www.baidu.com/s?wd=" + q,
+          "小红书": "https://www.xiaohongshu.com/search_result?keyword=" + q,
+          "哔哩哔哩": "https://search.bilibili.com/all?keyword=" + q,
+          "快手": "https://www.kuaishou.com/search/video?searchKey=" + q,
+          "微信": "https://weixin.sogou.com/weixin?type=2&query=" + q,
+          "豆瓣": "https://www.douban.com/search?q=" + q,
+          "虎扑": "https://bbs.hupu.com/search?q=" + q,
+          "雪球": "https://xueqiu.com/k?q=" + q
+        };
+        return map[platformName] || ("https://www.baidu.com/s?wd=" + q);
+      }
       var hotPlatform = "全部";
       var hotKeyword = "";
       var hotFavOnly = false;
@@ -1422,8 +1446,11 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
           items.forEach(function (it) {
             var row = document.createElement("div");
             row.className = "hot-item";
-            row.innerHTML = '<div class="hot-title"></div><div class="hot-row"><span class="hot-rank">' + p.rank + ' <b>#' + it.rank + "</b></span></div>";
-            row.querySelector(".hot-title").textContent = it.title;
+            row.innerHTML = '<div class="hot-title"><a class="hot-title-link" target="_blank" rel="noopener noreferrer"></a></div><div class="hot-row"><span class="hot-rank">' + p.rank + ' <b>#' + it.rank + "</b></span></div>";
+            var titleLink = row.querySelector(".hot-title-link");
+            titleLink.href = hotSearchUrl(p.name, it.title);
+            titleLink.textContent = it.title;
+            titleLink.title = "去" + p.name + "看「" + it.title + "」";
             var acts = row.querySelector(".hot-row");
             var cp = document.createElement("button");
             cp.className = "btn small"; cp.textContent = "复制";
@@ -1504,9 +1531,12 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             var title = parts.slice(1).join("|");
             var item = document.createElement("div");
             item.className = "draft-item";
-            item.innerHTML = '<div class="d-main"><div class="d-title"></div><div class="d-meta"></div></div>';
-            item.querySelector(".d-title").textContent = title;
-            item.querySelector(".d-meta").textContent = plat + " · 已收藏";
+            item.innerHTML = '<div class="d-main"><div class="d-title"><a target="_blank" rel="noopener noreferrer"></a></div><div class="d-meta"></div></div>';
+            var favLink = item.querySelector(".d-title a");
+            favLink.href = hotSearchUrl(plat, title);
+            favLink.textContent = title;
+            favLink.title = "去" + plat + "看「" + title + "」";
+            item.querySelector(".d-meta").textContent = plat + " · 已收藏 · 点标题去平台看";
             var go = document.createElement("button");
             go.className = "btn small primary"; go.textContent = "去创作";
             go.addEventListener("click", function () {
