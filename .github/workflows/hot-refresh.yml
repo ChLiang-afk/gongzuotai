@@ -1,4 +1,5 @@
 name: Hot Refresh
+# 2026-11-15 19:07：停用/启用后 19:00 定时仍未触发，推此注释强制 GitHub 重新注册 schedule。
 
 on:
   schedule:
