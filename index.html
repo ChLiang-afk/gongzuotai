@@ -1294,7 +1294,7 @@ var HOME_TOOLS = [
 { id: "tietu", tag: "短文案成组", title: "贴图号", desc: "一行一张卡，第一行做封面，把一条实操经验拆成一组图发出去。"},
 { id: "fuke", tag: "先拆后套", title: "爆款贴图复刻", desc: "上传参考图，拆出钩子句式和排版结构，再套上自己的业务内容。"},
 { id: "plaza", tag: "每日轮换", title: "灵感广场", desc: "今日上新一组选题，再加一张随机灵感卡，打开就有得写。"},
-{ id: "hot", tag: "金融精选 + 实时热榜", title: "热点广场", desc: "各平台金融条目合并成一个「金融」组，与微博、知乎、抖音等平台组并列：财联社金融频道置顶前 3 条排在组内最前、跨轮保留（取消置顶前不被电报滚动淘汰），其余为财联社、腾讯新闻、新浪财经、虎嗅、东方财富等大媒体的金融条目（跨源去重、按信贷口径筛选）；另有微博、抖音、百度、知乎等 9 个平台的实时热榜（豚榜聚合，每 30 分钟更新）。搜关键词、收藏，点「去创作」直接带进写作台。"},
+{ id: "hot", tag: "金融精选 + 实时热榜", title: "热点广场", desc: "各平台金融条目合并成一个「金融」组，与微博、知乎、抖音等平台组并列：财联社金融频道置顶前 3 条排在组内最前、跨轮保留（取消置顶前不被电报滚动淘汰），其余为财联社、腾讯新闻、新浪财经、虎嗅、东方财富等大媒体的金融条目（跨源去重、按信贷口径筛选）；另有微博、抖音、百度、知乎等 9 个平台的实时热榜（每 30 分钟更新）。搜关键词、收藏，点「去创作」直接带进写作台。"},
 { id: "titles", tag: "批量出稿", title: "标题工坊", desc: "一个主题词出一组标题，句式稳妥不标题党，点一下就复制。"}
 ];
 function renderHomeTools() {
@@ -4063,7 +4063,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
         var kw = hotKeyword.trim();
         var finTotal = HOT_PLATFORMS.reduce(function (s, p) { return s + (HOT_FIN_PLATFORMS[p.name] ? p.items.length : 0); }, 0);
         var allTotal = HOT_PLATFORMS.reduce(function (s, p) { return s + p.items.length; }, 0);
-        $("#hot-meta").textContent = "2026-11-15 豚榜 · 30 分钟更新 · 金融精选 " + finTotal + " 条（大媒体 · 已去重筛选）· 通用热榜 " + (allTotal - finTotal) + " 条 · 共 " + allTotal + " 条";
+        $("#hot-meta").textContent = "2026-11-15 实时热榜 · 30 分钟更新 · 金融精选 " + finTotal + " 条（大媒体 · 已去重筛选）· 通用热榜 " + (allTotal - finTotal) + " 条 · 共 " + allTotal + " 条";
         /* 各平台金融合并成一个「金融」组，与微博、知乎等平台组并列；组内财联社置顶在最前 */
         var finMerged = { name: "金融", rank: "", color: "#c8102e", fin: true, finGroup: true, updated: "", items: [] };
         HOT_PLATFORMS.forEach(function (p) {
@@ -4112,7 +4112,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             items.forEach(function (x) { if (x.src && srcs.indexOf(x.src) < 0) srcs.push(x.src); });
             head.querySelector(".hg-count").textContent = items.length + " 条 · " + srcs.join(" · ") + " · 已去重筛选";
           } else {
-            head.querySelector(".hg-count").textContent = (expanded ? items.length + " 条 · 全部" : (items.length > pageSize ? "先看 4 条 · 共 " + items.length + " 条" : items.length + " 条")) + (p.pinned ? " · 跨轮保留 · 取消置顶前不淘汰" : "") + (p.fin ? " · 金融" + (p.updated ? " · " + p.updated.slice(11) + " 更新" : "") : (p.live && p.updated ? " · 豚榜 " + p.updated.slice(11) + " 更新" + (p.stale ? "（旧轮次）" : "") : ""));
+            head.querySelector(".hg-count").textContent = (expanded ? items.length + " 条 · 全部" : (items.length > pageSize ? "先看 4 条 · 共 " + items.length + " 条" : items.length + " 条")) + (p.pinned ? " · 跨轮保留 · 取消置顶前不淘汰" : "") + (p.fin ? " · 金融" + (p.updated ? " · " + p.updated.slice(11) + " 更新" : "") : (p.live && p.updated ? " · " + p.updated.slice(11) + " 更新" + (p.stale ? "（旧轮次）" : "") : ""));
           }
           g.appendChild(head);
           var finPinHeadShown = false;
