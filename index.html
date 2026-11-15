@@ -1666,23 +1666,2198 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
 
       /* ---------- 热点广场 ---------- */
       var HOT_PLATFORMS = [
-      { name: "财联社置顶", rank: "置顶", color: "#c8102e", live: true, fin: true, pinned: true, updated: "2026-11-15 08:22", items: [{"t": "央行将开展2000亿元买断式逆回购操作 缩量续作稳定市场预期", "c": "信贷政策", "u": "https://www.cls.cn/detail/2534228", "pin": true, "pub": "2026-11-13 21:51"}, {"t": "斩获2026“债市之星”双项大奖 唐控发展集团城投转型进入深度兑现期", "c": "信贷政策", "u": "https://www.cls.cn/detail/2534072", "pin": true, "pub": "2026-11-13 18:59"}, {"t": "10月金融数据出炉：今年来企业债净融资3.1万亿，达上年同期增量的1.7倍", "c": "信贷政策", "u": "https://www.cls.cn/detail/2533957", "pin": true, "pub": "2026-11-13 17:13"}]},
-      { name: "财联社", rank: "电报", color: "#c0392b", live: true, fin: true, updated: "2026-11-15 08:22", items: [{"t": "中信建投：预计2027年实际利率进一步上行空间有限 金价有望震荡上行", "c": "信贷政策", "u": "https://www.cls.cn/detail/2534563"}, {"t": "美联储柯林斯称，鉴于通胀和就业数据，美联储可能不得不比近期预期更多地加息。", "c": "信贷政策", "u": "https://www.cls.cn/detail/2534562"}]},
-      { name: "腾讯新闻", rank: "热点榜", color: "#0052d9", live: true, fin: true, updated: "2026-11-14 21:53", items: [{"t": "证监会主席吴清在首届中国资本市场学术年会开幕式上致辞", "c": "信贷政策", "u": "https://news.qq.com/rain/a/20261114A084XE00"}]},
-      { name: "新浪财经", rank: "7×24快讯", color: "#f26522", live: true, fin: true, updated: "2026-11-14 21:54", items: [{"t": "蒙商银行股份有限公司原党委副书记廉斌被“双开”", "c": "监管处罚", "u": "https://finance.sina.com.cn/roll/2026-11-14/doc-iniysztc4032570.shtml"}, {"t": "证监会接收！六家头部公募集体申报，“A500”拼图将补齐", "c": "信贷政策", "u": "https://finance.sina.com.cn/roll/2026-11-14/doc-iniyszsy7226165.shtml"}, {"t": "人力资源社会保障部就中奥社保协定答记者问", "c": "公积金个税", "u": "https://finance.sina.com.cn/roll/2026-11-14/doc-iniytfyw7150384.shtml"}]},
-      { name: "虎嗅", rank: "热榜", color: "#b8860b", live: true, fin: true, updated: "2026-11-14 21:01", items: [{"t": "Meta被意大利罚款8.05亿欧元", "c": "监管处罚", "u": "https://www.huxiu.com/moment/1296804.html"}]},
-      { name: "东方财富", rank: "快讯", color: "#d81e06", live: true, fin: true, updated: "2026-11-15 08:22", items: [{"t": "美联储重磅报告：“AI热”推高估值与债务", "c": "信贷政策", "u": "https://finance.eastmoney.com/a/202611143931369119.html"}, {"t": "税收征收管理法修订草案加强个人税收征管—— 大额欠税“老赖”不再有漏洞可钻", "c": "公积金个税", "u": "https://finance.eastmoney.com/a/202611153931385747.html"}]},
-      { name: "微博", rank: "热搜", color: "#c0452f", live: true, updated: "2026-11-15 08:00", items: [{"t": "GEN对战BLG", "h": "211万", "u": "https://s.weibo.com/weibo?q=%23GEN%E5%AF%B9%E6%88%98BLG%23&t=31&band_rank=1&Refer=top"}, {"t": "BLG二比一GEN拿到赛点", "h": "116万", "u": "https://s.weibo.com/weibo?q=%23BLG%E4%BA%8C%E6%AF%94%E4%B8%80GEN%E6%8B%BF%E5%88%B0%E8%B5%9B%E7%82%B9%23&t=31&band_rank=1&Refer=top"}, {"t": "boss直聘暂停要求带咖啡公司账号权限", "h": "69万", "u": "https://s.weibo.com/weibo?q=%23boss%E7%9B%B4%E8%81%98%E6%9A%82%E5%81%9C%E8%A6%81%E6%B1%82%E5%B8%A6%E5%92%96%E5%95%A1%E5%85%AC%E5%8F%B8%E8%B4%A6%E5%8F%B7%E6%9D%83%E9%99%90%23&t=31&band_rank=1&Refer=top"}, {"t": "孩子觉得打包丢人被老师扣分引热议", "h": "54万", "u": "https://s.weibo.com/weibo?q=%23%E5%AD%A9%E5%AD%90%E8%A7%89%E5%BE%97%E6%89%93%E5%8C%85%E4%B8%A2%E4%BA%BA%E8%A2%AB%E8%80%81%E5%B8%88%E6%89%A3%E5%88%86%E5%BC%95%E7%83%AD%E8%AE%AE%23&t=31&band_rank=1&Refer=top"}, {"t": "BLG团战", "h": "42万", "u": "https://s.weibo.com/weibo?q=BLG%E5%9B%A2%E6%88%98&t=31&band_rank=1&Refer=top"}, {"t": "SpaceX首次实现筷子夹飞船", "h": "39万", "u": "https://s.weibo.com/weibo?q=%23SpaceX%E9%A6%96%E6%AC%A1%E5%AE%9E%E7%8E%B0%E7%AD%B7%E5%AD%90%E5%A4%B9%E9%A3%9E%E8%88%B9%23&t=31&band_rank=1&Refer=top"}, {"t": "葡萄牙1比4惨败丹麦", "h": "36万", "u": "https://s.weibo.com/weibo?q=%23%E8%91%A1%E8%90%84%E7%89%991%E6%AF%944%E6%83%A8%E8%B4%A5%E4%B8%B9%E9%BA%A6%23&t=31&band_rank=1&Refer=top"}, {"t": "白小纯居然是来报恩的", "h": "20万", "u": "https://s.weibo.com/weibo?q=%E7%99%BD%E5%B0%8F%E7%BA%AF%E5%B1%85%E7%84%B6%E6%98%AF%E6%9D%A5%E6%8A%A5%E6%81%A9%E7%9A%84&t=31&band_rank=1&Refer=top"}, {"t": "许飞听到不负少年不负卿上热搜的反应", "h": "16万", "u": "https://s.weibo.com/weibo?q=%E8%AE%B8%E9%A3%9E%E5%90%AC%E5%88%B0%E4%B8%8D%E8%B4%9F%E5%B0%91%E5%B9%B4%E4%B8%8D%E8%B4%9F%E5%8D%BF%E4%B8%8A%E7%83%AD%E6%90%9C%E7%9A%84%E5%8F%8D%E5%BA%94&t=31&band_rank=1&Refer=top"}, {"t": "爱一个不爱自己的人是僭越", "h": "15万", "u": "https://s.weibo.com/weibo?q=%E7%88%B1%E4%B8%80%E4%B8%AA%E4%B8%8D%E7%88%B1%E8%87%AA%E5%B7%B1%E7%9A%84%E4%BA%BA%E6%98%AF%E5%83%AD%E8%B6%8A&t=31&band_rank=1&Refer=top"}, {"t": "王乐乐", "h": "15万", "u": "https://s.weibo.com/weibo?q=%E7%8E%8B%E4%B9%90%E4%B9%90&t=31&band_rank=1&Refer=top"}, {"t": "曝高迪抖音直播权限被永封", "h": "15万", "u": "https://s.weibo.com/weibo?q=%23%E6%9B%9D%E9%AB%98%E8%BF%AA%E6%8A%96%E9%9F%B3%E7%9B%B4%E6%92%AD%E6%9D%83%E9%99%90%E8%A2%AB%E6%B0%B8%E5%B0%81%23&t=31&band_rank=1&Refer=top"}, {"t": "BLG不敌GEN后台镜头曝光", "h": "15万", "u": "https://s.weibo.com/weibo?q=%23BLG%E4%B8%8D%E6%95%8CGEN%E5%90%8E%E5%8F%B0%E9%95%9C%E5%A4%B4%E6%9B%9D%E5%85%89%23&t=31&band_rank=1&Refer=top"}, {"t": "Ning说Chovy真同意了", "h": "14万", "u": "https://s.weibo.com/weibo?q=%23Ning%E8%AF%B4Chovy%E7%9C%9F%E5%90%8C%E6%84%8F%E4%BA%86%23&t=31&band_rank=1&Refer=top"}, {"t": "英雄联盟曙光", "h": "14万", "u": "https://s.weibo.com/weibo?q=%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%E6%9B%99%E5%85%89&t=31&band_rank=1&Refer=top"}, {"t": "曝爱奇艺尖叫之夜座位双C", "h": "14万", "u": "https://s.weibo.com/weibo?q=%23%E6%9B%9D%E7%88%B1%E5%A5%87%E8%89%BA%E5%B0%96%E5%8F%AB%E4%B9%8B%E5%A4%9C%E5%BA%A7%E4%BD%8D%E5%8F%8CC%23&t=31&band_rank=1&Refer=top"}, {"t": "央视曝光假牛肉案", "h": "13万", "u": "https://s.weibo.com/weibo?q=%23%E5%A4%AE%E8%A7%86%E6%9B%9D%E5%85%89%E5%81%87%E7%89%9B%E8%82%89%E6%A1%88%23&t=31&band_rank=1&Refer=top"}, {"t": "白鹿带着三个作品走了三次红毯", "h": "13万", "u": "https://s.weibo.com/weibo?q=%23%E7%99%BD%E9%B9%BF%E5%B8%A6%E7%9D%80%E4%B8%89%E4%B8%AA%E4%BD%9C%E5%93%81%E8%B5%B0%E4%BA%86%E4%B8%89%E6%AC%A1%E7%BA%A2%E6%AF%AF%23&t=31&band_rank=1&Refer=top"}, {"t": "难怪白敬亭印象中宋亚轩很安静", "h": "13万", "u": "https://s.weibo.com/weibo?q=%23%E9%9A%BE%E6%80%AA%E7%99%BD%E6%95%AC%E4%BA%AD%E5%8D%B0%E8%B1%A1%E4%B8%AD%E5%AE%8B%E4%BA%9A%E8%BD%A9%E5%BE%88%E5%AE%89%E9%9D%99%23&t=31&band_rank=1&Refer=top"}, {"t": "BLG", "h": "13万", "u": "https://s.weibo.com/weibo?q=BLG&t=31&band_rank=1&Refer=top"}, {"t": "Ruler燃尽了", "h": "13万", "u": "https://s.weibo.com/weibo?q=%23Ruler%E7%87%83%E5%B0%BD%E4%BA%86%23&t=31&band_rank=1&Refer=top"}, {"t": "睡眠不足的人长期处于应激状态", "h": "13万", "u": "https://s.weibo.com/weibo?q=%23%E7%9D%A1%E7%9C%A0%E4%B8%8D%E8%B6%B3%E7%9A%84%E4%BA%BA%E9%95%BF%E6%9C%9F%E5%A4%84%E4%BA%8E%E5%BA%94%E6%BF%80%E7%8A%B6%E6%80%81%23&t=31&band_rank=1&Refer=top"}, {"t": "BLG决赛状态", "h": "13万", "u": "https://s.weibo.com/weibo?q=%23BLG%E5%86%B3%E8%B5%9B%E7%8A%B6%E6%80%81%23&t=31&band_rank=1&Refer=top"}, {"t": "英雄联盟即将全面升级", "h": "12万", "u": "https://s.weibo.com/weibo?q=%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%E5%8D%B3%E5%B0%86%E5%85%A8%E9%9D%A2%E5%8D%87%E7%BA%A7&t=31&band_rank=1&Refer=top"}, {"t": "白小纯承认辜负了信任", "h": "12万", "u": "https://s.weibo.com/weibo?q=%23%E7%99%BD%E5%B0%8F%E7%BA%AF%E6%89%BF%E8%AE%A4%E8%BE%9C%E8%B4%9F%E4%BA%86%E4%BF%A1%E4%BB%BB%23&t=31&band_rank=1&Refer=top"}, {"t": "BLG离S16冠军差一场", "h": "12万", "u": "https://s.weibo.com/weibo?q=%23BLG%E7%A6%BBS16%E5%86%A0%E5%86%9B%E5%B7%AE%E4%B8%80%E5%9C%BA%23&t=31&band_rank=1&Refer=top"}, {"t": "男子欠10元10年不还将债主打骨折", "h": "12万", "u": "https://s.weibo.com/weibo?q=%23%E7%94%B7%E5%AD%90%E6%AC%A010%E5%85%8310%E5%B9%B4%E4%B8%8D%E8%BF%98%E5%B0%86%E5%80%BA%E4%B8%BB%E6%89%93%E9%AA%A8%E6%8A%98%23&t=31&band_rank=1&Refer=top"}, {"t": "大美妈妈回应", "h": "12万", "u": "https://s.weibo.com/weibo?q=%23%E5%A4%A7%E7%BE%8E%E5%A6%88%E5%A6%88%E5%9B%9E%E5%BA%94%23&t=31&band_rank=1&Refer=top"}, {"t": "近30头一级保护动物罕见集体出行", "h": "12万", "u": "https://s.weibo.com/weibo?q=%23%E8%BF%9130%E5%A4%B4%E4%B8%80%E7%BA%A7%E4%BF%9D%E6%8A%A4%E5%8A%A8%E7%89%A9%E7%BD%95%E8%A7%81%E9%9B%86%E4%BD%93%E5%87%BA%E8%A1%8C%23&t=31&band_rank=1&Refer=top"}, {"t": "女性不被结婚生子占满人生", "h": "12万", "u": "https://s.weibo.com/weibo?q=%E5%A5%B3%E6%80%A7%E4%B8%8D%E8%A2%AB%E7%BB%93%E5%A9%9A%E7%94%9F%E5%AD%90%E5%8D%A0%E6%BB%A1%E4%BA%BA%E7%94%9F&t=31&band_rank=1&Refer=top"}, {"t": "谭开心曝高迪曾少付一千酬劳", "h": "11万", "u": "https://s.weibo.com/weibo?q=%23%E8%B0%AD%E5%BC%80%E5%BF%83%E6%9B%9D%E9%AB%98%E8%BF%AA%E6%9B%BE%E5%B0%91%E4%BB%98%E4%B8%80%E5%8D%83%E9%85%AC%E5%8A%B3%23&t=31&band_rank=1&Refer=top"}, {"t": "百元大钞花束不是表白是洗钱", "h": "11万", "u": "https://s.weibo.com/weibo?q=%23%E7%99%BE%E5%85%83%E5%A4%A7%E9%92%9E%E8%8A%B1%E6%9D%9F%E4%B8%8D%E6%98%AF%E8%A1%A8%E7%99%BD%E6%98%AF%E6%B4%97%E9%92%B1%23&t=31&band_rank=1&Refer=top"}, {"t": "原来热暴力真的比冷暴力有用", "h": "11万", "u": "https://s.weibo.com/weibo?q=%E5%8E%9F%E6%9D%A5%E7%83%AD%E6%9A%B4%E5%8A%9B%E7%9C%9F%E7%9A%84%E6%AF%94%E5%86%B7%E6%9A%B4%E5%8A%9B%E6%9C%89%E7%94%A8&t=31&band_rank=1&Refer=top"}, {"t": "为什么说杀人容易藏尸难", "h": "11万", "u": "https://s.weibo.com/weibo?q=%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E6%9D%80%E4%BA%BA%E5%AE%B9%E6%98%93%E8%97%8F%E5%B0%B8%E9%9A%BE&t=31&band_rank=1&Refer=top"}, {"t": "这要放十年前谁会觉得假", "h": "11万", "u": "https://s.weibo.com/weibo?q=%E8%BF%99%E8%A6%81%E6%94%BE%E5%8D%81%E5%B9%B4%E5%89%8D%E8%B0%81%E4%BC%9A%E8%A7%89%E5%BE%97%E5%81%87&t=31&band_rank=1&Refer=top"}, {"t": "BLG和GEN打了53分钟", "h": "11万", "u": "https://s.weibo.com/weibo?q=%23BLG%E5%92%8CGEN%E6%89%93%E4%BA%8653%E5%88%86%E9%92%9F%23&t=31&band_rank=1&Refer=top"}, {"t": "BLG拿资源输团战", "h": "11万", "u": "https://s.weibo.com/weibo?q=%23BLG%E6%8B%BF%E8%B5%84%E6%BA%90%E8%BE%93%E5%9B%A2%E6%88%98%23&t=31&band_rank=1&Refer=top"}, {"t": "新疆就是一个巨大的干燥剂", "h": "11万", "u": "https://s.weibo.com/weibo?q=%E6%96%B0%E7%96%86%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E5%B7%A8%E5%A4%A7%E7%9A%84%E5%B9%B2%E7%87%A5%E5%89%82&t=31&band_rank=1&Refer=top"}, {"t": "国产纯电商用飞机可搭载19名乘客", "h": "10万", "u": "https://s.weibo.com/weibo?q=%23%E5%9B%BD%E4%BA%A7%E7%BA%AF%E7%94%B5%E5%95%86%E7%94%A8%E9%A3%9E%E6%9C%BA%E5%8F%AF%E6%90%AD%E8%BD%BD19%E5%90%8D%E4%B9%98%E5%AE%A2%23&t=31&band_rank=1&Refer=top"}, {"t": "资生堂集团放了肖战刘诗诗", "h": "10万", "u": "https://s.weibo.com/weibo?q=%23%E8%B5%84%E7%94%9F%E5%A0%82%E9%9B%86%E5%9B%A2%E6%94%BE%E4%BA%86%E8%82%96%E6%88%98%E5%88%98%E8%AF%97%E8%AF%97%23&t=31&band_rank=1&Refer=top"}, {"t": "第一次对新疆的干燥有了清晰的实感", "h": "9.9万", "u": "https://s.weibo.com/weibo?q=%23%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AF%B9%E6%96%B0%E7%96%86%E7%9A%84%E5%B9%B2%E7%87%A5%E6%9C%89%E4%BA%86%E6%B8%85%E6%99%B0%E7%9A%84%E5%AE%9E%E6%84%9F%23&t=31&band_rank=1&Refer=top"}, {"t": "杨清柠 王乐乐", "h": "9.7万", "u": "https://s.weibo.com/weibo?q=%23%E6%9D%A8%E6%B8%85%E6%9F%A0%20%E7%8E%8B%E4%B9%90%E4%B9%90%23&t=31&band_rank=1&Refer=top"}, {"t": "暖阳夺冠发文", "h": "9.4万", "u": "https://s.weibo.com/weibo?q=%23%E6%9A%96%E9%98%B3%E5%A4%BA%E5%86%A0%E5%8F%91%E6%96%87%23&t=31&band_rank=1&Refer=top"}, {"t": "胎儿基因缺失竟牵出爸爸肠道癌变", "h": "9.3万", "u": "https://s.weibo.com/weibo?q=%23%E8%83%8E%E5%84%BF%E5%9F%BA%E5%9B%A0%E7%BC%BA%E5%A4%B1%E7%AB%9F%E7%89%B5%E5%87%BA%E7%88%B8%E7%88%B8%E8%82%A0%E9%81%93%E7%99%8C%E5%8F%98%23&t=31&band_rank=1&Refer=top"}, {"t": "吃完鸡爪肚子痛服务区还有二十公里", "h": "9.2万", "u": "https://s.weibo.com/weibo?q=%23%E5%90%83%E5%AE%8C%E9%B8%A1%E7%88%AA%E8%82%9A%E5%AD%90%E7%97%9B%E6%9C%8D%E5%8A%A1%E5%8C%BA%E8%BF%98%E6%9C%89%E4%BA%8C%E5%8D%81%E5%85%AC%E9%87%8C%23&t=31&band_rank=1&Refer=top"}, {"t": "厉娜我和雪梨飞雪合一下影", "h": "8.7万", "u": "https://s.weibo.com/weibo?q=%23%E5%8E%89%E5%A8%9C%E6%88%91%E5%92%8C%E9%9B%AA%E6%A2%A8%E9%A3%9E%E9%9B%AA%E5%90%88%E4%B8%80%E4%B8%8B%E5%BD%B1%23&t=31&band_rank=1&Refer=top"}, {"t": "C罗退役后葡萄牙首战惨败", "h": "7.9万", "u": "https://s.weibo.com/weibo?q=%23C%E7%BD%97%E9%80%80%E5%BD%B9%E5%90%8E%E8%91%A1%E8%90%84%E7%89%99%E9%A6%96%E6%88%98%E6%83%A8%E8%B4%A5%23&t=31&band_rank=1&Refer=top"}, {"t": "葡萄牙主场Tifo致敬C罗", "h": "7.7万", "u": "https://s.weibo.com/weibo?q=%23%E8%91%A1%E8%90%84%E7%89%99%E4%B8%BB%E5%9C%BATifo%E8%87%B4%E6%95%ACC%E7%BD%97%23&t=31&band_rank=1&Refer=top"}]},
-      { name: "知乎", rank: "热榜", color: "#1772d6", live: true, updated: "2026-11-15 08:00", items: [{"t": "于东来称胖东来的经营永远不会完美，不要因认知差异而过度争执，时间会给出最好的答案，如何看待这一表态？", "h": "170万", "u": "https://www.zhihu.com/question/2105024486391166399"}, {"t": "多地网约车司机称被特惠车、一口价订单逼「疯」，不开特惠单就变少，怎样才能让乘客打车实惠、司机有单可接？", "h": "152万", "u": "https://www.zhihu.com/question/2104661988609614131"}, {"t": "凡人修仙传动漫200集观众满意吗？", "h": "151万", "u": "https://www.zhihu.com/question/2102925191101919274"}, {"t": "董明珠称格力逐步取消文凭考量，本事是硬通行证，格力技校学费9000元起，但格力每年补贴1亿，如何解读？", "h": "123万", "u": "https://www.zhihu.com/question/2104981734446065518"}, {"t": "《持械入宋》制片人称算力投入超百万且没投流，团队每部短剧都盈利，怎样看待这一高收益性？哪些思路能借鉴？", "h": "117万", "u": "https://www.zhihu.com/question/2104167693242691717"}, {"t": "《影之刃零》沐小葵建模获海外好评，如何看待东西方游戏女性角色审美的差异？", "h": "115万", "u": "https://www.zhihu.com/question/2101953371276064259"}, {"t": "遗传角度来看，孙子是和爷爷奶奶血缘更近，还是和外公外婆？", "h": "111万", "u": "https://www.zhihu.com/question/307479952"}, {"t": "啄木鸟平台屡曝「小病大修」，为何此类问题屡禁不止？师傅称平台考核严苛，平台经营模式是否助长了过度维修？", "h": "93万", "u": "https://www.zhihu.com/question/2104979927967561349"}, {"t": "如何看待国家卫健委明确：明年3月16日起，食品包装禁止使用「零添加」「不添加」等用语？", "h": "93万", "u": "https://www.zhihu.com/question/2104894785022604238"}, {"t": "CFA 中国之队肇庆国际足球邀请赛，国足 2-0 马来西亚，终结 3 连败进球荒，如何评价这场比赛？", "h": "92万", "u": "https://www.zhihu.com/question/2105016126656570715"}, {"t": "《后会友期》里谁演的成分比较大？", "h": "92万", "u": "https://www.zhihu.com/question/2101346539826427020"}, {"t": "马化腾曾坦言腾讯AI「上了船才发现船漏水」，如今又把员工分成陆军和海军，这释放了什么信号？", "h": "87万", "u": "https://www.zhihu.com/question/2104265147606889514"}, {"t": "王子腾为什么不把女儿嫁给贾宝玉？", "h": "79万", "u": "https://www.zhihu.com/question/7446150609"}, {"t": "比特币一度跌破 6.8 万美元创8月以来新低，如何看待当下行情？比特币是否彻底变成顺周期高风险资产了？", "h": "78万", "u": "https://www.zhihu.com/question/2104604454595072841"}, {"t": "SpaceX 星舰第 15 次试飞，飞船首次成功回收，如何理解本次结果？", "h": "77万", "u": "https://www.zhihu.com/question/2105169944237307629"}, {"t": "闻着香吃着却不甜的街边烤红薯，真的是用香精浸泡过的吗？这是什么原理？可以如何辨别？", "h": "76万", "u": "https://www.zhihu.com/question/2100400144176919959"}, {"t": "美国因出现特殊情况及安全原因，所有航班一度暂停起飞，目前停飞令已解除，具体情况如何？造成影响有多大？", "h": "75万", "u": "https://www.zhihu.com/question/2104838863910690956"}, {"t": "台式电脑送人，留下了硬盘。想彻底清除硬盘信息，2个简单方法:用脏水泡，用锤子砸，可靠吗？", "h": "69万", "u": "https://www.zhihu.com/question/8693825512"}, {"t": "赵本山主演喜剧《走马上任》口碑如何？有哪些亮点与不足？", "h": "66万", "u": "https://www.zhihu.com/question/2100641649147778273"}, {"t": "圆周率中可能存在100万个连续的0吗？", "h": "63万", "u": "https://www.zhihu.com/question/2049344893462565510"}, {"t": "DeepSeek harness相比codex有什么劣势？", "h": "59万", "u": "https://www.zhihu.com/question/2072669811511922890"}, {"t": "2026 年 10 月央行公布金融数据，前 10 月住户贷款大降 1.46 万亿说明了什么？", "h": "59万", "u": "https://www.zhihu.com/question/2104665840050356464"}, {"t": "为什么要偶尔带孩子去外面吃饭？", "h": "58万", "u": "https://www.zhihu.com/question/1971822160084439834"}, {"t": "现在的电视剧为何难以让人产生追剧冲动？", "h": "57万", "u": "https://www.zhihu.com/question/2065000842206384673"}, {"t": "为什么在香港旅游时，觉得城市很旧但是莫名的高级？", "h": "57万", "u": "https://www.zhihu.com/question/638919020"}, {"t": "工商银行、农业银行、中国人保称合计约2750亿元股票定增已经获上交所核准，对此你怎么看？", "h": "56万", "u": "https://www.zhihu.com/question/2104203733609493479"}, {"t": "南京「零元面馆」爆火后被质疑影响周边商家，创始人称如周围有餐饮商家因此受损愿出钱补偿，如何看待此回应？", "h": "56万", "u": "https://www.zhihu.com/question/2104599557053081171"}, {"t": "员工使用化名上班，离职索赔被拒并称用假名字是欺诈，法院判决不构成欺诈，依据是什么？化名具有法律效应吗？", "h": "56万", "u": "https://www.zhihu.com/question/2103462019873649819"}]},
-      { name: "抖音", rank: "热榜", color: "#3a3f4a", live: true, updated: "2026-11-15 08:00", items: [{"t": "BLG对阵GEN", "h": "1216万", "u": "https://www.douyin.com/hot/2745933"}, {"t": "把光借给BLG", "h": "1086万", "u": "https://www.douyin.com/hot/2746704"}, {"t": "北京WB夺得KPL年总冠军", "h": "980万", "u": "https://www.douyin.com/hot/2745988"}, {"t": "我的S16决赛观赛日记", "h": "878万", "u": "https://www.douyin.com/hot/2746323"}, {"t": "司空震FMVP新皮肤", "h": "877万", "u": "https://www.douyin.com/hot/2746724"}, {"t": "宝宝接爸爸下班名场面", "h": "781万", "u": "https://www.douyin.com/hot/2745879"}, {"t": "请选择你的秋假遛娃地", "h": "780万", "u": "https://www.douyin.com/hot/2745916"}, {"t": "把这份庆祝留给BLG", "h": "780万", "u": "https://www.douyin.com/hot/2746028"}, {"t": "最有安全感的覆面系出现了", "h": "778万", "u": "https://www.douyin.com/hot/2746096"}, {"t": "以我之名为LPL加油", "h": "776万", "u": "https://www.douyin.com/hot/2744137"}, {"t": "许飞专辑开售销量破万", "h": "774万", "u": "https://www.douyin.com/hot/2745889"}, {"t": "高铁为什么完全密封", "h": "773万", "u": "https://www.douyin.com/hot/2746682"}, {"t": "湘超永州球员发文庆祝挺进四强", "h": "771万", "u": "https://www.douyin.com/hot/2746713"}, {"t": "用一次旅行来敬重自己", "h": "771万", "u": "https://www.douyin.com/hot/2744867"}, {"t": "慌啥子嘛配什么都好治愈", "h": "770万", "u": "https://www.douyin.com/hot/2746008"}, {"t": "换季乱穿也能搭", "h": "770万", "u": "https://www.douyin.com/hot/2745953"}, {"t": "在香格里拉闯进外星地貌", "h": "770万", "u": "https://www.douyin.com/hot/2745852"}, {"t": "独属我们的非凡之爱", "h": "769万", "u": "https://www.douyin.com/hot/2746360"}, {"t": "Tim变装变上瘾了", "h": "769万", "u": "https://www.douyin.com/hot/2746352"}, {"t": "骆歆邀众嘉宾预测决赛结果", "h": "769万", "u": "https://www.douyin.com/hot/2746705"}, {"t": "后会友期第五期观后感", "h": "768万", "u": "https://www.douyin.com/hot/2746100"}, {"t": "国足2:0马来西亚", "h": "768万", "u": "https://www.douyin.com/hot/2745986"}, {"t": "谷雨背后保护伞太敢拍了", "h": "766万", "u": "https://www.douyin.com/hot/2745842"}, {"t": "一对父子被夺走的半生", "h": "766万", "u": "https://www.douyin.com/hot/2746456"}, {"t": "KPL年度总决赛现场直击", "h": "766万", "u": "https://www.douyin.com/hot/2746243"}, {"t": "和赵露思一起跳茉茉手势舞", "h": "765万", "u": "https://www.douyin.com/hot/2746572"}, {"t": "海陆再扮紫薇", "h": "765万", "u": "https://www.douyin.com/hot/2745930"}, {"t": "我的脸不接受锐评谢谢", "h": "765万", "u": "https://www.douyin.com/hot/2744247"}, {"t": "谢霆锋杭州演唱会", "h": "765万", "u": "https://www.douyin.com/hot/2746137"}, {"t": "我在抖音有了自己的专属歌曲", "h": "764万", "u": "https://www.douyin.com/hot/2744828"}, {"t": "现场观赛S16全球总决赛", "h": "764万", "u": "https://www.douyin.com/hot/2746707"}, {"t": "还是老艺术家的曲调对味儿", "h": "764万", "u": "https://www.douyin.com/hot/2746076"}, {"t": "蛋仔版不小心惹了上帝", "h": "764万", "u": "https://www.douyin.com/hot/2746207"}, {"t": "和平冰封列车限时返场", "h": "764万", "u": "https://www.douyin.com/hot/2746386"}, {"t": "我喝了爱情的鹤顶红", "h": "764万", "u": "https://www.douyin.com/hot/2746163"}, {"t": "玫瑰战争黎绮云黑化复仇", "h": "764万", "u": "https://www.douyin.com/hot/2746081"}, {"t": "会呼麦的咖啡机集合了", "h": "763万", "u": "https://www.douyin.com/hot/2746005"}, {"t": "华晨宇第100场演唱会", "h": "763万", "u": "https://www.douyin.com/hot/2745877"}, {"t": "时间无言 如此这般", "h": "762万", "u": "https://www.douyin.com/hot/2744537"}, {"t": "郝熠然祝你睡个好觉", "h": "762万", "u": "https://www.douyin.com/hot/2746683"}, {"t": "指路牌迎来了新level", "h": "762万", "u": "https://www.douyin.com/hot/2745520"}, {"t": "coldy2.0也太萌啦", "h": "762万", "u": "https://www.douyin.com/hot/2744229"}, {"t": "秋冬羽绒马甲穿搭", "h": "762万", "u": "https://www.douyin.com/hot/2744195"}, {"t": "被毛茸茸裹住的秋冬", "h": "762万", "u": "https://www.douyin.com/hot/2743977"}, {"t": "白色羽绒服才是冬日白月光", "h": "761万", "u": "https://www.douyin.com/hot/2743941"}, {"t": "韩系慵懒风穿搭轻松拿捏", "h": "761万", "u": "https://www.douyin.com/hot/2743883"}, {"t": "这口猪刨花拌面吃商极高", "h": "761万", "u": "https://www.douyin.com/hot/2743809"}, {"t": "阿图什杯现场太震撼了", "h": "761万", "u": "https://www.douyin.com/hot/2745928"}, {"t": "手工敲虾到底有多好吃", "h": "761万", "u": "https://www.douyin.com/hot/2743716"}]},
-      { name: "今日头条", rank: "热榜", color: "#d43a2f", live: true, updated: "2026-11-15 08:00", items: [{"t": "零元面馆老板：只要活一天就做一天", "h": "3489万", "u": "https://www.toutiao.com/trending/7707822169119539242/"}, {"t": "孙悦婚礼孙卓落泪拥抱姐姐", "h": "3157万", "u": "https://www.toutiao.com/trending/7707640615219806217/"}, {"t": "APEC如何走进你我生活", "h": "2856万", "u": "https://www.toutiao.com/trending/7707482665838428170/"}, {"t": "后C罗时代葡萄牙遭遇大败", "h": "2584万", "u": "https://www.toutiao.com/trending/7708147309472776731/"}, {"t": "中国乘客亲历全美停飞以为被空袭", "h": "2338万", "u": "https://www.toutiao.com/trending/7707795997758193691/"}, {"t": "零元面馆附近商铺没人租", "h": "2116万", "u": "https://www.toutiao.com/trending/7708170784941887014/"}, {"t": "葡媒：C罗计划明年7月全家搬回葡萄牙", "h": "1915万", "u": "https://www.toutiao.com/trending/7707465427475268106/"}, {"t": "国足胜马来西亚赛场响起歌唱祖国", "h": "1568万", "u": "https://www.toutiao.com/trending/7707212687201308223/"}, {"t": "全美航班停飞背后的十亿美元疑问", "h": "1418万", "u": "https://www.toutiao.com/trending/7708068560177729051/"}, {"t": "乌鲁木齐禁售马肉马肠制品？假的", "h": "1283万", "u": "https://www.toutiao.com/trending/7707603031243735050/"}, {"t": "男子上门推拿加钟时性侵技师获刑", "h": "1161万", "u": "https://www.toutiao.com/trending/7707894132467089971/"}, {"t": "零元面馆设用餐门槛周边商户不买账", "h": "951万", "u": "https://www.toutiao.com/trending/7708167571270356490/"}, {"t": "糖尿病早期无症状 出现5种表现要重视", "h": "860万", "u": "https://www.toutiao.com/trending/7708016813925515327/"}, {"t": "正部级彭金辉有新职", "h": "778万", "u": "https://www.toutiao.com/trending/7707937312566607926/"}, {"t": "曝娜然怀孕了", "h": "704万", "u": "https://www.toutiao.com/trending/7706904980455964726/"}, {"t": "中芯国际产能利用率97.3%意味着什么", "h": "637万", "u": "https://www.toutiao.com/trending/7708159026869046827/"}, {"t": "博主：邵佳一终于找到国足最强阵容", "h": "577万", "u": "https://www.toutiao.com/trending/7708060290977386026/"}, {"t": "波切蒂诺执教曼联前景如何", "h": "522万", "u": "https://www.toutiao.com/trending/7708163064675175977/"}, {"t": "原价129万/支的天价药进医保了", "h": "427万", "u": "https://www.toutiao.com/trending/7707855337277161526/"}, {"t": "新婚夫妻还没出蜜月双双确诊糖尿病", "h": "387万", "u": "https://www.toutiao.com/trending/7707868320216711210/"}, {"t": "“肉比菜贱”到底是怎么回事", "h": "350万", "u": "https://www.toutiao.com/trending/7708038265542020627/"}, {"t": "猪肉价格创10年新低", "h": "316万", "u": "https://www.toutiao.com/trending/7707981344479953417/"}, {"t": "国内首款痛风靶向生物制剂纳入医保", "h": "286万", "u": "https://www.toutiao.com/trending/7707891523265790473/"}, {"t": "强冷空气来袭 江苏气温将明显下滑", "h": "259万", "u": "https://www.toutiao.com/trending/7707948864556352026/"}, {"t": "什么样的家庭能养出厉娜", "h": "234万", "u": "https://www.toutiao.com/trending/7707655510946283563/"}, {"t": "《谷雨》导演查了所有演员税务才开机", "h": "212万", "u": "https://www.toutiao.com/trending/7706091414714647067/"}, {"t": "奔驰女司机借300元加油钱后关机", "h": "192万", "u": "https://www.toutiao.com/trending/7707858174912561714/"}, {"t": "20克大金镯子暴跌10000元", "h": "174万", "u": "https://www.toutiao.com/trending/7707501844583383590/"}, {"t": "吴清：A股市情在全球独一无二", "h": "157万", "u": "https://www.toutiao.com/trending/7707983642445759014/"}, {"t": "男子误购2.3万机票几分钟后退票被扣1万", "h": "142万", "u": "https://www.toutiao.com/trending/7707567568017424923/"}, {"t": "76岁老球迷为国足加油", "h": "129万", "u": "https://www.toutiao.com/trending/7707925852905816626/"}, {"t": "赵本山《慌啥子嘛》上线", "h": "116万", "u": "https://www.toutiao.com/trending/7707543672941740582/"}, {"t": "茅台放开全系产品销售意味着什么", "h": "105万", "u": "https://www.toutiao.com/trending/7707934600810466857/"}, {"t": "国足对阵马来西亚比赛的亮点和不足", "h": "95万", "u": "https://www.toutiao.com/trending/7708069158822350378/"}, {"t": "全球最大无人货运飞机W5000试飞成功", "h": "86万", "u": "https://www.toutiao.com/trending/7707860281628410395/"}, {"t": "男子尝汤面后连面带碗扔垃圾桶", "h": "78万", "u": "https://www.toutiao.com/trending/7707632895489376292/"}, {"t": "詹俊：国足比上个月的比赛有明显提升", "h": "71万", "u": "https://www.toutiao.com/trending/7708005678442512923/"}, {"t": "多地官宣雪假来袭", "h": "64万", "u": "https://www.toutiao.com/trending/7707871374735491635/"}, {"t": "没吃什么为什么长胖", "h": "58万", "u": "https://www.toutiao.com/trending/7707952316174974985/"}, {"t": "小伙5年开出1300家无人健身房", "h": "52万", "u": "https://www.toutiao.com/trending/7707843915060691482/"}, {"t": "宝宝对妈妈嘻嘻对爸爸不嘻嘻", "h": "47万", "u": "https://www.toutiao.com/trending/7706796210057281577/"}, {"t": "女子回应读博3年生3孩", "h": "43万", "u": "https://www.toutiao.com/trending/7707868135341277220/"}, {"t": "男子戒掉外卖自己做饭实现糖尿病逆转", "h": "39万", "u": "https://www.toutiao.com/trending/7707894884912529971/"}, {"t": "天价羽绒服滤镜被超市平替撕碎", "h": "35万", "u": "https://www.toutiao.com/trending/7707984159179804196/"}, {"t": "中国汽车价格战还在升级吗", "h": "32万", "u": "https://www.toutiao.com/trending/7708016023198711827/"}, {"t": "谢霆锋杭州演唱会“坐在星球上飞”", "h": "29万", "u": "https://www.toutiao.com/trending/7707663631517335588/"}, {"t": "16岁高中生确诊糖尿病酮症酸中毒", "h": "26万", "u": "https://www.toutiao.com/trending/7707474106098254363/"}]},
-      { name: "百度", rank: "热搜", color: "#315efb", live: true, updated: "2026-11-15 08:00", items: [{"t": "S16总决赛：BLG2比1GEN拿到赛点", "h": "781万", "u": "https://www.baidu.com/s?wd=S16%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%9ABLG2%E6%AF%941GEN%E6%8B%BF%E5%88%B0%E8%B5%9B%E7%82%B9"}, {"t": "SpaceX首次完成“筷子夹飞船”", "h": "771万", "u": "https://www.baidu.com/s?wd=SpaceX%E9%A6%96%E6%AC%A1%E5%AE%8C%E6%88%90%E2%80%9C%E7%AD%B7%E5%AD%90%E5%A4%B9%E9%A3%9E%E8%88%B9%E2%80%9D"}, {"t": "一束光 改写中国电力版图", "h": "762万", "u": "https://www.baidu.com/s?wd=%E4%B8%80%E6%9D%9F%E5%85%89%20%E6%94%B9%E5%86%99%E4%B8%AD%E5%9B%BD%E7%94%B5%E5%8A%9B%E7%89%88%E5%9B%BE"}, {"t": "Viper炸弹人狂炸9.4万伤害", "h": "752万", "u": "https://www.baidu.com/s?wd=Viper%E7%82%B8%E5%BC%B9%E4%BA%BA%E7%8B%82%E7%82%B89.4%E4%B8%87%E4%BC%A4%E5%AE%B3"}, {"t": "Xun抓到Ruler机会", "h": "743万", "u": "https://www.baidu.com/s?wd=Xun%E6%8A%93%E5%88%B0Ruler%E6%9C%BA%E4%BC%9A"}, {"t": "男子借10元救急 10多年不还", "h": "733万", "u": "https://www.baidu.com/s?wd=%E7%94%B7%E5%AD%90%E5%80%9F10%E5%85%83%E6%95%91%E6%80%A5%2010%E5%A4%9A%E5%B9%B4%E4%B8%8D%E8%BF%98"}, {"t": "男子狂买57箱花生油结果付的是赃款", "h": "724万", "u": "https://www.baidu.com/s?wd=%E7%94%B7%E5%AD%90%E7%8B%82%E4%B9%B057%E7%AE%B1%E8%8A%B1%E7%94%9F%E6%B2%B9%E7%BB%93%E6%9E%9C%E4%BB%98%E7%9A%84%E6%98%AF%E8%B5%83%E6%AC%BE"}, {"t": "多地强浓雾 局地能见度低于50米", "h": "714万", "u": "https://www.baidu.com/s?wd=%E5%A4%9A%E5%9C%B0%E5%BC%BA%E6%B5%93%E9%9B%BE%20%E5%B1%80%E5%9C%B0%E8%83%BD%E8%A7%81%E5%BA%A6%E4%BD%8E%E4%BA%8E50%E7%B1%B3"}, {"t": "后C罗时代首战 葡萄牙1比4惨败丹麦", "h": "704万", "u": "https://www.baidu.com/s?wd=%E5%90%8EC%E7%BD%97%E6%97%B6%E4%BB%A3%E9%A6%96%E6%88%98%20%E8%91%A1%E8%90%84%E7%89%991%E6%AF%944%E6%83%A8%E8%B4%A5%E4%B8%B9%E9%BA%A6"}, {"t": "Bin斩杀Chovy终结比赛", "h": "695万", "u": "https://www.baidu.com/s?wd=Bin%E6%96%A9%E6%9D%80Chovy%E7%BB%88%E7%BB%93%E6%AF%94%E8%B5%9B"}, {"t": "MCN摆拍骑手悲惨遭遇实为卖翡翠", "h": "686万", "u": "https://www.baidu.com/s?wd=MCN%E6%91%86%E6%8B%8D%E9%AA%91%E6%89%8B%E6%82%B2%E6%83%A8%E9%81%AD%E9%81%87%E5%AE%9E%E4%B8%BA%E5%8D%96%E7%BF%A1%E7%BF%A0"}, {"t": "博物馆被挑错数十处 闭馆3天核查", "h": "675万", "u": "https://www.baidu.com/s?wd=%E5%8D%9A%E7%89%A9%E9%A6%86%E8%A2%AB%E6%8C%91%E9%94%99%E6%95%B0%E5%8D%81%E5%A4%84%20%E9%97%AD%E9%A6%863%E5%A4%A9%E6%A0%B8%E6%9F%A5"}, {"t": "洗发水陷假洋牌争议 于东来正面回应", "h": "657万", "u": "https://www.baidu.com/s?wd=%E6%B4%97%E5%8F%91%E6%B0%B4%E9%99%B7%E5%81%87%E6%B4%8B%E7%89%8C%E4%BA%89%E8%AE%AE%20%E4%BA%8E%E4%B8%9C%E6%9D%A5%E6%AD%A3%E9%9D%A2%E5%9B%9E%E5%BA%94"}, {"t": "多地中小学宣布调整作息", "h": "647万", "u": "https://www.baidu.com/s?wd=%E5%A4%9A%E5%9C%B0%E4%B8%AD%E5%B0%8F%E5%AD%A6%E5%AE%A3%E5%B8%83%E8%B0%83%E6%95%B4%E4%BD%9C%E6%81%AF"}, {"t": "吃饭打包丢脸吗？语文题被打叉引热议", "h": "637万", "u": "https://www.baidu.com/s?wd=%E5%90%83%E9%A5%AD%E6%89%93%E5%8C%85%E4%B8%A2%E8%84%B8%E5%90%97%EF%BC%9F%E8%AF%AD%E6%96%87%E9%A2%98%E8%A2%AB%E6%89%93%E5%8F%89%E5%BC%95%E7%83%AD%E8%AE%AE"}, {"t": "歌唱完道具才上 大张伟又唱了一遍", "h": "629万", "u": "https://www.baidu.com/s?wd=%E6%AD%8C%E5%94%B1%E5%AE%8C%E9%81%93%E5%85%B7%E6%89%8D%E4%B8%8A%20%E5%A4%A7%E5%BC%A0%E4%BC%9F%E5%8F%88%E5%94%B1%E4%BA%86%E4%B8%80%E9%81%8D"}, {"t": "两天17款新车 车企年底扎堆冲量", "h": "619万", "u": "https://www.baidu.com/s?wd=%E4%B8%A4%E5%A4%A917%E6%AC%BE%E6%96%B0%E8%BD%A6%20%E8%BD%A6%E4%BC%81%E5%B9%B4%E5%BA%95%E6%89%8E%E5%A0%86%E5%86%B2%E9%87%8F"}, {"t": "飞歼-20是什么感觉", "h": "610万", "u": "https://www.baidu.com/s?wd=%E9%A3%9E%E6%AD%BC-20%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%9F%E8%A7%89"}, {"t": "田小娟还原卡莎神之八秒", "h": "599万", "u": "https://www.baidu.com/s?wd=%E7%94%B0%E5%B0%8F%E5%A8%9F%E8%BF%98%E5%8E%9F%E5%8D%A1%E8%8E%8E%E7%A5%9E%E4%B9%8B%E5%85%AB%E7%A7%92"}, {"t": "医生：糖尿病根源是原始营养摄入不均", "h": "591万", "u": "https://www.baidu.com/s?wd=%E5%8C%BB%E7%94%9F%EF%BC%9A%E7%B3%96%E5%B0%BF%E7%97%85%E6%A0%B9%E6%BA%90%E6%98%AF%E5%8E%9F%E5%A7%8B%E8%90%A5%E5%85%BB%E6%91%84%E5%85%A5%E4%B8%8D%E5%9D%87"}, {"t": "GEN硬抗BLG53分钟", "h": "580万", "u": "https://www.baidu.com/s?wd=GEN%E7%A1%AC%E6%8A%97BLG53%E5%88%86%E9%92%9F"}, {"t": "多部门暗访组调查 发现多个问题", "h": "571万", "u": "https://www.baidu.com/s?wd=%E5%A4%9A%E9%83%A8%E9%97%A8%E6%9A%97%E8%AE%BF%E7%BB%84%E8%B0%83%E6%9F%A5%20%E5%8F%91%E7%8E%B0%E5%A4%9A%E4%B8%AA%E9%97%AE%E9%A2%98"}, {"t": "Xun太果断了", "h": "562万", "u": "https://www.baidu.com/s?wd=Xun%E5%A4%AA%E6%9E%9C%E6%96%AD%E4%BA%86"}, {"t": "男孩撞脸胡一天 男孩母亲：五官随父亲", "h": "552万", "u": "https://www.baidu.com/s?wd=%E7%94%B7%E5%AD%A9%E6%92%9E%E8%84%B8%E8%83%A1%E4%B8%80%E5%A4%A9%20%E7%94%B7%E5%AD%A9%E6%AF%8D%E4%BA%B2%EF%BC%9A%E4%BA%94%E5%AE%98%E9%9A%8F%E7%88%B6%E4%BA%B2"}, {"t": "女子斑马线神反应躲过飞驰小车", "h": "541万", "u": "https://www.baidu.com/s?wd=%E5%A5%B3%E5%AD%90%E6%96%91%E9%A9%AC%E7%BA%BF%E7%A5%9E%E5%8F%8D%E5%BA%94%E8%BA%B2%E8%BF%87%E9%A3%9E%E9%A9%B0%E5%B0%8F%E8%BD%A6"}, {"t": "人民日报三问希望小学“卖惨骗捐”案", "h": "533万", "u": "https://www.baidu.com/s?wd=%E4%BA%BA%E6%B0%91%E6%97%A5%E6%8A%A5%E4%B8%89%E9%97%AE%E5%B8%8C%E6%9C%9B%E5%B0%8F%E5%AD%A6%E2%80%9C%E5%8D%96%E6%83%A8%E9%AA%97%E6%8D%90%E2%80%9D%E6%A1%88"}, {"t": "女子因拒绝给HR带咖啡被取消面试", "h": "524万", "u": "https://www.baidu.com/s?wd=%E5%A5%B3%E5%AD%90%E5%9B%A0%E6%8B%92%E7%BB%9D%E7%BB%99HR%E5%B8%A6%E5%92%96%E5%95%A1%E8%A2%AB%E5%8F%96%E6%B6%88%E9%9D%A2%E8%AF%95"}, {"t": "猛虎袭击巴基斯坦19岁少年 致其死亡", "h": "514万", "u": "https://www.baidu.com/s?wd=%E7%8C%9B%E8%99%8E%E8%A2%AD%E5%87%BB%E5%B7%B4%E5%9F%BA%E6%96%AF%E5%9D%A619%E5%B2%81%E5%B0%91%E5%B9%B4%20%E8%87%B4%E5%85%B6%E6%AD%BB%E4%BA%A1"}, {"t": "Elk：BLG第一把太可惜了", "h": "505万", "u": "https://www.baidu.com/s?wd=Elk%EF%BC%9ABLG%E7%AC%AC%E4%B8%80%E6%8A%8A%E5%A4%AA%E5%8F%AF%E6%83%9C%E4%BA%86"}, {"t": "冷空气“排班表”来了", "h": "493万", "u": "https://www.baidu.com/s?wd=%E5%86%B7%E7%A9%BA%E6%B0%94%E2%80%9C%E6%8E%92%E7%8F%AD%E8%A1%A8%E2%80%9D%E6%9D%A5%E4%BA%86"}, {"t": "女子遭陌生人泼汽油全身90%烧伤", "h": "483万", "u": "https://www.baidu.com/s?wd=%E5%A5%B3%E5%AD%90%E9%81%AD%E9%99%8C%E7%94%9F%E4%BA%BA%E6%B3%BC%E6%B1%BD%E6%B2%B9%E5%85%A8%E8%BA%AB90%25%E7%83%A7%E4%BC%A4"}, {"t": "Chovy真同意了", "h": "474万", "u": "https://www.baidu.com/s?wd=Chovy%E7%9C%9F%E5%90%8C%E6%84%8F%E4%BA%86"}, {"t": "店主称孤独症男孩1个月能捡上万瓶子", "h": "466万", "u": "https://www.baidu.com/s?wd=%E5%BA%97%E4%B8%BB%E7%A7%B0%E5%AD%A4%E7%8B%AC%E7%97%87%E7%94%B7%E5%AD%A91%E4%B8%AA%E6%9C%88%E8%83%BD%E6%8D%A1%E4%B8%8A%E4%B8%87%E7%93%B6%E5%AD%90"}, {"t": "男子巧用榫卯结构为女儿手搓玩具", "h": "457万", "u": "https://www.baidu.com/s?wd=%E7%94%B7%E5%AD%90%E5%B7%A7%E7%94%A8%E6%A6%AB%E5%8D%AF%E7%BB%93%E6%9E%84%E4%B8%BA%E5%A5%B3%E5%84%BF%E6%89%8B%E6%90%93%E7%8E%A9%E5%85%B7"}, {"t": "先天肌肉圣体宝宝是因患基因病", "h": "445万", "u": "https://www.baidu.com/s?wd=%E5%85%88%E5%A4%A9%E8%82%8C%E8%82%89%E5%9C%A3%E4%BD%93%E5%AE%9D%E5%AE%9D%E6%98%AF%E5%9B%A0%E6%82%A3%E5%9F%BA%E5%9B%A0%E7%97%85"}, {"t": "杨希被马来西亚球员用球故意踢脸", "h": "436万", "u": "https://www.baidu.com/s?wd=%E6%9D%A8%E5%B8%8C%E8%A2%AB%E9%A9%AC%E6%9D%A5%E8%A5%BF%E4%BA%9A%E7%90%83%E5%91%98%E7%94%A8%E7%90%83%E6%95%85%E6%84%8F%E8%B8%A2%E8%84%B8"}, {"t": "北京WB夺冠瞬间", "h": "416万", "u": "https://www.baidu.com/s?wd=%E5%8C%97%E4%BA%ACWB%E5%A4%BA%E5%86%A0%E7%9E%AC%E9%97%B4"}, {"t": "神bin天降", "h": "410万", "u": "https://www.baidu.com/s?wd=%E7%A5%9Ebin%E5%A4%A9%E9%99%8D"}, {"t": "龚俊为BLG加油", "h": "397万", "u": "https://www.baidu.com/s?wd=%E9%BE%9A%E4%BF%8A%E4%B8%BABLG%E5%8A%A0%E6%B2%B9"}, {"t": "高校推出“一分钱”早餐", "h": "388万", "u": "https://www.baidu.com/s?wd=%E9%AB%98%E6%A0%A1%E6%8E%A8%E5%87%BA%E2%80%9C%E4%B8%80%E5%88%86%E9%92%B1%E2%80%9D%E6%97%A9%E9%A4%90"}, {"t": "终结三连败！国足2比0战胜马来西亚", "h": "379万", "u": "https://www.baidu.com/s?wd=%E7%BB%88%E7%BB%93%E4%B8%89%E8%BF%9E%E8%B4%A5%EF%BC%81%E5%9B%BD%E8%B6%B32%E6%AF%940%E6%88%98%E8%83%9C%E9%A9%AC%E6%9D%A5%E8%A5%BF%E4%BA%9A"}, {"t": "LPL战队都在为BLG加油", "h": "372万", "u": "https://www.baidu.com/s?wd=LPL%E6%88%98%E9%98%9F%E9%83%BD%E5%9C%A8%E4%B8%BABLG%E5%8A%A0%E6%B2%B9"}, {"t": "BLG Viper：想让Ruler再感受一次遗憾", "h": "361万", "u": "https://www.baidu.com/s?wd=BLG%20Viper%EF%BC%9A%E6%83%B3%E8%AE%A9Ruler%E5%86%8D%E6%84%9F%E5%8F%97%E4%B8%80%E6%AC%A1%E9%81%97%E6%86%BE"}, {"t": "葡萄牙1比4惨败丹麦", "h": "351万", "u": "https://www.baidu.com/s?wd=%E8%91%A1%E8%90%84%E7%89%991%E6%AF%944%E6%83%A8%E8%B4%A5%E4%B8%B9%E9%BA%A6"}, {"t": "S16开幕式 拉完了", "h": "343万", "u": "https://www.baidu.com/s?wd=S16%E5%BC%80%E5%B9%95%E5%BC%8F%20%E6%8B%89%E5%AE%8C%E4%BA%86"}, {"t": "母亲回应孤独症儿子在手机店被善待", "h": "330万", "u": "https://www.baidu.com/s?wd=%E6%AF%8D%E4%BA%B2%E5%9B%9E%E5%BA%94%E5%AD%A4%E7%8B%AC%E7%97%87%E5%84%BF%E5%AD%90%E5%9C%A8%E6%89%8B%E6%9C%BA%E5%BA%97%E8%A2%AB%E5%96%84%E5%BE%85"}, {"t": "双十一退货时用了赠品该不该扣钱", "h": "322万", "u": "https://www.baidu.com/s?wd=%E5%8F%8C%E5%8D%81%E4%B8%80%E9%80%80%E8%B4%A7%E6%97%B6%E7%94%A8%E4%BA%86%E8%B5%A0%E5%93%81%E8%AF%A5%E4%B8%8D%E8%AF%A5%E6%89%A3%E9%92%B1"}]},
-      { name: "哔哩哔哩", rank: "热门", color: "#e56a9a", live: true, updated: "2026-11-15 07:00", stale: true, items: [{"t": "为什么是最后一期？影视飓风1800万粉丝Q&A！", "h": "534万", "u": "https://b23.tv/BV1kZWX62ENY"}, {"t": "他真的太优雅了！灰太狼&红太狼【非凡之爱】【AI MV大赛】", "h": "1253万", "u": "https://b23.tv/BV1aNWm6UEeC"}, {"t": "《崩坏：星穹铁道》EP：「无中生有」", "h": "241万", "u": "https://b23.tv/BV1nEWu6xEyq"}, {"t": "【烂奇迹】三毛：我的一生颠沛流离，活到现在算是个奇迹", "h": "149万", "u": "https://b23.tv/BV14gW16iEq8"}, {"t": "《反方向の忠》", "h": "321万", "u": "https://b23.tv/BV1MRWm65EMC"}, {"t": "《原神》过场动画-「岩与契约」", "h": "144万", "u": "https://b23.tv/BV1aTWm6jEL8"}, {"t": "臣妾要线上告发熹贵妃 2.0", "h": "251万", "u": "https://b23.tv/BV1PZWR6xEqv"}, {"t": "全看过的这辈子有了", "h": "229万", "u": "https://b23.tv/BV1rpWe6ZEWn"}, {"t": "在这里，万亿吨水被强行灌进火山……【地理志】", "h": "207万", "u": "https://b23.tv/BV1GPWi6SECk"}, {"t": "MJ宇宙校园之末日降临第一集", "h": "173万", "u": "https://b23.tv/BV1jDW963EWf"}, {"t": "假⚡️面⚡️难⚡️藏⚡️泪", "h": "137万", "u": "https://b23.tv/BV1GbWq6HEct"}, {"t": "“这是解锁了什么吗？！”", "h": "93万", "u": "https://b23.tv/BV1xsWQ6nE2v"}, {"t": "把旧发条装新身体上会发生什么？", "h": "220万", "u": "https://b23.tv/BV1sEW16cEJN"}, {"t": "《我的傲娇星神不可能这么可爱》", "h": "215万", "u": "https://b23.tv/BV1rnW16fE6v"}, {"t": "耗资上万！我把匠魂做进了网页版mc...", "h": "46万", "u": "https://b23.tv/BV1HTWq6iESp"}, {"t": "当家里的大肥鱼被饿了好几个小时以后", "h": "194万", "u": "https://b23.tv/BV1GsWv6jErZ"}, {"t": "你们外卖还有陪聊服务吗？", "h": "200万", "u": "https://b23.tv/BV1mjWm6gE1T"}, {"t": "极致的走线！", "h": "289万", "u": "https://b23.tv/BV1bkW86bEij"}, {"t": "把苏德拼好给你｜6分钟看完二战苏德战场", "h": "97万", "u": "https://b23.tv/BV17KWY6DETN"}, {"t": "75年后，他终于带上牺牲的战友去北京看天安门了", "h": "49万", "u": "https://b23.tv/BV1MeWv6gEKa"}, {"t": "无烟酒吧倒闭、张美玉抑郁、大学生无偿代跑拒绝供出同学【抽象周刊】", "h": "309万", "u": "https://b23.tv/BV1f4WR61EnR"}, {"t": "我是Tim，同事让我变装", "h": "156万", "u": "https://b23.tv/BV1vDW963E3N"}, {"t": "从清末讲武堂到开国大典｜朱德波澜壮阔的一生", "h": "67万", "u": "https://b23.tv/BV1c9WD6kE6t"}, {"t": "谁点名要看我cos德穆兰的？英语总监莅临还不快来迎接！", "h": "226万", "u": "https://b23.tv/BV1PKWj62ERK"}, {"t": "这都能还原！！？【MC阿哈篇】", "h": "260万", "u": "https://b23.tv/BV1MdWL6WEiB"}, {"t": "疑似《崩坏：星穹铁道》星神★阿哈★真人角色PV流出", "h": "131万", "u": "https://b23.tv/BV1CyW26wEad"}, {"t": "我修改了Minecraft的冰：", "h": "189万", "u": "https://b23.tv/BV181WR6eEbR"}, {"t": "拿中老年病痛玩梗，还被44万人点赞，这是最近最让我恶心的烂梗！", "h": "333万", "u": "https://b23.tv/BV11CWD6EEjf"}, {"t": "冬日宿舍之写检讨", "h": "144万", "u": "https://b23.tv/BV1WWWm6vEn4"}, {"t": "有用版新僵尸：慈祥二爷", "h": "213万", "u": "https://b23.tv/BV1wyWv6YEJK"}, {"t": "根本没有这样的夹子", "h": "194万", "u": "https://b23.tv/BV12oWi6VEz7"}, {"t": "Vibe知识大赏 | 挣钱的本质", "h": "81万", "u": "https://b23.tv/BV1npWR6JE8j"}, {"t": "英伟达公司宣布：黄仁勋辞职", "h": "290万", "u": "https://b23.tv/BV1FuWZ6dEjb"}, {"t": "翻山覆海，以我之名｜2026全球总决赛冠亚军决赛宣传片", "h": "130万", "u": "https://b23.tv/BV1V1Wm6nEJL"}, {"t": "《草木皆兵》EP04 新来的寒冰射手为啥这么高冷", "h": "137万", "u": "https://b23.tv/BV1zRW26xEFK"}, {"t": "文明重启：耗时3年，我终于做出了我的第一件铁器", "h": "347万", "u": "https://b23.tv/BV1z44n6bEpU"}, {"t": "臭肥鱼害我把情书交给辅导员了！【人和肥鱼03】", "h": "155万", "u": "https://b23.tv/BV1MaWv6rEo3"}, {"t": "如果小时候幻想过的职业真的成真了？会是怎样？", "h": "206万", "u": "https://b23.tv/BV1JVWq6aECe"}, {"t": "《你跟他废什么话》", "h": "457万", "u": "https://b23.tv/BV1NvWg6YEjs"}, {"t": "宿舍手机壁纸从夯到拉！", "h": "329万", "u": "https://b23.tv/BV1BjWq68Ee2"}, {"t": "竹子从来都不欺人，只要你顺着它的脾气，会给你惊喜！", "h": "251万", "u": "https://b23.tv/BV1V9W96uEVa"}, {"t": "也只有阿基维利能骗到阿哈了", "h": "107万", "u": "https://b23.tv/BV1tGW16NEpQ"}, {"t": "辽阔的土地生不出狭隘的爱", "h": "410万", "u": "https://b23.tv/BV1hrW367Emp"}, {"t": "从火海中走来 用凡人之躯比肩神明", "h": "83万", "u": "https://b23.tv/BV1jMWY6JEx7"}, {"t": "【带着AI穿越2018】#6 蓝色大肥鱼单刀赴会阿美莉卡", "h": "276万", "u": "https://b23.tv/BV1GJWy6rEQz"}, {"t": "不是所有的IP都叫CPOPwave  《鸣潮》用同一个频率引发世界的回响", "h": "74万", "u": "https://b23.tv/BV1G1Wi6QENH"}, {"t": "不要小瞧身边的任何一个唐人，系统的奖励丰厚的超乎你的想象", "h": "181万", "u": "https://b23.tv/BV1THWM6eE9s"}, {"t": "主包从小就喜欢长发", "h": "112万", "u": "https://b23.tv/BV1wrWg6bE5E"}, {"t": "厨师长下班偷偷吃点客人剩的边角料当晚餐", "h": "110万", "u": "https://b23.tv/BV1fKW963EwS"}, {"t": "怪诞虫：一只看起来活不过三天的动物，真的存在过？", "h": "97万", "u": "https://b23.tv/BV1v4Wr6uEoG"}]},
-      { name: "豆瓣", rank: "热议", color: "#4a9e4d", live: true, updated: "2026-11-15 08:02", items: [{"t": "奶奶在67岁交到了此生最好的朋友", "h": "榜内第 1 位", "u": "https://www.douban.com/group/topic/505335068/?_spm_id=MTM4MjE5OTk1"}, {"t": "哎你也飞着呢26", "h": "榜内第 2 位", "u": "https://www.douban.com/group/topic/505336673/?_spm_id=MzM4OTExMg"}, {"t": "2026-11-10 9:46 a.m", "h": "榜内第 3 位", "u": "https://www.douban.com/group/topic/505207577/?_spm_id=MTYyODAzMTA0"}, {"t": "果壳里的日落", "h": "榜内第 4 位", "u": "https://www.douban.com/group/topic/505424117/?_spm_id=MjIyNDA2MzE4"}, {"t": "推一些语言风格很搞笑的书", "h": "榜内第 5 位", "u": "https://www.douban.com/group/topic/505374752/?_spm_id=MjI1NTY4NjQw"}, {"t": "新西兰，世界在别处。", "h": "榜内第 6 位", "u": "https://www.douban.com/group/topic/504999396/?_spm_id=MTg4OTcxODU4"}, {"t": "厦门最佳赏味期到了！非游客路线分享", "h": "榜内第 7 位", "u": "https://www.douban.com/group/topic/505139738/?_spm_id=MTQ2NDQ0ODMw"}, {"t": "我在农村使用极其频繁的火炉子", "h": "榜内第 8 位", "u": "https://www.douban.com/group/topic/505231039/?_spm_id=NTMxNDExOTA"}, {"t": "低粉账号成交的关键在于大胆报价（不要脸版）", "h": "榜内第 9 位", "u": "https://www.douban.com/group/topic/505128136/?_spm_id=MjEzOTQ3NDg4"}, {"t": "色彩之美——蓝喉蜂虎", "h": "榜内第 10 位", "u": "https://www.douban.com/group/topic/505304199/?_spm_id=NDU3ODc4NQ"}, {"t": "怕冷星人，我和老妈的冬日保暖", "h": "榜内第 11 位", "u": "https://www.douban.com/group/topic/504976476/?_spm_id=Mjk2NDk3MTM4"}, {"t": "别把面试当面试，你会发现这是一件稳赚不赔的事", "h": "榜内第 12 位", "u": "https://www.douban.com/group/topic/505231126/?_spm_id=Mjc5Mjk2NzYz"}, {"t": "雅思考经：大学生低成本自学雅思8.0", "h": "榜内第 13 位", "u": "https://www.douban.com/group/topic/505307216/?_spm_id=MjQ0MzEyNDA4"}, {"t": "162/98 📝 短发🍐每天穿什么", "h": "榜内第 14 位", "u": "https://www.douban.com/group/topic/505135024/?_spm_id=MTUxMjE1NDYz"}, {"t": "德国婆婆亲自安排好了自己的葬礼，也让我重新了解她", "h": "榜内第 15 位", "u": "https://www.douban.com/group/topic/505098894/?_spm_id=MTU4Njk3ODA5"}, {"t": "7天东京solo trip（纯溜达版）", "h": "榜内第 16 位", "u": "https://www.douban.com/group/topic/505240112/?_spm_id=NDQ4MjM4NzU"}, {"t": "假装在江南", "h": "榜内第 17 位", "u": "https://www.douban.com/group/topic/504938721/?_spm_id=MTg5NzMwMjIz"}, {"t": "一大波狸狸萌照来袭", "h": "榜内第 18 位", "u": "https://www.douban.com/group/topic/505234359/?_spm_id=MjA5NDg4OTc0"}, {"t": "美衣美鞋｜新人入组分享一些150小个子穿搭", "h": "榜内第 19 位", "u": "https://www.douban.com/group/topic/505178635/?_spm_id=MTg2OTE4NTgx"}, {"t": "旧金山｜马蒂斯《戴帽子的女人》：一场现代争议", "h": "榜内第 20 位", "u": "https://www.douban.com/group/topic/505090410/?_spm_id=OTI3MzY3NzQ"}, {"t": "秋天已经过去", "h": "榜内第 21 位", "u": "https://www.douban.com/group/topic/505008567/?_spm_id=MTczMTYzNTEw"}, {"t": "爱笑的小狗🐕，运气不会差。", "h": "榜内第 22 位", "u": "https://www.douban.com/group/topic/504775281/?_spm_id=MjQ0NzU3MzAz"}, {"t": "颐和园谐趣园的大果榆今年也很美", "h": "榜内第 23 位", "u": "https://www.douban.com/group/topic/504744146/?_spm_id=MzY4NDM3Nzg"}, {"t": "一个动作教会你正确走姿", "h": "榜内第 24 位", "u": "https://www.douban.com/group/topic/505135292/?_spm_id=MjIzOTI3Njg1"}, {"t": "要不要一起研究一下各个物品的成本价", "h": "榜内第 25 位", "u": "https://www.douban.com/group/topic/505011943/?_spm_id=MjU4ODI4MjM5"}, {"t": "想跟着秋天学画画", "h": "榜内第 26 位", "u": "https://www.douban.com/group/topic/504687280/?_spm_id=MzY4NDM3Nzg"}, {"t": "空中游鱼", "h": "榜内第 27 位", "u": "https://www.douban.com/group/topic/504768118/?_spm_id=MTY0NjE4Ng"}, {"t": "江西爆辣皮蛋肉丝炒米粉", "h": "榜内第 28 位", "u": "https://www.douban.com/group/topic/504654606/?_spm_id=MjA5ODYwODYx"}, {"t": "一个对事业毫无用处但是能让工作不那么痛苦的证书", "h": "榜内第 29 位", "u": "https://www.douban.com/group/topic/504683057/?_spm_id=MjU4Njg0Njkw"}]},
-      { name: "虎扑", rank: "热帖", color: "#b03a2e", live: true, updated: "2026-11-15 06:01", stale: true, items: [{"t": "以后遇事千万不要激怒大爷，也别试图讹诈他，你大爷真不惯你毛病。", "h": "50", "u": "https://bbs.hupu.com/643918849.html"}, {"t": "一开口我懵了", "h": "22", "u": "https://bbs.hupu.com/643928771.html"}, {"t": "被两位女博士先后搭讪的一天", "h": "3", "u": "https://bbs.hupu.com/643938755.html"}, {"t": "日文版意林出现了，还真对味", "h": "3", "u": "https://bbs.hupu.com/643938830.html"}, {"t": "我大清远胜于苏联", "h": "7", "u": "https://bbs.hupu.com/643936313.html"}, {"t": "1018平的大平层是啥样的？卧室都有220平！", "h": "14", "u": "https://bbs.hupu.com/643930795.html"}, {"t": "他认为这是代驾服务，车主认为是结伴同游，你们怎么看？", "h": "3", "u": "https://bbs.hupu.com/643935781.html"}, {"t": "前女友和我分手后半个月就找了新的，第一次一见面他俩就亲了", "h": "7", "u": "https://bbs.hupu.com/643934756.html"}, {"t": "卧槽了，这几下子够呛了，拍视频的一直在拱火，结果遇到狠人了", "h": "21", "u": "https://bbs.hupu.com/643928092.html"}, {"t": "冬日女友OOTD｜把温柔穿在身上", "h": "3", "u": "https://bbs.hupu.com/643931738.html"}, {"t": "高中生现在处对象发生性行为正常吗", "h": "39", "u": "https://bbs.hupu.com/643916303.html"}, {"t": "05年夜班女MC昼夜颠倒的真实的一晚", "h": "40", "u": "https://bbs.hupu.com/643914345.html"}, {"t": "这位台湾省网友的父母真厉害！", "h": "6", "u": "https://bbs.hupu.com/643930702.html"}, {"t": "香港人，想问一下以前没暖气时，北方人是如何过冬的，硬抗吗？晚上睡觉上洗手间怎办", "h": "9", "u": "https://bbs.hupu.com/643931427.html"}, {"t": "爱新觉罗后裔跑到日本东京当眼科院长！", "h": "7", "u": "https://bbs.hupu.com/643931218.html"}, {"t": "以前总说打游戏没出息，现在看看这些顶级打游戏的职业选手年薪，真的惊呆了", "h": "7", "u": "https://bbs.hupu.com/643931129.html"}, {"t": "怎样屏蔽有关杨瀚森的新闻", "h": "4", "u": "https://bbs.hupu.com/643931874.html"}, {"t": "领导的微信名:稳如泰山，我起一个什么名字能压过他", "h": "8", "u": "https://bbs.hupu.com/643930618.html"}, {"t": "很难想象这是一个中国人。说人家汉奸人家以为夸他呢。", "h": "28", "u": "https://bbs.hupu.com/643924481.html"}, {"t": "BLG加油啊", "h": "榜内第 20 位", "u": "https://bbs.hupu.com/643940316.html"}, {"t": "是继续事业单位的编外还是去国企的劳务派遣？", "h": "6", "u": "https://bbs.hupu.com/643930155.html"}, {"t": "补档球友经历1-我的惊喜她的惊吓", "h": "4", "u": "https://bbs.hupu.com/643926594.html"}, {"t": "我文盲，心里刺挠说不出，谁替我分析一下", "h": "榜内第 23 位", "u": "https://bbs.hupu.com/643939860.html"}, {"t": "我作为东北人可以跟你说，东北人真没有那么高，我一直以为我1米8（之前一直穿鞋量，我虽然1米73，但是我穿48码的鞋 ，鞋底非常厚，再加上量的不准 ）后来实际红外线量是裸足1米73，我有的时候甚至能秒街", "h": "29", "u": "https://bbs.hupu.com/643926501.html"}, {"t": "自我测试：你会选择哪个房间？", "h": "11", "u": "https://bbs.hupu.com/643927744.html"}, {"t": "发几张最近的穿搭，一年四季都可以穿裙子真太幸福了", "h": "6", "u": "https://bbs.hupu.com/643927532.html"}, {"t": "美美哒小鹿 展示新款两件套套装", "h": "3", "u": "https://bbs.hupu.com/643920147.html"}, {"t": "球友经历（1）", "h": "9", "u": "https://bbs.hupu.com/643926317.html"}, {"t": "日本街头的右翼狂热分子，一个比一个智障，全是歪瓜裂枣", "h": "11", "u": "https://bbs.hupu.com/643927655.html"}, {"t": "又是潜水一段时间，出来说几句", "h": "3", "u": "https://bbs.hupu.com/643924862.html"}, {"t": "橘猫尾巴被列车门夹住，乘客拿包包护着，直到下一站开门才脱困", "h": "5", "u": "https://bbs.hupu.com/643928228.html"}, {"t": "苏共中央1957年第一次罢免赫鲁晓夫，以失败告终，居然没有大批人头滚滚落地", "h": "6", "u": "https://bbs.hupu.com/643928659.html"}, {"t": "个人认为，刘德华的演技不比梁家辉差。", "h": "13", "u": "https://bbs.hupu.com/643927736.html"}, {"t": "惊呆了，一直低调得像查无此人的丁磊，他离岸信托持股规模直接冲到榜单第一！", "h": "13", "u": "https://bbs.hupu.com/643926165.html"}, {"t": "原来蜘蛛侠是这么拍出来的", "h": "3", "u": "https://bbs.hupu.com/643927495.html"}, {"t": "为什么朝代粉里面明粉最多？", "h": "17", "u": "https://bbs.hupu.com/643926187.html"}, {"t": "支持黄仁勋回归英伟达请愿书签名者激增已超66000人，马斯克言出必行", "h": "6", "u": "https://bbs.hupu.com/643927370.html"}, {"t": "有些小人污蔑孙先生，试图否定辛亥革命究竟怀的什么心思？", "h": "5", "u": "https://bbs.hupu.com/643927199.html"}, {"t": "韩国小哥印度失身，被迷晕30小时……", "h": "3", "u": "https://bbs.hupu.com/643927207.html"}, {"t": "年轻的和年老的人看了都沉默了……", "h": "4", "u": "https://bbs.hupu.com/643926661.html"}, {"t": "不是兄弟们，想探讨一下灰产这个话题 。就是我发现我高中同学突然买车，貌似就是通过灰产搞到的钱，也不是说嫉妒吧，感觉这种擦边fa lv的东西真的他不怕出事吗 ，而且不怕身边人举报？", "h": "榜内第 41 位", "u": "https://bbs.hupu.com/643938779.html"}, {"t": "在漂亮姐姐给我发照片，很主动，但是我怕是仙人跳", "h": "17", "u": "https://bbs.hupu.com/643919273.html"}, {"t": "i7日常穿搭", "h": "6", "u": "https://bbs.hupu.com/643924144.html"}, {"t": "私信评论畅所欲言", "h": "1", "u": "https://bbs.hupu.com/643938243.html"}, {"t": "谈到这样的算吃得好吗", "h": "3", "u": "https://bbs.hupu.com/643926994.html"}, {"t": "烈性犬咬断路人肌腱，狗主人拒绝交出狗", "h": "12", "u": "https://bbs.hupu.com/643922826.html"}, {"t": "梅西对阿根廷的祸害真是不小啊，自己为了所谓的球王名称当甩手掌柜逃跑了，结果搞的其他人都不会踢球了", "h": "18", "u": "https://bbs.hupu.com/643921972.html"}, {"t": "为什么中国餐厅不拒绝一人用餐？反而让韩国在这方面遥遥领先。", "h": "10", "u": "https://bbs.hupu.com/643925585.html"}, {"t": "坐牢跑不掉了", "h": "3", "u": "https://bbs.hupu.com/643924821.html"}, {"t": "礼貌询问一下，最近看短剧里很多描写明朝的短剧", "h": "9", "u": "https://bbs.hupu.com/643925681.html"}]},
-      { name: "快手", rank: "热议", color: "#e07b24", live: true, updated: "2026-11-15 08:00", items: [{"t": "亚太共此时", "h": "榜内第 1 位", "u": "https://www.kuaishou.com/short-video/3xuvfc2jyuegk8i"}, {"t": "北京WB夺得KPL年总冠军", "h": "1228万", "u": "https://www.kuaishou.com/short-video/3x9dwimrdfrikgu"}, {"t": "BLG对阵GEN", "h": "1227万", "u": "https://www.kuaishou.com/short-video/3xg43s2fuzizkwm"}, {"t": "东北老爷们怕老婆日常", "h": "1101万", "u": "https://www.kuaishou.com/short-video/3xehvnkhwgrttw4"}, {"t": "武汉光谷马拉松鸣枪起跑", "h": "1057万", "u": "https://www.kuaishou.com/short-video/3xwz243e96vf96w"}, {"t": "央视曝光猪肉冒充牛肉骗局", "h": "1035万", "u": "https://www.kuaishou.com/short-video/3xeuywdcgb3caey"}, {"t": "白小纯全力宣传体坛", "h": "1012万", "u": "https://www.kuaishou.com/short-video/3xi69hixz2rcdug"}, {"t": "鉴定大结局子淇与蓓蓓互换身世", "h": "992万", "u": "https://www.kuaishou.com/short-video/3xwjvv64aae8r99"}, {"t": "女子讨要十年前10元欠款被打骨折", "h": "971万", "u": "https://www.kuaishou.com/short-video/3xfi6tx2xabdxq6"}, {"t": "孙红雷曾公开力挺高叶", "h": "969万", "u": "https://www.kuaishou.com/short-video/3xks8rprrjg8fqm"}, {"t": "九旬独居老人摔伤躺地一夜", "h": "966万", "u": "https://www.kuaishou.com/short-video/3x77hy45xae7a9g"}, {"t": "SpaceX星舰双重捕获回收受挫", "h": "964万", "u": "https://www.kuaishou.com/short-video/3xdni3s6yb9f986"}, {"t": "十二少还是能一眼就认出江哥", "h": "962万", "u": "https://www.kuaishou.com/short-video/3xdvqghfd5nsq84"}, {"t": "国足2比0战胜马来西亚", "h": "960万", "u": "https://www.kuaishou.com/short-video/3xkjv38mtxfgknc"}, {"t": "女子高速逼停冒火花大车", "h": "957万", "u": "https://www.kuaishou.com/short-video/3xxjwsxjg2yuwje"}, {"t": "重温55年前的乔的笑", "h": "954万", "u": "https://www.kuaishou.com/short-video/3x5cjtrek5szg84"}, {"t": "当你在学校发现穿错外套", "h": "952万", "u": "https://www.kuaishou.com/short-video/3xbwgx6ngthf8da"}, {"t": "阿拉腾黑力UFC惜败胡安迪亚兹", "h": "949万", "u": "https://www.kuaishou.com/short-video/3x52363r58fcmsw"}, {"t": "把棒棒糖玩成手搓陀螺", "h": "947万", "u": "https://www.kuaishou.com/short-video/3xik8wkhi9gpbv9"}, {"t": "20克金镯跌了1万元", "h": "944万", "u": "https://www.kuaishou.com/short-video/3x54n3xtzupj2u4"}, {"t": "宝石老舅路易舞台现场演话剧", "h": "942万", "u": "https://www.kuaishou.com/short-video/3xjbzzds49ru5g4"}, {"t": "又一首be神曲来了", "h": "939万", "u": "https://www.kuaishou.com/short-video/3xu6ranjb8chvbq"}, {"t": "NBA常规赛掘金vs鹈鹕", "h": "937万", "u": "https://www.kuaishou.com/short-video/3xqcyz7cv6xccf9"}, {"t": "男子预约推拿技师上门性侵获刑", "h": "934万", "u": "https://www.kuaishou.com/short-video/3xek8pk6ip7ahzy"}, {"t": "胎儿基因缺失竟牵出爸爸肠道癌变", "h": "932万", "u": "https://www.kuaishou.com/short-video/3xc2tbbu54dwar4"}, {"t": "我到底要惹几次上帝", "h": "927万", "u": "https://www.kuaishou.com/short-video/3xfbrqw26ik6qam"}, {"t": "日军侵华慰安所原址成网红打卡点", "h": "924万", "u": "https://www.kuaishou.com/short-video/3xwgmziyenmb3y4"}, {"t": "中国男子富士山失联 家属悬赏50万寻人", "h": "919万", "u": "https://www.kuaishou.com/short-video/3x25b8wgs6ec5de"}, {"t": "英雄联盟2026全球总决赛开幕式", "h": "916万", "u": "https://www.kuaishou.com/short-video/3x6mj3tq8ematvq"}, {"t": "华北火流星坠落 陨石归谁所有", "h": "914万", "u": "https://www.kuaishou.com/short-video/3xmhaus4kpm2zpk"}, {"t": "日本3比2巴西", "h": "911万", "u": "https://www.kuaishou.com/short-video/3x4pdbbc8fpefcu"}, {"t": "熬夜看S16总决赛", "h": "909万", "u": "https://www.kuaishou.com/short-video/3x2uzynw3dqz8qw"}, {"t": "糖尿病前期都有哪些症状", "h": "907万", "u": "https://www.kuaishou.com/short-video/3xivpki5frauxiq"}, {"t": "美议员要求保留星链限制乌记录", "h": "904万", "u": "https://www.kuaishou.com/short-video/3xs5v5d9ppx5iy6"}, {"t": "甘肃大部气温明显下降", "h": "899万", "u": "https://www.kuaishou.com/short-video/3xnhi9qe6brgn8i"}, {"t": "深圳小学生女团火到国外", "h": "896万", "u": "https://www.kuaishou.com/short-video/3xcfzcwspzpsdz6"}, {"t": "田曦薇遭私生推挤倒地", "h": "894万", "u": "https://www.kuaishou.com/short-video/3x9ih853h5qf3y6"}, {"t": "NBA常规赛独行侠vs骑士", "h": "891万", "u": "https://www.kuaishou.com/short-video/3xepv6nn3rrmhgi"}, {"t": "蚊子唱的歌火了", "h": "886万", "u": "https://www.kuaishou.com/short-video/3xsweugc6b8zuf6"}, {"t": "一代人有一代人的丝巾要拍", "h": "884万", "u": "https://www.kuaishou.com/short-video/3x4cx8ejh4bbdi6"}, {"t": "女子站立劈竖叉顶饮料", "h": "883万", "u": "https://www.kuaishou.com/short-video/3xkxtt8tfn7yar2"}, {"t": "国足实时排名跌至97位", "h": "881万", "u": "https://www.kuaishou.com/short-video/3xxxumwes9tmfq6"}, {"t": "一诺好帅", "h": "879万", "u": "https://www.kuaishou.com/short-video/3xwimnum2vdkhg6"}, {"t": "美国纽约三层楼倒塌", "h": "877万", "u": "https://www.kuaishou.com/short-video/3xhu7e2xh9qaenm"}, {"t": "可以请我吃个咒语糖葫芦吗", "h": "874万", "u": "https://www.kuaishou.com/short-video/3xwvpb7jy9itfn4"}, {"t": "天津百年手艺五香豆腐丝", "h": "871万", "u": "https://www.kuaishou.com/short-video/3x7fv4u5e7pd34c"}, {"t": "梓墨FMVP", "h": "871万", "u": "https://www.kuaishou.com/short-video/3xaxmg3vnm7eisk"}]}
-      ];
-      var HOT_UPDATED = "2026-11-15 08:00";
+
+  {
+    "name": "财联社置顶",
+    "rank": "置顶",
+    "color": "#c8102e",
+    "live": true,
+    "fin": true,
+    "pinned": true,
+    "updated": "2026-11-15 08:22",
+    "items": [
+      {
+        "t": "央行将开展2000亿元买断式逆回购操作 缩量续作稳定市场预期",
+        "c": "信贷政策",
+        "u": "https://www.cls.cn/detail/2534228",
+        "pin": true,
+        "pub": "2026-11-13 21:51"
+      },
+      {
+        "t": "斩获2026“债市之星”双项大奖 唐控发展集团城投转型进入深度兑现期",
+        "c": "信贷政策",
+        "u": "https://www.cls.cn/detail/2534072",
+        "pin": true,
+        "pub": "2026-11-13 18:59"
+      },
+      {
+        "t": "10月金融数据出炉：今年来企业债净融资3.1万亿，达上年同期增量的1.7倍",
+        "c": "信贷政策",
+        "u": "https://www.cls.cn/detail/2533957",
+        "pin": true,
+        "pub": "2026-11-13 17:13"
+      }
+    ]
+  },
+  {
+    "name": "财联社",
+    "rank": "电报",
+    "color": "#c0392b",
+    "live": true,
+    "fin": true,
+    "updated": "2026-11-15 08:22",
+    "items": [
+      {
+        "t": "中信建投：预计2027年实际利率进一步上行空间有限 金价有望震荡上行",
+        "c": "信贷政策",
+        "u": "https://www.cls.cn/detail/2534563"
+      },
+      {
+        "t": "美联储柯林斯称，鉴于通胀和就业数据，美联储可能不得不比近期预期更多地加息。",
+        "c": "信贷政策",
+        "u": "https://www.cls.cn/detail/2534562"
+      }
+    ]
+  },
+  {
+    "name": "腾讯新闻",
+    "rank": "热点榜",
+    "color": "#0052d9",
+    "live": true,
+    "fin": true,
+    "updated": "2026-11-14 21:53",
+    "items": [
+      {
+        "t": "证监会主席吴清在首届中国资本市场学术年会开幕式上致辞",
+        "c": "信贷政策",
+        "u": "https://news.qq.com/rain/a/20261114A084XE00"
+      }
+    ]
+  },
+  {
+    "name": "新浪财经",
+    "rank": "7×24快讯",
+    "color": "#f26522",
+    "live": true,
+    "fin": true,
+    "updated": "2026-11-14 21:54",
+    "items": [
+      {
+        "t": "蒙商银行股份有限公司原党委副书记廉斌被“双开”",
+        "c": "监管处罚",
+        "u": "https://finance.sina.com.cn/roll/2026-11-14/doc-iniysztc4032570.shtml"
+      },
+      {
+        "t": "证监会接收！六家头部公募集体申报，“A500”拼图将补齐",
+        "c": "信贷政策",
+        "u": "https://finance.sina.com.cn/roll/2026-11-14/doc-iniyszsy7226165.shtml"
+      },
+      {
+        "t": "人力资源社会保障部就中奥社保协定答记者问",
+        "c": "公积金个税",
+        "u": "https://finance.sina.com.cn/roll/2026-11-14/doc-iniytfyw7150384.shtml"
+      }
+    ]
+  },
+  {
+    "name": "虎嗅",
+    "rank": "热榜",
+    "color": "#b8860b",
+    "live": true,
+    "fin": true,
+    "updated": "2026-11-15 11:35",
+    "items": [
+      {
+        "t": "4%→6%！外汇存款准备金率，今起调整",
+        "c": "信贷政策",
+        "u": "https://www.huxiu.com/moment/1296901.html"
+      }
+    ]
+  },
+  {
+    "name": "东方财富",
+    "rank": "快讯",
+    "color": "#d81e06",
+    "live": true,
+    "fin": true,
+    "updated": "2026-11-15 08:22",
+    "items": [
+      {
+        "t": "美联储重磅报告：“AI热”推高估值与债务",
+        "c": "信贷政策",
+        "u": "https://finance.eastmoney.com/a/202611143931369119.html"
+      },
+      {
+        "t": "税收征收管理法修订草案加强个人税收征管—— 大额欠税“老赖”不再有漏洞可钻",
+        "c": "公积金个税",
+        "u": "https://finance.eastmoney.com/a/202611153931385747.html"
+      }
+    ]
+  },
+  {
+    "name": "微博",
+    "rank": "热搜",
+    "color": "#c0452f",
+    "live": true,
+    "updated": "2026-11-15 11:00",
+    "items": [
+      {
+        "t": "Bin成为LPL历史首位大满贯上路选手",
+        "h": "521万",
+        "u": "https://s.weibo.com/weibo?q=%23Bin%E6%88%90%E4%B8%BALPL%E5%8E%86%E5%8F%B2%E9%A6%96%E4%BD%8D%E5%A4%A7%E6%BB%A1%E8%B4%AF%E4%B8%8A%E8%B7%AF%E9%80%89%E6%89%8B%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "boss直聘暂停要求带咖啡公司账号权限",
+        "h": "156万",
+        "u": "https://s.weibo.com/weibo?q=%23boss%E7%9B%B4%E8%81%98%E6%9A%82%E5%81%9C%E8%A6%81%E6%B1%82%E5%B8%A6%E5%92%96%E5%95%A1%E5%85%AC%E5%8F%B8%E8%B4%A6%E5%8F%B7%E6%9D%83%E9%99%90%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "4分钟读懂APEC",
+        "h": "127万",
+        "u": "https://s.weibo.com/weibo?q=%234%E5%88%86%E9%92%9F%E8%AF%BB%E6%87%82APEC%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "BLG夺冠引来半个娱乐圈",
+        "h": "117万",
+        "u": "https://s.weibo.com/weibo?q=%23BLG%E5%A4%BA%E5%86%A0%E5%BC%95%E6%9D%A5%E5%8D%8A%E4%B8%AA%E5%A8%B1%E4%B9%90%E5%9C%88%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "BLG夺冠Tim送iPhoneDuo",
+        "h": "114万",
+        "u": "https://s.weibo.com/weibo?q=%23BLG%E5%A4%BA%E5%86%A0Tim%E9%80%81iPhoneDuo%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "疑似后会友期白小纯表白王子璇路透",
+        "h": "92万",
+        "u": "https://s.weibo.com/weibo?q=%E7%96%91%E4%BC%BC%E5%90%8E%E4%BC%9A%E5%8F%8B%E6%9C%9F%E7%99%BD%E5%B0%8F%E7%BA%AF%E8%A1%A8%E7%99%BD%E7%8E%8B%E5%AD%90%E7%92%87%E8%B7%AF%E9%80%8F&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "孩子觉得打包丢人被老师扣分引热议",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E5%AD%A9%E5%AD%90%E8%A7%89%E5%BE%97%E6%89%93%E5%8C%85%E4%B8%A2%E4%BA%BA%E8%A2%AB%E8%80%81%E5%B8%88%E6%89%A3%E5%88%86%E5%BC%95%E7%83%AD%E8%AE%AE%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "马斯克回应SpaceX首次实现筷子夹飞船",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E9%A9%AC%E6%96%AF%E5%85%8B%E5%9B%9E%E5%BA%94SpaceX%E9%A6%96%E6%AC%A1%E5%AE%9E%E7%8E%B0%E7%AD%B7%E5%AD%90%E5%A4%B9%E9%A3%9E%E8%88%B9%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "央行重大调整",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E5%A4%AE%E8%A1%8C%E9%87%8D%E5%A4%A7%E8%B0%83%E6%95%B4%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "许飞厉娜好到把如来都删掉",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E8%AE%B8%E9%A3%9E%E5%8E%89%E5%A8%9C%E5%A5%BD%E5%88%B0%E6%8A%8A%E5%A6%82%E6%9D%A5%E9%83%BD%E5%88%A0%E6%8E%89%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "央视新闻祝贺BLG夺冠",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%E5%A4%AE%E8%A7%86%E6%96%B0%E9%97%BB%E7%A5%9D%E8%B4%BABLG%E5%A4%BA%E5%86%A0&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "Bin 世一上",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=Bin%20%E4%B8%96%E4%B8%80%E4%B8%8A&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "王乐乐 高迪",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%E7%8E%8B%E4%B9%90%E4%B9%90%20%E9%AB%98%E8%BF%AA&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "佟丽娅也忍不住多看杨幂几眼",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E4%BD%9F%E4%B8%BD%E5%A8%85%E4%B9%9F%E5%BF%8D%E4%B8%8D%E4%BD%8F%E5%A4%9A%E7%9C%8B%E6%9D%A8%E5%B9%82%E5%87%A0%E7%9C%BC%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "青稚 白小纯",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%E9%9D%92%E7%A8%9A%20%E7%99%BD%E5%B0%8F%E7%BA%AF&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "拒请咖啡取消面试公司已经营异常",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E6%8B%92%E8%AF%B7%E5%92%96%E5%95%A1%E5%8F%96%E6%B6%88%E9%9D%A2%E8%AF%95%E5%85%AC%E5%8F%B8%E5%B7%B2%E7%BB%8F%E8%90%A5%E5%BC%82%E5%B8%B8%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "曝高迪抖音直播权限被永封",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E6%9B%9D%E9%AB%98%E8%BF%AA%E6%8A%96%E9%9F%B3%E7%9B%B4%E6%92%AD%E6%9D%83%E9%99%90%E8%A2%AB%E6%B0%B8%E5%B0%81%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "网传王鹤棣徐若晗新剧12月开机",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E7%BD%91%E4%BC%A0%E7%8E%8B%E9%B9%A4%E6%A3%A3%E5%BE%90%E8%8B%A5%E6%99%97%E6%96%B0%E5%89%A712%E6%9C%88%E5%BC%80%E6%9C%BA%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "杨幂真的好宠小酒窝",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E6%9D%A8%E5%B9%82%E7%9C%9F%E7%9A%84%E5%A5%BD%E5%AE%A0%E5%B0%8F%E9%85%92%E7%AA%9D%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "常州造全球最大无人货运飞机试飞成功",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E5%B8%B8%E5%B7%9E%E9%80%A0%E5%85%A8%E7%90%83%E6%9C%80%E5%A4%A7%E6%97%A0%E4%BA%BA%E8%B4%A7%E8%BF%90%E9%A3%9E%E6%9C%BA%E8%AF%95%E9%A3%9E%E6%88%90%E5%8A%9F%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "Ruler回应BLG夺冠",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23Ruler%E5%9B%9E%E5%BA%94BLG%E5%A4%BA%E5%86%A0%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "BLG夺冠",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=BLG%E5%A4%BA%E5%86%A0&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "JackeyLove谈BLG夺冠",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23JackeyLove%E8%B0%88BLG%E5%A4%BA%E5%86%A0%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "海陆靠爱好自然瘦20斤",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%E6%B5%B7%E9%99%86%E9%9D%A0%E7%88%B1%E5%A5%BD%E8%87%AA%E7%84%B6%E7%98%A620%E6%96%A4&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "ON已经想好了冠军皮肤给谁",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23ON%E5%B7%B2%E7%BB%8F%E6%83%B3%E5%A5%BD%E4%BA%86%E5%86%A0%E5%86%9B%E7%9A%AE%E8%82%A4%E7%BB%99%E8%B0%81%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "为什么说杀人容易藏尸难",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4%E6%9D%80%E4%BA%BA%E5%AE%B9%E6%98%93%E8%97%8F%E5%B0%B8%E9%9A%BE&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "新疆就是一个巨大的干燥剂",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%E6%96%B0%E7%96%86%E5%B0%B1%E6%98%AF%E4%B8%80%E4%B8%AA%E5%B7%A8%E5%A4%A7%E7%9A%84%E5%B9%B2%E7%87%A5%E5%89%82&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "睡眠不足的人长期处于应激状态",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E7%9D%A1%E7%9C%A0%E4%B8%8D%E8%B6%B3%E7%9A%84%E4%BA%BA%E9%95%BF%E6%9C%9F%E5%A4%84%E4%BA%8E%E5%BA%94%E6%BF%80%E7%8A%B6%E6%80%81%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "胎儿基因缺失竟牵出爸爸肠道癌变",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E8%83%8E%E5%84%BF%E5%9F%BA%E5%9B%A0%E7%BC%BA%E5%A4%B1%E7%AB%9F%E7%89%B5%E5%87%BA%E7%88%B8%E7%88%B8%E8%82%A0%E9%81%93%E7%99%8C%E5%8F%98%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "百元大钞花束不是表白是洗钱",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23%E7%99%BE%E5%85%83%E5%A4%A7%E9%92%9E%E8%8A%B1%E6%9D%9F%E4%B8%8D%E6%98%AF%E8%A1%A8%E7%99%BD%E6%98%AF%E6%B4%97%E9%92%B1%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "GEN对战BLG",
+        "h": "50万",
+        "u": "https://s.weibo.com/weibo?q=%23GEN%E5%AF%B9%E6%88%98BLG%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "若BLG未夺冠雷鸟眼镜将退款超160万",
+        "h": "49万",
+        "u": "https://s.weibo.com/weibo?q=%23%E8%8B%A5BLG%E6%9C%AA%E5%A4%BA%E5%86%A0%E9%9B%B7%E9%B8%9F%E7%9C%BC%E9%95%9C%E5%B0%86%E9%80%80%E6%AC%BE%E8%B6%85160%E4%B8%87%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "时代少年团拍到凌晨",
+        "h": "49万",
+        "u": "https://s.weibo.com/weibo?q=%23%E6%97%B6%E4%BB%A3%E5%B0%91%E5%B9%B4%E5%9B%A2%E6%8B%8D%E5%88%B0%E5%87%8C%E6%99%A8%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "曝爱奇艺尖叫之夜座位双C",
+        "h": "49万",
+        "u": "https://s.weibo.com/weibo?q=%23%E6%9B%9D%E7%88%B1%E5%A5%87%E8%89%BA%E5%B0%96%E5%8F%AB%E4%B9%8B%E5%A4%9C%E5%BA%A7%E4%BD%8D%E5%8F%8CC%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "原来热暴力真的比冷暴力有用",
+        "h": "49万",
+        "u": "https://s.weibo.com/weibo?q=%E5%8E%9F%E6%9D%A5%E7%83%AD%E6%9A%B4%E5%8A%9B%E7%9C%9F%E7%9A%84%E6%AF%94%E5%86%B7%E6%9A%B4%E5%8A%9B%E6%9C%89%E7%94%A8&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "小阿俏评价高迪大美事件",
+        "h": "48万",
+        "u": "https://s.weibo.com/weibo?q=%E5%B0%8F%E9%98%BF%E4%BF%8F%E8%AF%84%E4%BB%B7%E9%AB%98%E8%BF%AA%E5%A4%A7%E7%BE%8E%E4%BA%8B%E4%BB%B6&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "Flandre回应夺冠",
+        "h": "48万",
+        "u": "https://s.weibo.com/weibo?q=%23Flandre%E5%9B%9E%E5%BA%94%E5%A4%BA%E5%86%A0%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "王一博方辟谣网传Whoop账号",
+        "h": "48万",
+        "u": "https://s.weibo.com/weibo?q=%23%E7%8E%8B%E4%B8%80%E5%8D%9A%E6%96%B9%E8%BE%9F%E8%B0%A3%E7%BD%91%E4%BC%A0Whoop%E8%B4%A6%E5%8F%B7%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "白鹿带着三个作品走了三次红毯",
+        "h": "48万",
+        "u": "https://s.weibo.com/weibo?q=%23%E7%99%BD%E9%B9%BF%E5%B8%A6%E7%9D%80%E4%B8%89%E4%B8%AA%E4%BD%9C%E5%93%81%E8%B5%B0%E4%BA%86%E4%B8%89%E6%AC%A1%E7%BA%A2%E6%AF%AF%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "叶璇自曝拍完天下第一就已财务自由",
+        "h": "47万",
+        "u": "https://s.weibo.com/weibo?q=%23%E5%8F%B6%E7%92%87%E8%87%AA%E6%9B%9D%E6%8B%8D%E5%AE%8C%E5%A4%A9%E4%B8%8B%E7%AC%AC%E4%B8%80%E5%B0%B1%E5%B7%B2%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "央视曝光假牛肉案",
+        "h": "47万",
+        "u": "https://s.weibo.com/weibo?q=%23%E5%A4%AE%E8%A7%86%E6%9B%9D%E5%85%89%E5%81%87%E7%89%9B%E8%82%89%E6%A1%88%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "吴宣仪野心家咬字",
+        "h": "47万",
+        "u": "https://s.weibo.com/weibo?q=%23%E5%90%B4%E5%AE%A3%E4%BB%AA%E9%87%8E%E5%BF%83%E5%AE%B6%E5%92%AC%E5%AD%97%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "马天宇承认自己不需要任何情感链接",
+        "h": "47万",
+        "u": "https://s.weibo.com/weibo?q=%23%E9%A9%AC%E5%A4%A9%E5%AE%87%E6%89%BF%E8%AE%A4%E8%87%AA%E5%B7%B1%E4%B8%8D%E9%9C%80%E8%A6%81%E4%BB%BB%E4%BD%95%E6%83%85%E6%84%9F%E9%93%BE%E6%8E%A5%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "吃完鸡爪肚子痛服务区还有二十公里",
+        "h": "46万",
+        "u": "https://s.weibo.com/weibo?q=%E5%90%83%E5%AE%8C%E9%B8%A1%E7%88%AA%E8%82%9A%E5%AD%90%E7%97%9B%E6%9C%8D%E5%8A%A1%E5%8C%BA%E8%BF%98%E6%9C%89%E4%BA%8C%E5%8D%81%E5%85%AC%E9%87%8C&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "JDG决赛后发文",
+        "h": "46万",
+        "u": "https://s.weibo.com/weibo?q=%23JDG%E5%86%B3%E8%B5%9B%E5%90%8E%E5%8F%91%E6%96%87%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "奚梦瑶购物完全是梦中自己的样子",
+        "h": "46万",
+        "u": "https://s.weibo.com/weibo?q=%23%E5%A5%9A%E6%A2%A6%E7%91%B6%E8%B4%AD%E7%89%A9%E5%AE%8C%E5%85%A8%E6%98%AF%E6%A2%A6%E4%B8%AD%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A0%B7%E5%AD%90%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "谭开心曝高迪曾少付一千酬劳",
+        "h": "46万",
+        "u": "https://s.weibo.com/weibo?q=%23%E8%B0%AD%E5%BC%80%E5%BF%83%E6%9B%9D%E9%AB%98%E8%BF%AA%E6%9B%BE%E5%B0%91%E4%BB%98%E4%B8%80%E5%8D%83%E9%85%AC%E5%8A%B3%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "杨清柠 王乐乐",
+        "h": "45万",
+        "u": "https://s.weibo.com/weibo?q=%E6%9D%A8%E6%B8%85%E6%9F%A0%20%E7%8E%8B%E4%B9%90%E4%B9%90&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "葡萄牙主帅反问记者为何会想C罗",
+        "h": "45万",
+        "u": "https://s.weibo.com/weibo?q=%23%E8%91%A1%E8%90%84%E7%89%99%E4%B8%BB%E5%B8%85%E5%8F%8D%E9%97%AE%E8%AE%B0%E8%80%85%E4%B8%BA%E4%BD%95%E4%BC%9A%E6%83%B3C%E7%BD%97%23&t=31&band_rank=1&Refer=top"
+      },
+      {
+        "t": "华为小米中低端机运存降低",
+        "h": "45万",
+        "u": "https://s.weibo.com/weibo?q=%E5%8D%8E%E4%B8%BA%E5%B0%8F%E7%B1%B3%E4%B8%AD%E4%BD%8E%E7%AB%AF%E6%9C%BA%E8%BF%90%E5%AD%98%E9%99%8D%E4%BD%8E&t=31&band_rank=1&Refer=top"
+      }
+    ]
+  },
+  {
+    "name": "知乎",
+    "rank": "热榜",
+    "color": "#1772d6",
+    "live": true,
+    "updated": "2026-11-15 11:00",
+    "items": [
+      {
+        "t": "S16 总决赛 BLG 3:1 击败 GEN，中国战队时隔 5 年再夺总冠军，如何评价这场比赛？",
+        "h": "5771万",
+        "u": "https://www.zhihu.com/question/2105016991765509602"
+      },
+      {
+        "t": "Knight 获得 S16 总决赛 FMVP，成为继田野后 LPL 第二位大满贯，对此你有什么想说的？",
+        "h": "981万",
+        "u": "https://www.zhihu.com/question/2105214731573096596"
+      },
+      {
+        "t": "如何看待王传君谈《爱情公寓》言论争议，称当年脑子里只有「关我屁事」和「关你屁事」，现在为冲动买单？",
+        "h": "479万",
+        "u": "https://www.zhihu.com/question/2103430981067846812"
+      },
+      {
+        "t": "《影之刃零》沐小葵建模获海外好评，如何看待东西方游戏女性角色审美的差异？",
+        "h": "203万",
+        "u": "https://www.zhihu.com/question/2101953371276064259"
+      },
+      {
+        "t": "台式电脑送人，留下了硬盘。想彻底清除硬盘信息，2个简单方法:用脏水泡，用锤子砸，可靠吗？",
+        "h": "189万",
+        "u": "https://www.zhihu.com/question/8693825512"
+      },
+      {
+        "t": "男子失业后断供房贷靠跑外卖维生，法院判决非恶意断供，涉案房系唯一住所暂不拍卖房产，如何从法律角度解读？",
+        "h": "185万",
+        "u": "https://www.zhihu.com/question/2104510599564636472"
+      },
+      {
+        "t": "董明珠称格力逐步取消文凭考量，本事是硬通行证，格力技校学费9000元起，但格力每年补贴1亿，如何解读？",
+        "h": "182万",
+        "u": "https://www.zhihu.com/question/2104981734446065518"
+      },
+      {
+        "t": "啄木鸟平台屡被曝「小病大修」，为何此类问题屡禁不止？师傅称平台考核严苛，平台经营模式是否助长过度维修？",
+        "h": "146万",
+        "u": "https://www.zhihu.com/question/2104979927967561349"
+      },
+      {
+        "t": "如何评价 S16 最终决战 Chovy 又「同意」了？",
+        "h": "141万",
+        "u": "https://www.zhihu.com/question/2105206197666015097"
+      },
+      {
+        "t": "遗传角度来看，孙子是和爷爷奶奶血缘更近，还是和外公外婆？",
+        "h": "139万",
+        "u": "https://www.zhihu.com/question/307479952"
+      },
+      {
+        "t": "美国超75%空管系统无法持续或有风险，为何设备老化问题难解决？一次通信故障致全航班停飞，暴露哪些问题？",
+        "h": "136万",
+        "u": "https://www.zhihu.com/question/2104994235254686815"
+      },
+      {
+        "t": "如何看待国家卫健委明确：明年3月16日起，食品包装禁止使用「零添加」「不添加」等用语？",
+        "h": "136万",
+        "u": "https://www.zhihu.com/question/2104894785022604238"
+      },
+      {
+        "t": "于东来称胖东来的经营永远不会完美，不要因认知差异而过度争执，时间会给出最好的答案，如何看待这一表态？",
+        "h": "132万",
+        "u": "https://www.zhihu.com/question/2105024486391166399"
+      },
+      {
+        "t": "郑大圣凭借《密档》拿下金鸡最佳导演，这片子怎么样？实至名归吗？",
+        "h": "121万",
+        "u": "https://www.zhihu.com/question/2103793273244598882"
+      },
+      {
+        "t": "为什么年轻人越来越把友情当回事，很怕失去自己亲密的朋友？",
+        "h": "105万",
+        "u": "https://www.zhihu.com/question/2101633736978559614"
+      },
+      {
+        "t": "奔驰司机以车辆没油为由向路人借钱，收钱后便失联，涉事者将承担哪些责任？遇到类似求助该如何辨别真假？",
+        "h": "90万",
+        "u": "https://www.zhihu.com/question/2104966310362879741"
+      },
+      {
+        "t": "黄仁勋辞职前为何频频说「随便」「我不在乎」？一家万亿美元科技巨头的掌舵人究竟经历了什么？",
+        "h": "80万",
+        "u": "https://www.zhihu.com/question/2104599978198963431"
+      },
+      {
+        "t": "因果关系的本质是什么？",
+        "h": "70万",
+        "u": "https://www.zhihu.com/question/270039884"
+      },
+      {
+        "t": "《后会友期》里谁演的成分比较大？",
+        "h": "59万",
+        "u": "https://www.zhihu.com/question/2101346539826427020"
+      },
+      {
+        "t": "赵本山主演喜剧《走马上任》口碑如何？有哪些亮点与不足？",
+        "h": "59万",
+        "u": "https://www.zhihu.com/question/2100641649147778273"
+      },
+      {
+        "t": "比特币一度跌破 6.8 万美元创8月以来新低，如何看待当下行情？比特币是否彻底变成顺周期高风险资产了？",
+        "h": "59万",
+        "u": "https://www.zhihu.com/question/2104604454595072841"
+      },
+      {
+        "t": "黄仁勋为何要单独聘请 Paul Weiss？是否意味着这场风波已经超出公司治理问题的范畴？",
+        "h": "59万",
+        "u": "https://www.zhihu.com/question/2104510750513260072"
+      },
+      {
+        "t": "2026 年 10 月央行公布金融数据，前 10 月住户贷款大降 1.46 万亿说明了什么？",
+        "h": "59万",
+        "u": "https://www.zhihu.com/question/2104665840050356464"
+      },
+      {
+        "t": "量子力学中为什么会出现这种1=0的悖论?",
+        "h": "59万",
+        "u": "https://www.zhihu.com/question/5913805233"
+      },
+      {
+        "t": "Bin 夺得全球总决赛冠军泪洒现场，如何评价他的一路历程？今天的表现他当得起世一上吗？",
+        "h": "59万",
+        "u": "https://www.zhihu.com/question/2105212045453018566"
+      },
+      {
+        "t": "《持械入宋》制片人称算力投入超百万且没投流，团队每部短剧都盈利，怎样看待这一高收益性？哪些思路能借鉴？",
+        "h": "59万",
+        "u": "https://www.zhihu.com/question/2104167693242691717"
+      },
+      {
+        "t": "闻着香吃着却不甜的街边烤红薯，真的是用香精浸泡过的吗？这是什么原理？可以如何辨别？",
+        "h": "59万",
+        "u": "https://www.zhihu.com/question/2100400144176919959"
+      },
+      {
+        "t": "凡人修仙传动漫200集观众满意吗？",
+        "h": "59万",
+        "u": "https://www.zhihu.com/question/2102925191101919274"
+      },
+      {
+        "t": "现在河水普遍感觉比小时候小多了，跟种树多有关吗？",
+        "h": "58万",
+        "u": "https://www.zhihu.com/question/1934929915402232124"
+      }
+    ]
+  },
+  {
+    "name": "抖音",
+    "rank": "热榜",
+    "color": "#3a3f4a",
+    "live": true,
+    "updated": "2026-11-15 11:00",
+    "items": [
+      {
+        "t": "BLG夺冠",
+        "h": "1222万",
+        "u": "https://www.douyin.com/hot/2746751"
+      },
+      {
+        "t": "Knight夺得FMVP",
+        "h": "1193万",
+        "u": "https://www.douyin.com/hot/2746772"
+      },
+      {
+        "t": "一组先行指标看中国经济活力",
+        "h": "1089万",
+        "u": "https://www.douyin.com/hot/2746865"
+      },
+      {
+        "t": "BLG 3:1 GEN",
+        "h": "1086万",
+        "u": "https://www.douyin.com/hot/2745933"
+      },
+      {
+        "t": "葡萄牙不敌丹麦终结四连胜",
+        "h": "1027万",
+        "u": "https://www.douyin.com/hot/2746720"
+      },
+      {
+        "t": "BLG夺冠雷鸟看的到底有多远",
+        "h": "987万",
+        "u": "https://www.douyin.com/hot/2746778"
+      },
+      {
+        "t": "罗圈村千年银杏树进入最佳观赏期",
+        "h": "862万",
+        "u": "https://www.douyin.com/hot/2746849"
+      },
+      {
+        "t": "北京WB夺得KPL年总冠军",
+        "h": "782万",
+        "u": "https://www.douyin.com/hot/2745988"
+      },
+      {
+        "t": "请选择你的秋假遛娃地",
+        "h": "779万",
+        "u": "https://www.douyin.com/hot/2745916"
+      },
+      {
+        "t": "BLG夺冠恰逢联盟重大更新",
+        "h": "776万",
+        "u": "https://www.douyin.com/hot/2746826"
+      },
+      {
+        "t": "BLG夺冠了你们知道吗",
+        "h": "773万",
+        "u": "https://www.douyin.com/hot/2746813"
+      },
+      {
+        "t": "高铁为什么完全密封",
+        "h": "773万",
+        "u": "https://www.douyin.com/hot/2746682"
+      },
+      {
+        "t": "影院线下看BLG夺冠太顶了",
+        "h": "773万",
+        "u": "https://www.douyin.com/hot/2746843"
+      },
+      {
+        "t": "BLG发抖音说我们是冠军",
+        "h": "772万",
+        "u": "https://www.douyin.com/hot/2746761"
+      },
+      {
+        "t": "把这份庆祝送给BLG",
+        "h": "771万",
+        "u": "https://www.douyin.com/hot/2746028"
+      },
+      {
+        "t": "慌啥子嘛配什么都好治愈",
+        "h": "770万",
+        "u": "https://www.douyin.com/hot/2746008"
+      },
+      {
+        "t": "我的BLG夺冠时刻",
+        "h": "770万",
+        "u": "https://www.douyin.com/hot/2746779"
+      },
+      {
+        "t": "Tim变装变上瘾了",
+        "h": "769万",
+        "u": "https://www.douyin.com/hot/2746352"
+      },
+      {
+        "t": "现场见证SpaceX星舰爆炸",
+        "h": "768万",
+        "u": "https://www.douyin.com/hot/2746687"
+      },
+      {
+        "t": "最有安全感的覆面系出现了",
+        "h": "767万",
+        "u": "https://www.douyin.com/hot/2746096"
+      },
+      {
+        "t": "湘超永州球员发文庆祝挺进四强",
+        "h": "767万",
+        "u": "https://www.douyin.com/hot/2746713"
+      },
+      {
+        "t": "谷雨背后保护伞太敢拍了",
+        "h": "767万",
+        "u": "https://www.douyin.com/hot/2745842"
+      },
+      {
+        "t": "独属我们的非凡之爱",
+        "h": "766万",
+        "u": "https://www.douyin.com/hot/2746360"
+      },
+      {
+        "t": "冷都女为什么好看",
+        "h": "766万",
+        "u": "https://www.douyin.com/hot/2746596"
+      },
+      {
+        "t": "和赵露思一起跳茉茉手势舞",
+        "h": "765万",
+        "u": "https://www.douyin.com/hot/2746572"
+      },
+      {
+        "t": "一对父子被夺走的半生",
+        "h": "765万",
+        "u": "https://www.douyin.com/hot/2746456"
+      },
+      {
+        "t": "谢霆锋杭州演唱会",
+        "h": "765万",
+        "u": "https://www.douyin.com/hot/2746137"
+      },
+      {
+        "t": "毛孩子律动舞萌翻了",
+        "h": "765万",
+        "u": "https://www.douyin.com/hot/2746098"
+      },
+      {
+        "t": "许飞专辑开售销量破万",
+        "h": "764万",
+        "u": "https://www.douyin.com/hot/2745889"
+      },
+      {
+        "t": "我在抖音有了自己的专属歌曲",
+        "h": "764万",
+        "u": "https://www.douyin.com/hot/2744828"
+      },
+      {
+        "t": "KPL年度总决赛现场直击",
+        "h": "764万",
+        "u": "https://www.douyin.com/hot/2746243"
+      },
+      {
+        "t": "还是老艺术家的曲调对味儿",
+        "h": "764万",
+        "u": "https://www.douyin.com/hot/2746076"
+      },
+      {
+        "t": "我的脸不接受锐评谢谢",
+        "h": "764万",
+        "u": "https://www.douyin.com/hot/2744247"
+      },
+      {
+        "t": "我的S16决赛观赛日记",
+        "h": "763万",
+        "u": "https://www.douyin.com/hot/2746323"
+      },
+      {
+        "t": "郝熠然祝你睡个好觉",
+        "h": "763万",
+        "u": "https://www.douyin.com/hot/2746683"
+      },
+      {
+        "t": "司空震FMVP新皮肤",
+        "h": "762万",
+        "u": "https://www.douyin.com/hot/2746724"
+      },
+      {
+        "t": "宝宝接爸爸下班名场面",
+        "h": "762万",
+        "u": "https://www.douyin.com/hot/2745879"
+      },
+      {
+        "t": "曾一鸣梁源综艺大和解",
+        "h": "762万",
+        "u": "https://www.douyin.com/hot/2746022"
+      },
+      {
+        "t": "温柔白月光冬季穿搭",
+        "h": "762万",
+        "u": "https://www.douyin.com/hot/2746422"
+      },
+      {
+        "t": "会呼麦的咖啡机集合了",
+        "h": "762万",
+        "u": "https://www.douyin.com/hot/2746005"
+      },
+      {
+        "t": "被毛茸茸裹住的秋冬",
+        "h": "762万",
+        "u": "https://www.douyin.com/hot/2743977"
+      },
+      {
+        "t": "指路牌迎来了新level",
+        "h": "761万",
+        "u": "https://www.douyin.com/hot/2745520"
+      },
+      {
+        "t": "白色羽绒服才是冬日白月光",
+        "h": "761万",
+        "u": "https://www.douyin.com/hot/2743941"
+      },
+      {
+        "t": "不穿贵的只穿帅的",
+        "h": "761万",
+        "u": "https://www.douyin.com/hot/2746409"
+      },
+      {
+        "t": "coldy2.0也太萌啦",
+        "h": "761万",
+        "u": "https://www.douyin.com/hot/2744229"
+      },
+      {
+        "t": "韩系慵懒风穿搭轻松拿捏",
+        "h": "760万",
+        "u": "https://www.douyin.com/hot/2743883"
+      },
+      {
+        "t": "蒋一帆唱泪桥好温柔",
+        "h": "757万",
+        "u": "https://www.douyin.com/hot/2746583"
+      },
+      {
+        "t": "十万狂花入梦来开播",
+        "h": "757万",
+        "u": "https://www.douyin.com/hot/2746906"
+      }
+    ]
+  },
+  {
+    "name": "今日头条",
+    "rank": "热榜",
+    "color": "#d43a2f",
+    "live": true,
+    "updated": "2026-11-15 11:00",
+    "items": [
+      {
+        "t": "BLG夺冠",
+        "h": "4023万",
+        "u": "https://www.toutiao.com/trending/7708182428107689481/"
+      },
+      {
+        "t": "王传福低调现身河南",
+        "h": "3640万",
+        "u": "https://www.toutiao.com/trending/7707845439739118090/"
+      },
+      {
+        "t": "BLG一穿四",
+        "h": "2980万",
+        "u": "https://www.toutiao.com/trending/7707927738598670378/"
+      },
+      {
+        "t": "中国乘客亲历全美停飞以为被空袭",
+        "h": "2696万",
+        "u": "https://www.toutiao.com/trending/7707795997758193691/"
+      },
+      {
+        "t": "胖东来羽绒服标注进货价与毛利率",
+        "h": "2440万",
+        "u": "https://www.toutiao.com/trending/7706487347159777818/"
+      },
+      {
+        "t": "BLG李宁联名队服炒至1400元",
+        "h": "2208万",
+        "u": "https://www.toutiao.com/trending/7708199920259465755/"
+      },
+      {
+        "t": "正部级彭金辉有新职",
+        "h": "1807万",
+        "u": "https://www.toutiao.com/trending/7707937312566607926/"
+      },
+      {
+        "t": "Bin父亲：为他感到自豪",
+        "h": "1635万",
+        "u": "https://www.toutiao.com/trending/7708210447920513574/"
+      },
+      {
+        "t": "曝娜然怀孕了",
+        "h": "1480万",
+        "u": "https://www.toutiao.com/trending/7706904980455964726/"
+      },
+      {
+        "t": "美已护航超17亿桶原油通过霍尔木兹",
+        "h": "1339万",
+        "u": "https://www.toutiao.com/trending/7707018071642325542/"
+      },
+      {
+        "t": "Knight当选S16全球总决赛FMVP",
+        "h": "1212万",
+        "u": "https://www.toutiao.com/trending/7707455053946306596/"
+      },
+      {
+        "t": "两股冷空气接连来袭 局地降幅超12℃",
+        "h": "1096万",
+        "u": "https://www.toutiao.com/trending/7707994406879543835/"
+      },
+      {
+        "t": "猪价下行原因在哪",
+        "h": "992万",
+        "u": "https://www.toutiao.com/trending/7708203281222209067/"
+      },
+      {
+        "t": "如何看待BLG拿下英雄联盟S16冠军",
+        "h": "898万",
+        "u": "https://www.toutiao.com/trending/7707621413692965385/"
+      },
+      {
+        "t": "博主：邵佳一终于找到国足最强阵容",
+        "h": "812万",
+        "u": "https://www.toutiao.com/trending/7708060290977386026/"
+      },
+      {
+        "t": "零元面馆设用餐门槛周边商户不买账",
+        "h": "735万",
+        "u": "https://www.toutiao.com/trending/7708167571270356490/"
+      },
+      {
+        "t": "后C罗时代葡萄牙遭遇大败",
+        "h": "665万",
+        "u": "https://www.toutiao.com/trending/7708147309472776731/"
+      },
+      {
+        "t": "业内称山姆399元羽绒服是钩子商品",
+        "h": "602万",
+        "u": "https://www.toutiao.com/trending/7707937951501763099/"
+      },
+      {
+        "t": "20克大金镯子暴跌10000元",
+        "h": "544万",
+        "u": "https://www.toutiao.com/trending/7707501844583383590/"
+      },
+      {
+        "t": "曝C罗计划明年7月全家搬回葡萄牙",
+        "h": "493万",
+        "u": "https://www.toutiao.com/trending/7707465427475268106/"
+      },
+      {
+        "t": "天价羽绒服滤镜被超市平替撕碎",
+        "h": "446万",
+        "u": "https://www.toutiao.com/trending/7707984159179804196/"
+      },
+      {
+        "t": "郑钦文中网冠军含金量持续上升",
+        "h": "403万",
+        "u": "https://www.toutiao.com/trending/7707855310455587379/"
+      },
+      {
+        "t": "中国出口AI霸总生产线",
+        "h": "365万",
+        "u": "https://www.toutiao.com/trending/7708203269067132459/"
+      },
+      {
+        "t": "本周十大牛熊股出炉",
+        "h": "330万",
+        "u": "https://www.toutiao.com/trending/7707597737109455411/"
+      },
+      {
+        "t": "多地官宣雪假来袭",
+        "h": "299万",
+        "u": "https://www.toutiao.com/trending/7707871374735491635/"
+      },
+      {
+        "t": "达姆斯高：很难相信能4-0领先葡萄牙",
+        "h": "270万",
+        "u": "https://www.toutiao.com/trending/7707973687589814299/"
+      },
+      {
+        "t": "小伙5年开出1300家无人健身房",
+        "h": "245万",
+        "u": "https://www.toutiao.com/trending/7707843915060691482/"
+      },
+      {
+        "t": "南昌公安在马拉松现场展示硬核装备",
+        "h": "221万",
+        "u": "https://www.toutiao.com/trending/7707910150484721702/"
+      },
+      {
+        "t": "《英雄联盟：曙光》预告片发布",
+        "h": "200万",
+        "u": "https://www.toutiao.com/trending/7708154572829475354/"
+      },
+      {
+        "t": "全美航班停飞背后的十亿美元疑问",
+        "h": "181万",
+        "u": "https://www.toutiao.com/trending/7708068560177729051/"
+      },
+      {
+        "t": "糖尿病早期无症状 出现5种表现要重视",
+        "h": "164万",
+        "u": "https://www.toutiao.com/trending/7708016813925515327/"
+      },
+      {
+        "t": "刘德华蹲在地上帮粉丝签名",
+        "h": "148万",
+        "u": "https://www.toutiao.com/trending/7707892437594948105/"
+      },
+      {
+        "t": "沙特首都利雅得传出剧烈爆炸声",
+        "h": "134万",
+        "u": "https://www.toutiao.com/trending/7707860636574793769/"
+      },
+      {
+        "t": "经济学家：A股长期向好基础坚实",
+        "h": "121万",
+        "u": "https://www.toutiao.com/trending/7708211121630593060/"
+      },
+      {
+        "t": "全美停飞令冲击体育赛事",
+        "h": "110万",
+        "u": "https://www.toutiao.com/trending/7707767114723787274/"
+      },
+      {
+        "t": "原价129万/支的天价药进医保了",
+        "h": "99万",
+        "u": "https://www.toutiao.com/trending/7707855337277161526/"
+      },
+      {
+        "t": "一周一次创新降糖周制剂纳入医保",
+        "h": "90万",
+        "u": "https://www.toutiao.com/trending/7707585399157358655/"
+      },
+      {
+        "t": "美财长贝森特承认移居军事基地",
+        "h": "81万",
+        "u": "https://www.toutiao.com/trending/7707769000180941363/"
+      },
+      {
+        "t": "WTT伊斯坦布尔站今日赛程",
+        "h": "74万",
+        "u": "https://www.toutiao.com/trending/7708091798542975498/"
+      },
+      {
+        "t": "新婚夫妻还没出蜜月双双确诊糖尿病",
+        "h": "67万",
+        "u": "https://www.toutiao.com/trending/7707868320216711210/"
+      },
+      {
+        "t": "王一博工作室辟谣whoop账号传闻",
+        "h": "60万",
+        "u": "https://www.toutiao.com/trending/7708185533863707146/"
+      },
+      {
+        "t": "曝葡萄牙联系C罗想为他举办告别仪式",
+        "h": "49万",
+        "u": "https://www.toutiao.com/trending/7707079904462045238/"
+      },
+      {
+        "t": "15省放秋假 多景区工作日人多到限流",
+        "h": "45万",
+        "u": "https://www.toutiao.com/trending/7707568773934465587/"
+      },
+      {
+        "t": "马天宇自我疗愈能力到底有多强",
+        "h": "40万",
+        "u": "https://www.toutiao.com/trending/7707562957903118377/"
+      },
+      {
+        "t": "不同年龄段健康节奏各有侧重",
+        "h": "37万",
+        "u": "https://www.toutiao.com/trending/7707203079422214185/"
+      },
+      {
+        "t": "男子误购2.3万机票几分钟后退票被扣1万",
+        "h": "33万",
+        "u": "https://www.toutiao.com/trending/7707567568017424923/"
+      },
+      {
+        "t": "男子连续15年穿蜘蛛侠衣服跑马拉松",
+        "h": "30万",
+        "u": "https://www.toutiao.com/trending/7708169838161855027/"
+      }
+    ]
+  },
+  {
+    "name": "百度",
+    "rank": "热搜",
+    "color": "#315efb",
+    "live": true,
+    "updated": "2026-11-15 11:00",
+    "items": [
+      {
+        "t": "S16总决赛：中国战队BLG逆转夺冠",
+        "h": "781万",
+        "u": "https://www.baidu.com/s?wd=S16%E6%80%BB%E5%86%B3%E8%B5%9B%EF%BC%9A%E4%B8%AD%E5%9B%BD%E6%88%98%E9%98%9FBLG%E9%80%86%E8%BD%AC%E5%A4%BA%E5%86%A0"
+      },
+      {
+        "t": "95岁美国老人一口青海话",
+        "h": "771万",
+        "u": "https://www.baidu.com/s?wd=95%E5%B2%81%E7%BE%8E%E5%9B%BD%E8%80%81%E4%BA%BA%E4%B8%80%E5%8F%A3%E9%9D%92%E6%B5%B7%E8%AF%9D"
+      },
+      {
+        "t": "BLG是不是史上最有含金量的冠军",
+        "h": "743万",
+        "u": "https://www.baidu.com/s?wd=BLG%E6%98%AF%E4%B8%8D%E6%98%AF%E5%8F%B2%E4%B8%8A%E6%9C%80%E6%9C%89%E5%90%AB%E9%87%91%E9%87%8F%E7%9A%84%E5%86%A0%E5%86%9B"
+      },
+      {
+        "t": "孙悦婚礼孙卓落泪拥抱姐姐",
+        "h": "733万",
+        "u": "https://www.baidu.com/s?wd=%E5%AD%99%E6%82%A6%E5%A9%9A%E7%A4%BC%E5%AD%99%E5%8D%93%E8%90%BD%E6%B3%AA%E6%8B%A5%E6%8A%B1%E5%A7%90%E5%A7%90"
+      },
+      {
+        "t": "北京天津等9省区市有浓雾或强浓雾",
+        "h": "723万",
+        "u": "https://www.baidu.com/s?wd=%E5%8C%97%E4%BA%AC%E5%A4%A9%E6%B4%A5%E7%AD%899%E7%9C%81%E5%8C%BA%E5%B8%82%E6%9C%89%E6%B5%93%E9%9B%BE%E6%88%96%E5%BC%BA%E6%B5%93%E9%9B%BE"
+      },
+      {
+        "t": "ON：24年失败的悔恨 终于能得到原谅",
+        "h": "714万",
+        "u": "https://www.baidu.com/s?wd=ON%EF%BC%9A24%E5%B9%B4%E5%A4%B1%E8%B4%A5%E7%9A%84%E6%82%94%E6%81%A8%20%E7%BB%88%E4%BA%8E%E8%83%BD%E5%BE%97%E5%88%B0%E5%8E%9F%E8%B0%85"
+      },
+      {
+        "t": "BLG夺冠刷屏半个娱乐圈",
+        "h": "704万",
+        "u": "https://www.baidu.com/s?wd=BLG%E5%A4%BA%E5%86%A0%E5%88%B7%E5%B1%8F%E5%8D%8A%E4%B8%AA%E5%A8%B1%E4%B9%90%E5%9C%88"
+      },
+      {
+        "t": "雷鸟这双眼睛到底看了多远",
+        "h": "695万",
+        "u": "https://www.baidu.com/s?wd=%E9%9B%B7%E9%B8%9F%E8%BF%99%E5%8F%8C%E7%9C%BC%E7%9D%9B%E5%88%B0%E5%BA%95%E7%9C%8B%E4%BA%86%E5%A4%9A%E8%BF%9C"
+      },
+      {
+        "t": "官方辟谣“太原还有3天雪假”",
+        "h": "685万",
+        "u": "https://www.baidu.com/s?wd=%E5%AE%98%E6%96%B9%E8%BE%9F%E8%B0%A3%E2%80%9C%E5%A4%AA%E5%8E%9F%E8%BF%98%E6%9C%893%E5%A4%A9%E9%9B%AA%E5%81%87%E2%80%9D"
+      },
+      {
+        "t": "BLG夺冠 B站免费送大会员",
+        "h": "676万",
+        "u": "https://www.baidu.com/s?wd=BLG%E5%A4%BA%E5%86%A0%20B%E7%AB%99%E5%85%8D%E8%B4%B9%E9%80%81%E5%A4%A7%E4%BC%9A%E5%91%98"
+      },
+      {
+        "t": "男子借10元救急 10多年不还",
+        "h": "657万",
+        "u": "https://www.baidu.com/s?wd=%E7%94%B7%E5%AD%90%E5%80%9F10%E5%85%83%E6%95%91%E6%80%A5%2010%E5%A4%9A%E5%B9%B4%E4%B8%8D%E8%BF%98"
+      },
+      {
+        "t": "Bin成为LPL历史首位大满贯上路选手",
+        "h": "647万",
+        "u": "https://www.baidu.com/s?wd=Bin%E6%88%90%E4%B8%BALPL%E5%8E%86%E5%8F%B2%E9%A6%96%E4%BD%8D%E5%A4%A7%E6%BB%A1%E8%B4%AF%E4%B8%8A%E8%B7%AF%E9%80%89%E6%89%8B"
+      },
+      {
+        "t": "20克金镯子暴跌10000元",
+        "h": "637万",
+        "u": "https://www.baidu.com/s?wd=20%E5%85%8B%E9%87%91%E9%95%AF%E5%AD%90%E6%9A%B4%E8%B7%8C10000%E5%85%83"
+      },
+      {
+        "t": "天价羽绒服滤镜被超市平替撕碎",
+        "h": "628万",
+        "u": "https://www.baidu.com/s?wd=%E5%A4%A9%E4%BB%B7%E7%BE%BD%E7%BB%92%E6%9C%8D%E6%BB%A4%E9%95%9C%E8%A2%AB%E8%B6%85%E5%B8%82%E5%B9%B3%E6%9B%BF%E6%92%95%E7%A2%8E"
+      },
+      {
+        "t": "郑州学校运动会 操场大雾看不清跑道",
+        "h": "619万",
+        "u": "https://www.baidu.com/s?wd=%E9%83%91%E5%B7%9E%E5%AD%A6%E6%A0%A1%E8%BF%90%E5%8A%A8%E4%BC%9A%20%E6%93%8D%E5%9C%BA%E5%A4%A7%E9%9B%BE%E7%9C%8B%E4%B8%8D%E6%B8%85%E8%B7%91%E9%81%93"
+      },
+      {
+        "t": "Bin夺冠后哭了",
+        "h": "610万",
+        "u": "https://www.baidu.com/s?wd=Bin%E5%A4%BA%E5%86%A0%E5%90%8E%E5%93%AD%E4%BA%86"
+      },
+      {
+        "t": "韩网热议BLG夺冠",
+        "h": "598万",
+        "u": "https://www.baidu.com/s?wd=%E9%9F%A9%E7%BD%91%E7%83%AD%E8%AE%AEBLG%E5%A4%BA%E5%86%A0"
+      },
+      {
+        "t": "人民日报三问希望小学“卖惨骗捐”案",
+        "h": "590万",
+        "u": "https://www.baidu.com/s?wd=%E4%BA%BA%E6%B0%91%E6%97%A5%E6%8A%A5%E4%B8%89%E9%97%AE%E5%B8%8C%E6%9C%9B%E5%B0%8F%E5%AD%A6%E2%80%9C%E5%8D%96%E6%83%A8%E9%AA%97%E6%8D%90%E2%80%9D%E6%A1%88"
+      },
+      {
+        "t": "Chovy表情不对了",
+        "h": "581万",
+        "u": "https://www.baidu.com/s?wd=Chovy%E8%A1%A8%E6%83%85%E4%B8%8D%E5%AF%B9%E4%BA%86"
+      },
+      {
+        "t": "Chovy真同意了",
+        "h": "571万",
+        "u": "https://www.baidu.com/s?wd=Chovy%E7%9C%9F%E5%90%8C%E6%84%8F%E4%BA%86"
+      },
+      {
+        "t": "中国战队时隔5年再捧冠军奖杯",
+        "h": "561万",
+        "u": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%9B%BD%E6%88%98%E9%98%9F%E6%97%B6%E9%9A%945%E5%B9%B4%E5%86%8D%E6%8D%A7%E5%86%A0%E5%86%9B%E5%A5%96%E6%9D%AF"
+      },
+      {
+        "t": "近30头一级保护动物罕见集体出行",
+        "h": "552万",
+        "u": "https://www.baidu.com/s?wd=%E8%BF%9130%E5%A4%B4%E4%B8%80%E7%BA%A7%E4%BF%9D%E6%8A%A4%E5%8A%A8%E7%89%A9%E7%BD%95%E8%A7%81%E9%9B%86%E4%BD%93%E5%87%BA%E8%A1%8C"
+      },
+      {
+        "t": "多部门暗访组调查 发现多个问题",
+        "h": "543万",
+        "u": "https://www.baidu.com/s?wd=%E5%A4%9A%E9%83%A8%E9%97%A8%E6%9A%97%E8%AE%BF%E7%BB%84%E8%B0%83%E6%9F%A5%20%E5%8F%91%E7%8E%B0%E5%A4%9A%E4%B8%AA%E9%97%AE%E9%A2%98"
+      },
+      {
+        "t": "零元面馆老板称骂我越多福报越多",
+        "h": "533万",
+        "u": "https://www.baidu.com/s?wd=%E9%9B%B6%E5%85%83%E9%9D%A2%E9%A6%86%E8%80%81%E6%9D%BF%E7%A7%B0%E9%AA%82%E6%88%91%E8%B6%8A%E5%A4%9A%E7%A6%8F%E6%8A%A5%E8%B6%8A%E5%A4%9A"
+      },
+      {
+        "t": "神bin天降",
+        "h": "522万",
+        "u": "https://www.baidu.com/s?wd=%E7%A5%9Ebin%E5%A4%A9%E9%99%8D"
+      },
+      {
+        "t": "《英雄联盟》将全面升级",
+        "h": "514万",
+        "u": "https://www.baidu.com/s?wd=%E3%80%8A%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%E3%80%8B%E5%B0%86%E5%85%A8%E9%9D%A2%E5%8D%87%E7%BA%A7"
+      },
+      {
+        "t": "猛虎袭击巴基斯坦19岁少年 致其死亡",
+        "h": "505万",
+        "u": "https://www.baidu.com/s?wd=%E7%8C%9B%E8%99%8E%E8%A2%AD%E5%87%BB%E5%B7%B4%E5%9F%BA%E6%96%AF%E5%9D%A619%E5%B2%81%E5%B0%91%E5%B9%B4%20%E8%87%B4%E5%85%B6%E6%AD%BB%E4%BA%A1"
+      },
+      {
+        "t": "男主持人念稿时没忍住打了个喷嚏",
+        "h": "494万",
+        "u": "https://www.baidu.com/s?wd=%E7%94%B7%E4%B8%BB%E6%8C%81%E4%BA%BA%E5%BF%B5%E7%A8%BF%E6%97%B6%E6%B2%A1%E5%BF%8D%E4%BD%8F%E6%89%93%E4%BA%86%E4%B8%AA%E5%96%B7%E5%9A%8F"
+      },
+      {
+        "t": "连休5天！多地官宣新假期",
+        "h": "486万",
+        "u": "https://www.baidu.com/s?wd=%E8%BF%9E%E4%BC%915%E5%A4%A9%EF%BC%81%E5%A4%9A%E5%9C%B0%E5%AE%98%E5%AE%A3%E6%96%B0%E5%81%87%E6%9C%9F"
+      },
+      {
+        "t": "江苏一企业内发生爆炸 火光冲天",
+        "h": "474万",
+        "u": "https://www.baidu.com/s?wd=%E6%B1%9F%E8%8B%8F%E4%B8%80%E4%BC%81%E4%B8%9A%E5%86%85%E5%8F%91%E7%94%9F%E7%88%86%E7%82%B8%20%E7%81%AB%E5%85%89%E5%86%B2%E5%A4%A9"
+      },
+      {
+        "t": "拒请咖啡取消面试公司已经营异常",
+        "h": "467万",
+        "u": "https://www.baidu.com/s?wd=%E6%8B%92%E8%AF%B7%E5%92%96%E5%95%A1%E5%8F%96%E6%B6%88%E9%9D%A2%E8%AF%95%E5%85%AC%E5%8F%B8%E5%B7%B2%E7%BB%8F%E8%90%A5%E5%BC%82%E5%B8%B8"
+      },
+      {
+        "t": "#我的青春回来了#",
+        "h": "455万",
+        "u": "https://www.baidu.com/s?wd=%23%E6%88%91%E7%9A%84%E9%9D%92%E6%98%A5%E5%9B%9E%E6%9D%A5%E4%BA%86%23"
+      },
+      {
+        "t": "睡眠不足的人长期处于应激状态",
+        "h": "446万",
+        "u": "https://www.baidu.com/s?wd=%E7%9D%A1%E7%9C%A0%E4%B8%8D%E8%B6%B3%E7%9A%84%E4%BA%BA%E9%95%BF%E6%9C%9F%E5%A4%84%E4%BA%8E%E5%BA%94%E6%BF%80%E7%8A%B6%E6%80%81"
+      },
+      {
+        "t": "BLG一穿四",
+        "h": "435万",
+        "u": "https://www.baidu.com/s?wd=BLG%E4%B8%80%E7%A9%BF%E5%9B%9B"
+      },
+      {
+        "t": "女子因拒绝给HR带咖啡被取消面试",
+        "h": "427万",
+        "u": "https://www.baidu.com/s?wd=%E5%A5%B3%E5%AD%90%E5%9B%A0%E6%8B%92%E7%BB%9D%E7%BB%99HR%E5%B8%A6%E5%92%96%E5%95%A1%E8%A2%AB%E5%8F%96%E6%B6%88%E9%9D%A2%E8%AF%95"
+      },
+      {
+        "t": "BLG捧杯",
+        "h": "418万",
+        "u": "https://www.baidu.com/s?wd=BLG%E6%8D%A7%E6%9D%AF"
+      },
+      {
+        "t": "BLG夺冠资本兑现",
+        "h": "408万",
+        "u": "https://www.baidu.com/s?wd=BLG%E5%A4%BA%E5%86%A0%E8%B5%84%E6%9C%AC%E5%85%91%E7%8E%B0"
+      },
+      {
+        "t": "中国近六成家庭户不超过两个人",
+        "h": "399万",
+        "u": "https://www.baidu.com/s?wd=%E4%B8%AD%E5%9B%BD%E8%BF%91%E5%85%AD%E6%88%90%E5%AE%B6%E5%BA%AD%E6%88%B7%E4%B8%8D%E8%B6%85%E8%BF%87%E4%B8%A4%E4%B8%AA%E4%BA%BA"
+      },
+      {
+        "t": "BLG夺冠 各路解说反应",
+        "h": "389万",
+        "u": "https://www.baidu.com/s?wd=BLG%E5%A4%BA%E5%86%A0%20%E5%90%84%E8%B7%AF%E8%A7%A3%E8%AF%B4%E5%8F%8D%E5%BA%94"
+      },
+      {
+        "t": "Knight S16全球总决赛FMVP",
+        "h": "380万",
+        "u": "https://www.baidu.com/s?wd=Knight%20S16%E5%85%A8%E7%90%83%E6%80%BB%E5%86%B3%E8%B5%9BFMVP"
+      },
+      {
+        "t": "Bin熬过所有非议重返世界之巅",
+        "h": "369万",
+        "u": "https://www.baidu.com/s?wd=Bin%E7%86%AC%E8%BF%87%E6%89%80%E6%9C%89%E9%9D%9E%E8%AE%AE%E9%87%8D%E8%BF%94%E4%B8%96%E7%95%8C%E4%B9%8B%E5%B7%85"
+      },
+      {
+        "t": "凌晨3点电影院热闹得像过年",
+        "h": "360万",
+        "u": "https://www.baidu.com/s?wd=%E5%87%8C%E6%99%A83%E7%82%B9%E7%94%B5%E5%BD%B1%E9%99%A2%E7%83%AD%E9%97%B9%E5%BE%97%E5%83%8F%E8%BF%87%E5%B9%B4"
+      },
+      {
+        "t": "多地强浓雾 局地能见度低于50米",
+        "h": "349万",
+        "u": "https://www.baidu.com/s?wd=%E5%A4%9A%E5%9C%B0%E5%BC%BA%E6%B5%93%E9%9B%BE%20%E5%B1%80%E5%9C%B0%E8%83%BD%E8%A7%81%E5%BA%A6%E4%BD%8E%E4%BA%8E50%E7%B1%B3"
+      },
+      {
+        "t": "刘德华蹲在地上帮粉丝签名",
+        "h": "341万",
+        "u": "https://www.baidu.com/s?wd=%E5%88%98%E5%BE%B7%E5%8D%8E%E8%B9%B2%E5%9C%A8%E5%9C%B0%E4%B8%8A%E5%B8%AE%E7%B2%89%E4%B8%9D%E7%AD%BE%E5%90%8D"
+      },
+      {
+        "t": "零元面馆设用餐门槛 周边商户不买账",
+        "h": "333万",
+        "u": "https://www.baidu.com/s?wd=%E9%9B%B6%E5%85%83%E9%9D%A2%E9%A6%86%E8%AE%BE%E7%94%A8%E9%A4%90%E9%97%A8%E6%A7%9B%20%E5%91%A8%E8%BE%B9%E5%95%86%E6%88%B7%E4%B8%8D%E4%B9%B0%E8%B4%A6"
+      },
+      {
+        "t": "后C罗时代首战 葡萄牙1比4惨败丹麦",
+        "h": "323万",
+        "u": "https://www.baidu.com/s?wd=%E5%90%8EC%E7%BD%97%E6%97%B6%E4%BB%A3%E9%A6%96%E6%88%98%20%E8%91%A1%E8%90%84%E7%89%991%E6%AF%944%E6%83%A8%E8%B4%A5%E4%B8%B9%E9%BA%A6"
+      }
+    ]
+  },
+  {
+    "name": "哔哩哔哩",
+    "rank": "热门",
+    "color": "#e56a9a",
+    "live": true,
+    "updated": "2026-11-15 11:00",
+    "items": [
+      {
+        "t": "为什么是最后一期？影视飓风1800万粉丝Q&amp;A！",
+        "h": "545万",
+        "u": "https://b23.tv/BV1kZWX62ENY"
+      },
+      {
+        "t": "他真的太优雅了！灰太狼&amp;红太狼【非凡之爱】【AI MV大赛】",
+        "h": "1340万",
+        "u": "https://b23.tv/BV1aNWm6UEeC"
+      },
+      {
+        "t": "《崩坏：星穹铁道》EP：「无中生有」",
+        "h": "246万",
+        "u": "https://b23.tv/BV1nEWu6xEyq"
+      },
+      {
+        "t": "【烂奇迹】三毛：我的一生颠沛流离，活到现在算是个奇迹",
+        "h": "151万",
+        "u": "https://b23.tv/BV14gW16iEq8"
+      },
+      {
+        "t": "《反方向の忠》",
+        "h": "327万",
+        "u": "https://b23.tv/BV1MRWm65EMC"
+      },
+      {
+        "t": "《原神》过场动画-「岩与契约」",
+        "h": "145万",
+        "u": "https://b23.tv/BV1aTWm6jEL8"
+      },
+      {
+        "t": "臣妾要线上告发熹贵妃 2.0",
+        "h": "254万",
+        "u": "https://b23.tv/BV1PZWR6xEqv"
+      },
+      {
+        "t": "全看过的这辈子有了",
+        "h": "245万",
+        "u": "https://b23.tv/BV1rpWe6ZEWn"
+      },
+      {
+        "t": "在这里，万亿吨水被强行灌进火山……【地理志】",
+        "h": "226万",
+        "u": "https://b23.tv/BV1GPWi6SECk"
+      },
+      {
+        "t": "MJ宇宙校园之末日降临第一集",
+        "h": "177万",
+        "u": "https://b23.tv/BV1jDW963EWf"
+      },
+      {
+        "t": "假⚡️面⚡️难⚡️藏⚡️泪",
+        "h": "141万",
+        "u": "https://b23.tv/BV1GbWq6HEct"
+      },
+      {
+        "t": "“这是解锁了什么吗？！”",
+        "h": "94万",
+        "u": "https://b23.tv/BV1xsWQ6nE2v"
+      },
+      {
+        "t": "把旧发条装新身体上会发生什么？",
+        "h": "224万",
+        "u": "https://b23.tv/BV1sEW16cEJN"
+      },
+      {
+        "t": "耗资上万！我把匠魂做进了网页版mc... 【B站AI创造公开赛】",
+        "h": "49万",
+        "u": "https://b23.tv/BV1HTWq6iESp"
+      },
+      {
+        "t": "当家里的大肥鱼被饿了好几个小时以后",
+        "h": "203万",
+        "u": "https://b23.tv/BV1GsWv6jErZ"
+      },
+      {
+        "t": "你们外卖还有陪聊服务吗？",
+        "h": "205万",
+        "u": "https://b23.tv/BV1mjWm6gE1T"
+      },
+      {
+        "t": "《我的傲娇星神不可能这么可爱》",
+        "h": "219万",
+        "u": "https://b23.tv/BV1rnW16fE6v"
+      },
+      {
+        "t": "75年后，他终于带上牺牲的战友去北京看天安门了",
+        "h": "51万",
+        "u": "https://b23.tv/BV1MeWv6gEKa"
+      },
+      {
+        "t": "把苏德拼好给你｜6分钟看完二战苏德战场",
+        "h": "98万",
+        "u": "https://b23.tv/BV17KWY6DETN"
+      },
+      {
+        "t": "极致的走线！",
+        "h": "291万",
+        "u": "https://b23.tv/BV1bkW86bEij"
+      },
+      {
+        "t": "无烟酒吧倒闭、张美玉抑郁、大学生无偿代跑拒绝供出同学【抽象周刊】",
+        "h": "324万",
+        "u": "https://b23.tv/BV1f4WR61EnR"
+      },
+      {
+        "t": "我是Tim，同事让我变装",
+        "h": "158万",
+        "u": "https://b23.tv/BV1vDW963E3N"
+      },
+      {
+        "t": "从清末讲武堂到开国大典｜朱德波澜壮阔的一生",
+        "h": "70万",
+        "u": "https://b23.tv/BV1c9WD6kE6t"
+      },
+      {
+        "t": "根本没有这样的夹子",
+        "h": "280万",
+        "u": "https://b23.tv/BV12oWi6VEz7"
+      },
+      {
+        "t": "我修改了Minecraft的冰：",
+        "h": "192万",
+        "u": "https://b23.tv/BV181WR6eEbR"
+      },
+      {
+        "t": "这都能还原！！？【MC阿哈篇】",
+        "h": "266万",
+        "u": "https://b23.tv/BV1MdWL6WEiB"
+      },
+      {
+        "t": "谁点名要看我cos德穆兰的？英语总监莅临还不快来迎接！",
+        "h": "229万",
+        "u": "https://b23.tv/BV1PKWj62ERK"
+      },
+      {
+        "t": "疑似《崩坏：星穹铁道》星神★阿哈★真人角色PV流出",
+        "h": "133万",
+        "u": "https://b23.tv/BV1CyW26wEad"
+      },
+      {
+        "t": "拿中老年病痛玩梗，还被44万人点赞，这是最近最让我恶心的烂梗！",
+        "h": "344万",
+        "u": "https://b23.tv/BV11CWD6EEjf"
+      },
+      {
+        "t": "有用版新僵尸：慈祥二爷",
+        "h": "234万",
+        "u": "https://b23.tv/BV1wyWv6YEJK"
+      },
+      {
+        "t": "冬日宿舍之写检讨",
+        "h": "145万",
+        "u": "https://b23.tv/BV1WWWm6vEn4"
+      },
+      {
+        "t": "Vibe知识大赏 | 挣钱的本质",
+        "h": "84万",
+        "u": "https://b23.tv/BV1npWR6JE8j"
+      },
+      {
+        "t": "英伟达公司宣布：黄仁勋辞职",
+        "h": "291万",
+        "u": "https://b23.tv/BV1FuWZ6dEjb"
+      },
+      {
+        "t": "翻山覆海，以我之名｜2026全球总决赛冠亚军决赛宣传片",
+        "h": "136万",
+        "u": "https://b23.tv/BV1V1Wm6nEJL"
+      },
+      {
+        "t": "《草木皆兵》EP04 新来的寒冰射手为啥这么高冷",
+        "h": "142万",
+        "u": "https://b23.tv/BV1zRW26xEFK"
+      },
+      {
+        "t": "臭肥鱼害我把情书交给辅导员了！【人和肥鱼03】",
+        "h": "164万",
+        "u": "https://b23.tv/BV1MaWv6rEo3"
+      },
+      {
+        "t": "文明重启：耗时3年，我终于做出了我的第一件铁器",
+        "h": "355万",
+        "u": "https://b23.tv/BV1z44n6bEpU"
+      },
+      {
+        "t": "如果小时候幻想过的职业真的成真了？会是怎样？",
+        "h": "211万",
+        "u": "https://b23.tv/BV1JVWq6aECe"
+      },
+      {
+        "t": "竹子从来都不欺人，只要你顺着它的脾气，会给你惊喜！",
+        "h": "259万",
+        "u": "https://b23.tv/BV1V9W96uEVa"
+      },
+      {
+        "t": "宿舍手机壁纸从夯到拉！",
+        "h": "332万",
+        "u": "https://b23.tv/BV1BjWq68Ee2"
+      },
+      {
+        "t": "《你跟他废什么话》",
+        "h": "472万",
+        "u": "https://b23.tv/BV1NvWg6YEjs"
+      },
+      {
+        "t": "从火海中走来 用凡人之躯比肩神明",
+        "h": "86万",
+        "u": "https://b23.tv/BV1jMWY6JEx7"
+      },
+      {
+        "t": "也只有阿基维利能骗到阿哈了",
+        "h": "109万",
+        "u": "https://b23.tv/BV1tGW16NEpQ"
+      },
+      {
+        "t": "不是所有的IP都叫CPOPwave  《鸣潮》用同一个频率引发世界的回响",
+        "h": "75万",
+        "u": "https://b23.tv/BV1G1Wi6QENH"
+      },
+      {
+        "t": "怪诞虫：一只看起来活不过三天的动物，真的存在过？",
+        "h": "117万",
+        "u": "https://b23.tv/BV1v4Wr6uEoG"
+      },
+      {
+        "t": "厨师长下班偷偷吃点客人剩的边角料当晚餐",
+        "h": "113万",
+        "u": "https://b23.tv/BV1fKW963EwS"
+      },
+      {
+        "t": "【带着AI穿越2018】#6 蓝色大肥鱼单刀赴会阿美莉卡",
+        "h": "281万",
+        "u": "https://b23.tv/BV1GJWy6rEQz"
+      },
+      {
+        "t": "&quot; 1 ＋0 ＝10 &quot;",
+        "h": "128万",
+        "u": "https://b23.tv/BV1zYWB6qEgk"
+      },
+      {
+        "t": "辽阔的土地生不出狭隘的爱",
+        "h": "415万",
+        "u": "https://b23.tv/BV1hrW367Emp"
+      },
+      {
+        "t": "请停留3秒，向孙中山先生献花，今天是孙中山先生诞辰160周年，“天下为公”是他毕生的追求， 毛泽东称赞：鞠躬尽瘁，死而后已！（编辑：卓光）#媒体原创",
+        "h": "50万",
+        "u": "https://b23.tv/BV1UgW16iEab"
+      }
+    ]
+  },
+  {
+    "name": "豆瓣",
+    "rank": "热议",
+    "color": "#4a9e4d",
+    "live": true,
+    "updated": "2026-11-15 11:01",
+    "items": [
+      {
+        "t": "奶奶在67岁交到了此生最好的朋友",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505335068/?_spm_id=MTM4MjE5OTk1"
+      },
+      {
+        "t": "哎你也飞着呢26",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505336673/?_spm_id=MzM4OTExMg"
+      },
+      {
+        "t": "2026-11-10 9:46 a.m",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505207577/?_spm_id=MTYyODAzMTA0"
+      },
+      {
+        "t": "果壳里的日落",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505424117/?_spm_id=MjIyNDA2MzE4"
+      },
+      {
+        "t": "推一些语言风格很搞笑的书",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505374752/?_spm_id=MjI1NTY4NjQw"
+      },
+      {
+        "t": "新西兰，世界在别处。",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/504999396/?_spm_id=MTg4OTcxODU4"
+      },
+      {
+        "t": "厦门最佳赏味期到了！非游客路线分享",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505139738/?_spm_id=MTQ2NDQ0ODMw"
+      },
+      {
+        "t": "我在农村使用极其频繁的火炉子",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505231039/?_spm_id=NTMxNDExOTA"
+      },
+      {
+        "t": "低粉账号成交的关键在于大胆报价（不要脸版）",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505128136/?_spm_id=MjEzOTQ3NDg4"
+      },
+      {
+        "t": "色彩之美——蓝喉蜂虎",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505304199/?_spm_id=NDU3ODc4NQ"
+      },
+      {
+        "t": "怕冷星人，我和老妈的冬日保暖",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/504976476/?_spm_id=Mjk2NDk3MTM4"
+      },
+      {
+        "t": "别把面试当面试，你会发现这是一件稳赚不赔的事",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505231126/?_spm_id=Mjc5Mjk2NzYz"
+      },
+      {
+        "t": "雅思考经：大学生低成本自学雅思8.0",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505307216/?_spm_id=MjQ0MzEyNDA4"
+      },
+      {
+        "t": "162/98 📝 短发🍐每天穿什么",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505135024/?_spm_id=MTUxMjE1NDYz"
+      },
+      {
+        "t": "德国婆婆亲自安排好了自己的葬礼，也让我重新了解她",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505098894/?_spm_id=MTU4Njk3ODA5"
+      },
+      {
+        "t": "7天东京solo trip（纯溜达版）",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505240112/?_spm_id=NDQ4MjM4NzU"
+      },
+      {
+        "t": "假装在江南",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/504938721/?_spm_id=MTg5NzMwMjIz"
+      },
+      {
+        "t": "一大波狸狸萌照来袭",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505234359/?_spm_id=MjA5NDg4OTc0"
+      },
+      {
+        "t": "美衣美鞋｜新人入组分享一些150小个子穿搭",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505178635/?_spm_id=MTg2OTE4NTgx"
+      },
+      {
+        "t": "旧金山｜马蒂斯《戴帽子的女人》：一场现代争议",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505090410/?_spm_id=OTI3MzY3NzQ"
+      },
+      {
+        "t": "秋天已经过去",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505008567/?_spm_id=MTczMTYzNTEw"
+      },
+      {
+        "t": "爱笑的小狗🐕，运气不会差。",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/504775281/?_spm_id=MjQ0NzU3MzAz"
+      },
+      {
+        "t": "颐和园谐趣园的大果榆今年也很美",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/504744146/?_spm_id=MzY4NDM3Nzg"
+      },
+      {
+        "t": "一个动作教会你正确走姿",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505135292/?_spm_id=MjIzOTI3Njg1"
+      },
+      {
+        "t": "要不要一起研究一下各个物品的成本价",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/505011943/?_spm_id=MjU4ODI4MjM5"
+      },
+      {
+        "t": "想跟着秋天学画画",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/504687280/?_spm_id=MzY4NDM3Nzg"
+      },
+      {
+        "t": "空中游鱼",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/504768118/?_spm_id=MTY0NjE4Ng"
+      },
+      {
+        "t": "江西爆辣皮蛋肉丝炒米粉",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/504654606/?_spm_id=MjA5ODYwODYx"
+      },
+      {
+        "t": "一个对事业毫无用处但是能让工作不那么痛苦的证书",
+        "h": "",
+        "u": "https://www.douban.com/group/topic/504683057/?_spm_id=MjU4Njg0Njkw"
+      }
+    ]
+  },
+  {
+    "name": "虎扑",
+    "rank": "热帖",
+    "color": "#b03a2e",
+    "live": true,
+    "updated": "2026-11-15 11:01",
+    "items": [
+      {
+        "t": "被两位女博士先后搭讪的一天",
+        "h": "13",
+        "u": "https://bbs.hupu.com/643938755.html"
+      },
+      {
+        "t": "历史上真实的岳飞，真的有能力收复中原，直捣黄龙府吗？",
+        "h": "13",
+        "u": "https://bbs.hupu.com/643942872.html"
+      },
+      {
+        "t": "这是不是有点太极端了？讨公道我可以理解，但一通乱骂…..",
+        "h": "3",
+        "u": "https://bbs.hupu.com/643943024.html"
+      },
+      {
+        "t": "日文版意林出现了，还真对味",
+        "h": "19",
+        "u": "https://bbs.hupu.com/643938830.html"
+      },
+      {
+        "t": "兄弟们帮我看看女朋友是不是约过p",
+        "h": "8",
+        "u": "https://bbs.hupu.com/643939559.html"
+      },
+      {
+        "t": "一开口我懵了",
+        "h": "19",
+        "u": "https://bbs.hupu.com/643928771.html"
+      },
+      {
+        "t": "两名印度警察盘查车辆时以为男子好欺负，当亮出高种姓证时蒙圈了",
+        "h": "13",
+        "u": "https://bbs.hupu.com/643935414.html"
+      },
+      {
+        "t": "BLG牛逼！必须发帖子",
+        "h": "1",
+        "u": "https://bbs.hupu.com/643945034.html"
+      },
+      {
+        "t": "不吹不黑，电竞已经超越足球成第一运动了吧？",
+        "h": "1",
+        "u": "https://bbs.hupu.com/643947249.html"
+      },
+      {
+        "t": "外卖店十个月200万，我今年真要起飞了？算完成本，你猜赚了多少？",
+        "h": "7",
+        "u": "https://bbs.hupu.com/643936714.html"
+      },
+      {
+        "t": "他认为这是代驾服务，车主认为是结伴同游，你们怎么看？",
+        "h": "10",
+        "u": "https://bbs.hupu.com/643935781.html"
+      },
+      {
+        "t": "前华为高管称嫁女儿千万不要找那种连灯都不舍得开的家庭",
+        "h": "3",
+        "u": "https://bbs.hupu.com/643945810.html"
+      },
+      {
+        "t": "男生搭讪到底看中的是什么？",
+        "h": "1",
+        "u": "https://bbs.hupu.com/643948082.html"
+      },
+      {
+        "t": "车上的四个人都是蠢货",
+        "h": "1",
+        "u": "https://bbs.hupu.com/643946684.html"
+      },
+      {
+        "t": "分享一下女朋友 求评价",
+        "h": "",
+        "u": "https://bbs.hupu.com/643945583.html"
+      },
+      {
+        "t": "1018平的大平层是啥样的？卧室都有220平！",
+        "h": "15",
+        "u": "https://bbs.hupu.com/643930795.html"
+      },
+      {
+        "t": "【流量营销？】丹尼餐厅已恢复了纪念黄仁勋在餐厅创立英伟达的纪念牌，称将其拆除是错误的决定",
+        "h": "1",
+        "u": "https://bbs.hupu.com/643946707.html"
+      },
+      {
+        "t": "雾🌫",
+        "h": "",
+        "u": "https://bbs.hupu.com/643946333.html"
+      },
+      {
+        "t": "同一时间，国外在工业革命，国内却在闭关锁国。",
+        "h": "",
+        "u": "https://bbs.hupu.com/643946130.html"
+      },
+      {
+        "t": "和黑哥也能有真的爱情",
+        "h": "2",
+        "u": "https://bbs.hupu.com/643943074.html"
+      },
+      {
+        "t": "卧槽了，这几下子够呛了，拍视频的一直在拱火，结果遇到狠人了",
+        "h": "22",
+        "u": "https://bbs.hupu.com/643928092.html"
+      },
+      {
+        "t": "B站大会员免费送！！！",
+        "h": "1",
+        "u": "https://bbs.hupu.com/643945552.html"
+      },
+      {
+        "t": "我大清远胜于苏联",
+        "h": "7",
+        "u": "https://bbs.hupu.com/643936313.html"
+      },
+      {
+        "t": "我是小丑",
+        "h": "",
+        "u": "https://bbs.hupu.com/643945167.html"
+      },
+      {
+        "t": "锐评一下",
+        "h": "",
+        "u": "https://bbs.hupu.com/643943027.html"
+      },
+      {
+        "t": "以前总说打游戏没出息，现在看看这些顶级打游戏的职业选手年薪，真的惊呆了",
+        "h": "16",
+        "u": "https://bbs.hupu.com/643931129.html"
+      },
+      {
+        "t": "冬日女友OOTD｜把温柔穿在身上️",
+        "h": "5",
+        "u": "https://bbs.hupu.com/643931738.html"
+      },
+      {
+        "t": "卧草了！这么扯竟然还是真人真事？",
+        "h": "4",
+        "u": "https://bbs.hupu.com/643933648.html"
+      },
+      {
+        "t": "这位台湾省网友的父母真厉害！",
+        "h": "12",
+        "u": "https://bbs.hupu.com/643930702.html"
+      },
+      {
+        "t": "球友经历（1）",
+        "h": "16",
+        "u": "https://bbs.hupu.com/643926317.html"
+      },
+      {
+        "t": "每当我以为互联网已经饱和的时候，总有新赛道让我措不及防",
+        "h": "3",
+        "u": "https://bbs.hupu.com/643933100.html"
+      },
+      {
+        "t": "补档球友经历1-我的惊喜她的惊吓",
+        "h": "7",
+        "u": "https://bbs.hupu.com/643926594.html"
+      },
+      {
+        "t": "爱新觉罗后裔跑到日本东京当眼科院长！",
+        "h": "10",
+        "u": "https://bbs.hupu.com/643931218.html"
+      },
+      {
+        "t": "阿杜恋爱记（14）",
+        "h": "1",
+        "u": "https://bbs.hupu.com/643942604.html"
+      },
+      {
+        "t": "香港人，想问一下以前没暖气时，北方人是如何过冬的，硬抗吗？晚上睡觉上洗手间怎办",
+        "h": "11",
+        "u": "https://bbs.hupu.com/643931427.html"
+      },
+      {
+        "t": "怎样屏蔽有关杨瀚森的新闻",
+        "h": "8",
+        "u": "https://bbs.hupu.com/643931874.html"
+      },
+      {
+        "t": "205佛后王横打假《史记》：张良是刘邦第一谋士吗？《留侯世家》是跨数代编织的小说",
+        "h": "3",
+        "u": "https://bbs.hupu.com/643932415.html"
+      },
+      {
+        "t": "小弟对自己建模挺满意，但是不知道怎么大多数能吸引到的都是歪瓜裂枣或者gay啊",
+        "h": "",
+        "u": "https://bbs.hupu.com/643942452.html"
+      },
+      {
+        "t": "支持黄仁勋回归英伟达请愿书签名者激增已超66000人，马斯克言出必行",
+        "h": "22",
+        "u": "https://bbs.hupu.com/643927370.html"
+      },
+      {
+        "t": "领导的微信名:稳如泰山，我起一个什么名字能压过他",
+        "h": "10",
+        "u": "https://bbs.hupu.com/643930618.html"
+      },
+      {
+        "t": "惊呆了，一直低调得像查无此人的丁磊，他离岸信托持股规模直接冲到榜单第一！",
+        "h": "18",
+        "u": "https://bbs.hupu.com/643926165.html"
+      },
+      {
+        "t": "我作为东北人可以跟你说，东北人真没有那么高，我一直以为我1米8（之前一直穿鞋量，我虽然1米73，但是我穿48码的鞋 ，鞋底非常厚，再加上量的不准 ）后来实际红外线量是裸足1米73，我有的时候甚至能秒街",
+        "h": "32",
+        "u": "https://bbs.hupu.com/643926501.html"
+      },
+      {
+        "t": "是继续事业单位的编外还是去国企的劳务派遣？",
+        "h": "7",
+        "u": "https://bbs.hupu.com/643930155.html"
+      },
+      {
+        "t": "BLG加油啊",
+        "h": "1",
+        "u": "https://bbs.hupu.com/643940316.html"
+      },
+      {
+        "t": "自我测试：你会选择哪个房间？",
+        "h": "10",
+        "u": "https://bbs.hupu.com/643927744.html"
+      },
+      {
+        "t": "日本街头的右翼狂热分子，一个比一个智障，全是歪瓜裂枣",
+        "h": "13",
+        "u": "https://bbs.hupu.com/643927655.html"
+      },
+      {
+        "t": "发几张最近的穿搭，一年四季都可以穿裙子真太幸福了",
+        "h": "6",
+        "u": "https://bbs.hupu.com/643927532.html"
+      },
+      {
+        "t": "橘猫尾巴被列车门夹住，乘客拿包包护着，直到下一站开门才脱困",
+        "h": "7",
+        "u": "https://bbs.hupu.com/643928228.html"
+      }
+    ]
+  },
+  {
+    "name": "快手",
+    "rank": "热议",
+    "color": "#e07b24",
+    "live": true,
+    "updated": "2026-11-15 11:00",
+    "items": [
+      {
+        "t": "亚太共此时",
+        "h": "",
+        "u": "https://www.kuaishou.com/short-video/3xuvfc2jyuegk8i"
+      },
+      {
+        "t": "BLG夺得S16冠军",
+        "h": "1245万",
+        "u": "https://www.kuaishou.com/short-video/3xjurg9s2kw9e9i"
+      },
+      {
+        "t": "北京WB夺得KPL年总冠军",
+        "h": "1245万",
+        "u": "https://www.kuaishou.com/short-video/3x9dwimrdfrikgu"
+      },
+      {
+        "t": "轮椅男子求婚众人自发躺下",
+        "h": "1244万",
+        "u": "https://www.kuaishou.com/short-video/3xsahna6eve5des"
+      },
+      {
+        "t": "小学生拍了个慌啥子嘛MV",
+        "h": "1191万",
+        "u": "https://www.kuaishou.com/short-video/3x7veimyqethz4w"
+      },
+      {
+        "t": "今晚只吃一个土鸡腿",
+        "h": "1148万",
+        "u": "https://www.kuaishou.com/short-video/3x7zhkbwe7vad42"
+      },
+      {
+        "t": "南瓜丰收家人险起争执",
+        "h": "1104万",
+        "u": "https://www.kuaishou.com/short-video/3xjajcarianhk4i"
+      },
+      {
+        "t": "九旬独居老人摔伤躺地一夜",
+        "h": "1062万",
+        "u": "https://www.kuaishou.com/short-video/3x77hy45xae7a9g"
+      },
+      {
+        "t": "葡萄牙1比4惨败丹麦",
+        "h": "1042万",
+        "u": "https://www.kuaishou.com/short-video/3x642rgrudgatnc"
+      },
+      {
+        "t": "美州长喊话交通部长辞职",
+        "h": "1039万",
+        "u": "https://www.kuaishou.com/short-video/3xdkpnt27c2f8p6"
+      },
+      {
+        "t": "孙红雷曾公开力挺高叶",
+        "h": "1037万",
+        "u": "https://www.kuaishou.com/short-video/3xks8rprrjg8fqm"
+      },
+      {
+        "t": "女子高速逼停冒火花大车",
+        "h": "1037万",
+        "u": "https://www.kuaishou.com/short-video/3xxjwsxjg2yuwje"
+      },
+      {
+        "t": "央视曝光猪肉冒充牛肉骗局",
+        "h": "1034万",
+        "u": "https://www.kuaishou.com/short-video/3xeuywdcgb3caey"
+      },
+      {
+        "t": "日军侵华慰安所原址成网红打卡点",
+        "h": "1032万",
+        "u": "https://www.kuaishou.com/short-video/3xwgmziyenmb3y4"
+      },
+      {
+        "t": "赵长虹获长沙马拉松半马冠军",
+        "h": "1030万",
+        "u": "https://www.kuaishou.com/short-video/3xf6rawydj4uk94"
+      },
+      {
+        "t": "内塔尼亚胡被批故弄玄虚",
+        "h": "1028万",
+        "u": "https://www.kuaishou.com/short-video/3xw9hpgnw4wwdmu"
+      },
+      {
+        "t": "拒请咖啡取消面试公司已经营异常",
+        "h": "1025万",
+        "u": "https://www.kuaishou.com/short-video/3xmrttghtenh8mw"
+      },
+      {
+        "t": "蚊子唱的歌火了",
+        "h": "1013万",
+        "u": "https://www.kuaishou.com/short-video/3xsweugc6b8zuf6"
+      },
+      {
+        "t": "赵露思生气显在乎粉丝",
+        "h": "1007万",
+        "u": "https://www.kuaishou.com/short-video/3xmm6egryuyv4fs"
+      },
+      {
+        "t": "20克金镯跌了1万元",
+        "h": "1004万",
+        "u": "https://www.kuaishou.com/short-video/3x54n3xtzupj2u4"
+      },
+      {
+        "t": "又一首be神曲来了",
+        "h": "1003万",
+        "u": "https://www.kuaishou.com/short-video/3xu6ranjb8chvbq"
+      },
+      {
+        "t": "国足2比0战胜马来西亚",
+        "h": "1001万",
+        "u": "https://www.kuaishou.com/short-video/3xkjv38mtxfgknc"
+      },
+      {
+        "t": "男子预约推拿技师上门性侵获刑",
+        "h": "998万",
+        "u": "https://www.kuaishou.com/short-video/3xek8pk6ip7ahzy"
+      },
+      {
+        "t": "NBA常规赛掘金轻取鹈鹕",
+        "h": "995万",
+        "u": "https://www.kuaishou.com/short-video/3x89b52iqgbupnk"
+      },
+      {
+        "t": "夸老公堪比给驴打兴奋剂",
+        "h": "993万",
+        "u": "https://www.kuaishou.com/short-video/3xbjjifswmxurdg"
+      },
+      {
+        "t": "日本3比2巴西",
+        "h": "991万",
+        "u": "https://www.kuaishou.com/short-video/3x4pdbbc8fpefcu"
+      },
+      {
+        "t": "胎儿基因缺失竟牵出爸爸肠道癌变",
+        "h": "988万",
+        "u": "https://www.kuaishou.com/short-video/3xc2tbbu54dwar4"
+      },
+      {
+        "t": "美国纽约三层楼倒塌",
+        "h": "986万",
+        "u": "https://www.kuaishou.com/short-video/3xyw2ursf2fz34g"
+      },
+      {
+        "t": "人民日报评卖惨骗捐案",
+        "h": "983万",
+        "u": "https://www.kuaishou.com/short-video/3xry4t4nqmvwkge"
+      },
+      {
+        "t": "十二少还是能一眼就认出江哥",
+        "h": "981万",
+        "u": "https://www.kuaishou.com/short-video/3xdvqghfd5nsq84"
+      },
+      {
+        "t": "父母熬夜布置生日睡过头",
+        "h": "979万",
+        "u": "https://www.kuaishou.com/short-video/3xkc5cp62arzm8q"
+      },
+      {
+        "t": "迪丽热巴两小时连轴转",
+        "h": "976万",
+        "u": "https://www.kuaishou.com/short-video/3xehnpwpd3rf3ic"
+      },
+      {
+        "t": "深圳小学生女团火到国外",
+        "h": "973万",
+        "u": "https://www.kuaishou.com/short-video/3xcfzcwspzpsdz6"
+      },
+      {
+        "t": "我到底要惹几次上帝",
+        "h": "970万",
+        "u": "https://www.kuaishou.com/short-video/3xfbrqw26ik6qam"
+      },
+      {
+        "t": "白小纯全力宣传体坛",
+        "h": "968万",
+        "u": "https://www.kuaishou.com/short-video/3xi69hixz2rcdug"
+      },
+      {
+        "t": "一半青涩一半纯真",
+        "h": "966万",
+        "u": "https://www.kuaishou.com/short-video/3xn7phr4i5px24w"
+      },
+      {
+        "t": "深圳商场小鸟偷吃蛋糕",
+        "h": "964万",
+        "u": "https://www.kuaishou.com/short-video/3xiak9nqknxbine"
+      },
+      {
+        "t": "深夜马桶吃螺蛳粉被抓包",
+        "h": "961万",
+        "u": "https://www.kuaishou.com/short-video/3x5r3xbz2vwa5ny"
+      },
+      {
+        "t": "印度一女商贩遭多人围殴",
+        "h": "959万",
+        "u": "https://www.kuaishou.com/short-video/3xwpthvc732fw3q"
+      },
+      {
+        "t": "四季度全球石油市场或将供应过剩",
+        "h": "956万",
+        "u": "https://www.kuaishou.com/short-video/3xykqmxgv2yxy39"
+      },
+      {
+        "t": "家长群煽动休学被判侵权",
+        "h": "953万",
+        "u": "https://www.kuaishou.com/short-video/3xuktp58zyxjx92"
+      },
+      {
+        "t": "跑腿取16台手机后跑路",
+        "h": "951万",
+        "u": "https://www.kuaishou.com/short-video/3x2bxgd4c3tz492"
+      },
+      {
+        "t": "凤凰山的遗憾终于圆满了",
+        "h": "948万",
+        "u": "https://www.kuaishou.com/short-video/3xhm4zrgwd2aunm"
+      },
+      {
+        "t": "通拉嘎长马夺冠破纪录",
+        "h": "945万",
+        "u": "https://www.kuaishou.com/short-video/3xeupu994d3u3pu"
+      },
+      {
+        "t": "当你在学校发现穿错外套",
+        "h": "943万",
+        "u": "https://www.kuaishou.com/short-video/3xbwgx6ngthf8da"
+      },
+      {
+        "t": "老舅新歌曲终人不散",
+        "h": "941万",
+        "u": "https://www.kuaishou.com/short-video/3xpffhzeanpjjgi"
+      },
+      {
+        "t": "甘肃大部气温明显下降",
+        "h": "940万",
+        "u": "https://www.kuaishou.com/short-video/3xnhi9qe6brgn8i"
+      },
+      {
+        "t": "武汉光谷马拉松鸣枪起跑",
+        "h": "939万",
+        "u": "https://www.kuaishou.com/short-video/3xwz243e96vf96w"
+      },
+      {
+        "t": "起底家电维修小病大修",
+        "h": "938万",
+        "u": "https://www.kuaishou.com/short-video/3xpsihmdw2dq8bi"
+      }
+    ]
+  }
+
+];
+      var HOT_UPDATED = "2026-11-15 11:35";
       function hotSearchUrl(platformName, title) {
         var q = encodeURIComponent(title);
         var map = {
