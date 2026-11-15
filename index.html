@@ -311,7 +311,7 @@
         * { transition: none !important; }
       }
       /* ===== 重新排版：手机优先浅色卡片布局 + 底部固定导航 ===== */
-      html { scroll-padding-bottom: 128px; }
+      html { scroll-padding-bottom: 128px; overflow-x: clip; }
       body { overflow-x: hidden; }
       button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
       .watermark, .watermark span { pointer-events: none !important; }
@@ -587,7 +587,7 @@
         .bc-aa { font-size: 84px; }
         .group-banner { padding: 18px 20px; }
         .gb-btn { width: 100%; justify-content: center; }
-        .hh-ellipse { width: 320px; height: 140px; right: -70px; }
+        .hh-ellipse { width: 320px; height: 140px; right: -16px; }
       }
       /* ===== 宽卡防遮挡：正文底部预留圆形按钮的空间 ===== */
       .big-card.bc-wide { padding-bottom: 92px; min-height: 200px; }
