@@ -591,6 +591,137 @@
       }
       /* ===== 宽卡防遮挡：正文底部预留圆形按钮的空间 ===== */
       .big-card.bc-wide { padding-bottom: 92px; min-height: 200px; }
+      /* ===== 视觉升级 v2：纸面层级 + 精致卡片 + 热点易读化 ===== */
+      :root {
+        --shadow-card: 0 1px 2px rgba(16, 47, 37, .05), 0 14px 34px -14px rgba(16, 47, 37, .16);
+        --shadow-lift: 0 2px 4px rgba(16, 47, 37, .06), 0 22px 44px -16px rgba(16, 47, 37, .24);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --shadow-card: 0 1px 2px rgba(0, 0, 0, .35), 0 14px 34px -14px rgba(0, 0, 0, .55);
+          --shadow-lift: 0 2px 4px rgba(0, 0, 0, .4), 0 22px 44px -16px rgba(0, 0, 0, .65);
+        }
+      }
+      /* 卡片统一双层阴影与轻抬升 */
+      .tool-card, .big-card, .topic-card, .editor-card, .hot-group, .draft-item, .title-item, .group-banner { box-shadow: var(--shadow-card); }
+      .tool-card, .big-card, .topic-card, .title-item, .draft-item {
+        transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      }
+      .tool-card:hover, .big-card:hover, .topic-card:hover, .title-item:hover {
+        transform: translateY(-2px); box-shadow: var(--shadow-lift); border-color: var(--accent);
+      }
+      .draft-item:hover { border-color: var(--accent); }
+      .btn { transition: background .15s ease, border-color .15s ease, color .15s ease, transform .1s ease; }
+      .btn:active { transform: translateY(1px); }
+      /* 视图头：左侧深绿竖条定层级 */
+      .view-head { position: relative; overflow: hidden; }
+      .view-head::before {
+        content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+        background: linear-gradient(180deg, var(--accent) 0%, #8FBC94 100%);
+      }
+      /* 区块标题：小方标 */
+      .section-title::before {
+        content: ""; width: 9px; height: 9px; border-radius: 3px; background: var(--accent); flex: none;
+      }
+      /* ---------- 首页头区做成面板 + 数据条 ---------- */
+      .home-head {
+        background: var(--panel); border: 1px solid var(--line-soft); border-radius: 28px;
+        box-shadow: var(--shadow-card); padding: 36px 38px 28px; overflow: hidden; margin: 4px 0 26px;
+      }
+      .hh-stats {
+        position: relative; display: flex; flex-wrap: wrap; gap: 14px 0;
+        margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line-soft);
+      }
+      .hh-stat { padding: 0 26px; border-left: 1px solid var(--line-soft); }
+      .hh-stat:first-child { padding-left: 0; border-left: 0; }
+      .hh-stat b {
+        display: block; font-family: "Noto Serif SC", serif; font-weight: 900;
+        font-size: 27px; line-height: 1.15; color: var(--ink); font-variant-numeric: tabular-nums;
+      }
+      .hh-stat span { font-size: 12.5px; color: var(--muted); }
+      /* ---------- 更多工具快捷行 ---------- */
+      .quick-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: -4px 0 26px; }
+      .quick-label { font-size: 13px; font-weight: 700; color: var(--muted); margin-right: 4px; }
+      .quick-chip {
+        border: 1px solid var(--line); background: var(--card); color: var(--ink-2);
+        border-radius: 999px; padding: 7px 15px; font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer;
+        transition: border-color .15s ease, color .15s ease, background .15s ease;
+      }
+      .quick-chip:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-ghost); }
+      /* ---------- 今日双栏：每日一题 + 热点速览 ---------- */
+      .today-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 10px; align-items: start; }
+      .today-panel {
+        background: var(--panel); border: 1px solid var(--line-soft); border-radius: 24px;
+        box-shadow: var(--shadow-card); padding: 22px 24px;
+      }
+      .today-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+      .today-head h2 { margin: 0; font-size: 17px; font-weight: 800; color: var(--ink); display: flex; align-items: center; gap: 10px; }
+      .today-head h2::before { content: ""; width: 9px; height: 9px; border-radius: 3px; background: var(--accent); flex: none; }
+      .today-head .hint { font-size: 12.5px; color: var(--muted); }
+      #daily-box { margin: 0 !important; }
+      #daily-box .topic-card { background: transparent; border: 0; box-shadow: none; padding: 6px 0 0; }
+      #daily-box .topic-card:hover { transform: none; box-shadow: none; }
+      .hh-item { display: flex; gap: 12px; align-items: flex-start; padding: 11px 0; border-top: 1px solid var(--line-soft); }
+      .hh-item:first-child { border-top: 0; padding-top: 4px; }
+      .hh-item .hot-title { font-size: 15.5px; }
+      .hh-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 5px; font-size: 12.5px; color: var(--muted); }
+      /* ---------- 热点广场：吸顶工具栏 + 排名列 ---------- */
+      .hot-sticky {
+        position: sticky; top: 10px; z-index: 25;
+        background: var(--panel); border: 1px solid var(--line-soft); border-radius: 20px;
+        box-shadow: var(--shadow-card); padding: 16px 18px 4px; margin-bottom: 18px;
+      }
+      .hot-sticky .hot-search { margin-bottom: 12px; }
+      .hot-sticky .filter-row { margin-bottom: 10px; }
+      .hot-sticky .hot-toolbar { margin-bottom: 10px; }
+      .filter-chip { transition: background .15s ease, border-color .15s ease, color .15s ease; }
+      .filter-chip:not(.active):hover { border-color: var(--accent); color: var(--accent); }
+      .filter-chip.active { box-shadow: 0 4px 12px -4px rgba(16, 47, 37, .35); }
+      .hot-group { padding: 8px 22px 14px; }
+      .hot-group-head { padding: 14px 0 10px; border-bottom: 1px solid var(--line-soft); }
+      .hot-group-head h3 { font-family: "Noto Serif SC", serif; font-size: 19px; }
+      .hot-dot { width: 11px; height: 11px; box-shadow: 0 0 0 4px var(--accent-ghost); }
+      .hg-rank {
+        font-size: 11.5px; font-weight: 700; color: var(--accent); background: var(--accent-ghost);
+        border-radius: 999px; padding: 2px 9px; white-space: nowrap;
+      }
+      .hot-item { display: flex; gap: 12px; align-items: flex-start; padding: 13px 10px 12px; margin: 0 -10px; border-radius: 12px; border-top: 0; position: relative; }
+      .hot-item + .hot-item { border-top: 1px solid var(--line-soft); border-radius: 0 0 12px 12px; }
+      .hot-item:hover { background: var(--accent-ghost); }
+      .hot-main { flex: 1; min-width: 0; }
+      .hot-num {
+        font-family: "Noto Serif SC", serif; font-weight: 900; font-size: 19px; line-height: 1.35;
+        color: var(--muted); width: 27px; flex: none; text-align: center; font-variant-numeric: tabular-nums;
+      }
+      .hot-item.top3 .hot-num, .hh-item.top3 .hot-num { color: var(--warn); font-size: 21px; }
+      .hot-title { font-size: 16.5px; }
+      .hot-heat { background: var(--warn-bg); border-radius: 999px; padding: 2px 9px; }
+      .hot-subhead { border-top: 1px solid var(--line-soft); margin: 4px -10px 0; padding: 12px 10px 0; }
+      /* 交流群横幅：浅绿渐变收尾 */
+      @media (prefers-color-scheme: light) {
+        .group-banner { background: linear-gradient(120deg, #ffffff 0%, var(--accent-ghost) 100%); }
+      }
+      /* 底部导航：毛玻璃 + 选中圆点 */
+      .bottom-nav {
+        background: color-mix(in srgb, var(--panel) 90%, transparent);
+        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      }
+      .bnav-item { position: relative; }
+      .bnav-item.active::after {
+        content: ""; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+        width: 4px; height: 4px; border-radius: 50%; background: var(--accent);
+      }
+      /* 桌面边栏选中态：内嵌竖条 */
+      .sidebar .nav-item.active { box-shadow: inset 3px 0 0 var(--accent); }
+      @media (max-width: 720px) {
+        .today-grid { grid-template-columns: 1fr; }
+        .home-head { padding: 26px 22px 22px; }
+        .hh-stat { padding: 0 16px; }
+        .hh-stat b { font-size: 23px; }
+        .hot-group { padding: 6px 16px 12px; }
+        .hot-num { width: 22px; font-size: 17px; }
+        .hot-item.top3 .hot-num, .hh-item.top3 .hot-num { font-size: 18px; }
+      }
     </style>
   </head>
   <body>
@@ -645,6 +776,12 @@
             <h1 class="hh-title">创作工作台<span class="hh-dot">.</span></h1>
             <p class="hh-sub">你的想法，不必止于想想。</p>
             <button class="btn primary" data-goto="write">从一个想法开始 ↗</button>
+            <div class="hh-stats">
+              <div class="hh-stat"><b id="stat-hot">—</b><span>条实时热点</span></div>
+              <div class="hh-stat"><b id="stat-topic">—</b><span>条选题存货</span></div>
+              <div class="hh-stat"><b>7</b><span>个创作工具</span></div>
+              <div class="hh-stat"><b id="stat-src">—</b><span>个热点来源</span></div>
+            </div>
           </div>
 
           <div class="big-cards">
@@ -674,6 +811,32 @@
             </button>
           </div>
 
+          <div class="quick-row" aria-label="更多工具">
+            <span class="quick-label">更多工具</span>
+            <button class="quick-chip" data-goto="topics" type="button">选题灵感库 ↗</button>
+            <button class="quick-chip" data-goto="titles" type="button">标题工坊 ↗</button>
+            <button class="quick-chip" data-goto="plaza" type="button">灵感广场 ↗</button>
+            <button class="quick-chip" data-goto="hot" type="button">热点广场 ↗</button>
+          </div>
+
+          <div class="today-grid">
+            <div class="today-panel">
+              <div class="today-head">
+                <h2>每日一题</h2>
+                <span class="hint">每天一道，写完就是一篇存货</span>
+              </div>
+              <div id="daily-box"></div>
+            </div>
+            <div class="today-panel">
+              <div class="today-head">
+                <h2>今日热点速览</h2>
+                <span class="hint" id="home-hot-updated"></span>
+              </div>
+              <div id="home-hot"></div>
+              <button class="btn small" data-goto="hot" type="button" style="margin-top:14px">去热点广场看全部 →</button>
+            </div>
+          </div>
+
           <div class="member-strip">
             <div class="ms-line1">灵感会员 · 一份会员三项共用</div>
             <div class="ms-line2">爆文 + 爆图 + 选题灵感库</div>
@@ -696,9 +859,6 @@
             </div>
             <button class="btn primary gb-btn" id="btn-group-join" type="button">查看入群方式</button>
           </div>
-
-          <h2 class="section-title">每日一题 <span class="hint">每天一道，写完就是一篇存货</span></h2>
-<div id="daily-box" style="margin-bottom:22px"></div>
 
           <h2 class="section-title">草稿箱 <span class="hint">本次打开期间写下的稿子，关掉页面就清空</span></h2>
           <div class="draft-list" id="draft-list"></div>
@@ -870,13 +1030,15 @@
             <p>浏览各平台热榜，找到值得写的下一篇。</p>
             <div class="hot-meta" id="hot-meta"></div>
           </div>
-          <div class="hot-search">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
-            <input type="text" id="hot-kw" placeholder="搜索热点关键词…" aria-label="搜索热点关键词" />
-          </div>
-          <div class="filter-row" id="hot-chips"></div>
-          <div class="hot-toolbar">
-            <button class="btn small" id="hot-batch-all" type="button">全部换一批 ↻</button>
+          <div class="hot-sticky">
+            <div class="hot-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
+              <input type="text" id="hot-kw" placeholder="搜索热点关键词…" aria-label="搜索热点关键词" />
+            </div>
+            <div class="filter-row" id="hot-chips"></div>
+            <div class="hot-toolbar">
+              <button class="btn small" id="hot-batch-all" type="button">全部换一批 ↻</button>
+            </div>
           </div>
           <div id="hot-list"></div>
         </section>
@@ -1672,7 +1834,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
     "live": true,
     "fin": true,
     "pinned": true,
-    "updated": "2026-11-15 08:22",
+    "updated": "2026-11-15 11:35",
     "items": [
       {
         "t": "央行将开展2000亿元买断式逆回购操作 缩量续作稳定市场预期",
@@ -1763,7 +1925,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
     "color": "#b8860b",
     "live": true,
     "fin": true,
-    "updated": "2026-11-15 11:35",
+    "updated": "2026-11-15 11:52",
     "items": [
       {
         "t": "4%→6%！外汇存款准备金率，今起调整",
@@ -3855,7 +4017,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
   }
 
 ];
-      var HOT_UPDATED = "2026-11-15 11:35";
+      var HOT_UPDATED = "2026-11-15 11:52";
       function hotSearchUrl(platformName, title) {
         var q = encodeURIComponent(title);
         var map = {
@@ -3951,9 +4113,11 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
           g.className = "hot-group" + (p.pinned ? " pinned" : "");
           var head = document.createElement("div");
           head.className = "hot-group-head";
-          head.innerHTML = '<span class="hot-dot"></span><h3></h3><span class="hg-count"></span>';
+          head.innerHTML = '<span class="hot-dot"></span><h3></h3><span class="hg-rank"></span><span class="hg-count"></span>';
           head.querySelector(".hot-dot").style.background = p.color;
           head.querySelector("h3").textContent = p.name;
+          var rkEl = head.querySelector(".hg-rank");
+          if (p.rank) { rkEl.textContent = p.rank; } else { rkEl.style.display = "none"; }
           if (p.finGroup) {
             var srcs = [];
             items.forEach(function (x) { if (x.src && srcs.indexOf(x.src) < 0) srcs.push(x.src); });
@@ -3982,8 +4146,8 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             }
             var rankHtml = it.src ? (it.src + (it.srcRank ? " · " + it.srcRank : "")) : (p.rank + ' <b>#' + it.rank + "</b>");
             var row = document.createElement("div");
-            row.className = "hot-item";
-            row.innerHTML = '<div class="hot-title">' + (it.pin ? '<span class="pin-badge">置顶</span>' : "") + '<a class="hot-title-link" target="_blank" rel="noopener noreferrer"></a></div><div class="hot-row"><span class="hot-rank">' + rankHtml + "</span></div>";
+            row.className = "hot-item" + (it.rank <= 3 ? " top3" : "");
+            row.innerHTML = '<span class="hot-num">' + it.rank + '</span><div class="hot-main"><div class="hot-title">' + (it.pin ? '<span class="pin-badge">置顶</span>' : "") + '<a class="hot-title-link" target="_blank" rel="noopener noreferrer"></a></div><div class="hot-row"><span class="hot-rank">' + rankHtml + "</span></div></div>";
             var titleLink = row.querySelector(".hot-title-link");
             titleLink.href = it.url || hotSearchUrl(p.name, it.title);
             titleLink.textContent = it.title;
@@ -4079,6 +4243,49 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
           hotExpanded = {};
           renderHot();
           toast("已全部换一批");
+        });
+      }
+
+      /* ---------- 首页热点速览 + 数据条（只读 HOT_PLATFORMS，不改数据） ---------- */
+      function renderHomeHot() {
+        var total = HOT_PLATFORMS.reduce(function (s, p) { return s + p.items.length; }, 0);
+        var sh = $("#stat-hot"); if (sh) sh.textContent = total;
+        var st = $("#stat-topic"); if (st) st.textContent = TOPICS.length;
+        var ss = $("#stat-src"); if (ss) ss.textContent = HOT_PLATFORMS.length;
+        var upd = $("#home-hot-updated"); if (upd) upd.textContent = HOT_UPDATED + " 更新 · 金融精选";
+        var box = $("#home-hot");
+        if (!box) return;
+        var items = [];
+        HOT_PLATFORMS.forEach(function (p) {
+          if (!p.fin) return;
+          p.items.forEach(function (it0) {
+            if (typeof it0 !== "object") return;
+            var cp = {}; for (var k in it0) cp[k] = it0[k];
+            cp.src = (p.name === "财联社置顶") ? "财联社" : p.name;
+            items.push(cp);
+          });
+        });
+        box.innerHTML = "";
+        items.slice(0, 6).forEach(function (it, i) {
+          var row = document.createElement("div");
+          row.className = "hh-item" + (i < 3 ? " top3" : "");
+          row.innerHTML = '<span class="hot-num">' + (i + 1) + '</span><div class="hot-main"><div class="hot-title">' + (it.pin ? '<span class="pin-badge">置顶</span>' : "") + '<a target="_blank" rel="noopener noreferrer"></a></div><div class="hh-meta"></div></div>';
+          var a = row.querySelector("a");
+          a.href = it.u || "#";
+          a.textContent = it.t;
+          a.title = "打开原文：" + it.t;
+          var meta = row.querySelector(".hh-meta");
+          var parts = [it.src];
+          if (it.pub) parts.push(it.pub.slice(5) + " 发布");
+          var mtxt = document.createElement("span");
+          mtxt.textContent = parts.join(" · ");
+          meta.appendChild(mtxt);
+          if (it.c) {
+            var c = document.createElement("span");
+            c.className = "hot-cat"; c.textContent = it.c;
+            meta.appendChild(c);
+          }
+          box.appendChild(row);
         });
       }
 
@@ -4195,6 +4402,7 @@ renderTemplates();
 renderPlaza();
 renderHot();
 renderDaily();
+renderHomeHot();
 renderTopicFilters();
 renderTopics();
 updateStats();
