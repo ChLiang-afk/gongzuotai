@@ -1,9 +1,10 @@
 name: Hot Refresh
-# 2026-11-15 19:07：停用/启用后 19:00 定时仍未触发，推此注释强制 GitHub 重新注册 schedule。
+# 2026-11-16：刷新窗口改为北京时间 06:00–22:00（第一轮 06:00，最后一轮 22:00）。
+# GitHub Actions cron 只认 UTC：06:00 CST = 22:00 UTC（前一日），22:00 CST = 14:00 UTC。
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 22,23,0-14 * * *'
   workflow_dispatch:
 
 jobs:
