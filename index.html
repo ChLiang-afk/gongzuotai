@@ -679,6 +679,9 @@
       .hot-group { padding: 8px 22px 14px; }
       .hot-group-head { padding: 14px 0 10px; border-bottom: 1px solid var(--line-soft); }
       .hot-group-head h3 { font-family: "Noto Serif SC", serif; font-size: 19px; }
+      .hot-group.collapsed .hot-group-head { border-bottom: 0; }
+      .hot-group.collapsed .hot-item, .hot-group.collapsed .hot-subhead, .hot-group.collapsed .hot-group-foot { display: none; }
+      .hg-toggle { font-size: 16px; color: var(--muted); flex: none; line-height: 1; }
       .hot-dot { width: 11px; height: 11px; box-shadow: 0 0 0 4px var(--accent-ghost); }
       .hg-rank {
         font-size: 11.5px; font-weight: 700; color: var(--accent); background: var(--accent-ghost);
@@ -1037,6 +1040,8 @@
             <div class="filter-row" id="hot-chips"></div>
             <div class="hot-toolbar">
               <button class="btn small" id="hot-batch-all" type="button">全部换一批 ↻</button>
+              <button class="btn small" id="hot-expand-all" type="button">全部展开</button>
+              <button class="btn small" id="hot-collapse-all" type="button">全部收起</button>
             </div>
           </div>
           <div id="hot-list"></div>
@@ -4001,6 +4006,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
       var hotFavs = {};
       var hotBatch = {};
       var hotExpanded = {};
+      var hotCollapsed = {};
       var HOT_FIN_PLATFORMS = {};
       HOT_PLATFORMS.forEach(function (p) { if (p.fin) HOT_FIN_PLATFORMS[p.name] = true; });
       function hotSkeleton() {
@@ -4064,15 +4070,17 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
           shown += items.length;
           var pageSize = p.finGroup ? Math.max(1, items.length) : 4;
           var expanded = !!hotExpanded[p.name];
+          var forceExpand = !!(kw || hotFavOnly || hotPlatform !== "全部");
+          var collapsed = forceExpand ? false : (hotCollapsed[p.name] !== false);
           var batchCount = Math.max(1, Math.ceil(items.length / pageSize));
           var batchIdx = ((hotBatch[p.name] || 0) % batchCount + batchCount) % batchCount;
           hotBatch[p.name] = batchIdx;
           var visibleItems = expanded ? items : items.slice(batchIdx * pageSize, batchIdx * pageSize + pageSize);
           var g = document.createElement("div");
-          g.className = "hot-group" + (p.pinned ? " pinned" : "");
+          g.className = "hot-group" + (p.pinned ? " pinned" : "") + (collapsed ? " collapsed" : "");
           var head = document.createElement("div");
           head.className = "hot-group-head";
-          head.innerHTML = '<span class="hot-dot"></span><h3></h3><span class="hg-rank"></span><span class="hg-count"></span>';
+          head.innerHTML = '<span class="hot-dot"></span><h3></h3><span class="hg-rank"></span><span class="hg-count"></span><span class="hg-toggle"></span>';
           head.querySelector(".hot-dot").style.background = p.color;
           head.querySelector("h3").textContent = p.name;
           var rkEl = head.querySelector(".hg-rank");
@@ -4083,6 +4091,14 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
             head.querySelector(".hg-count").textContent = items.length + " 条 · " + srcs.join(" · ") + " · 已去重筛选";
           } else {
             head.querySelector(".hg-count").textContent = (expanded ? items.length + " 条 · 全部" : (items.length > pageSize ? "先看 4 条 · 共 " + items.length + " 条" : items.length + " 条")) + (p.pinned ? " · 跨轮保留 · 取消置顶前不淘汰" : "") + (p.fin ? " · 金融" + (p.updated ? " · " + p.updated.slice(11) + " 更新" : "") : (p.live && p.updated ? " · " + p.updated.slice(11) + " 更新" + (p.stale ? "（旧轮次）" : "") : ""));
+          }
+          head.querySelector(".hg-toggle").textContent = collapsed ? "▸" : "▾";
+          if (!forceExpand) {
+            head.style.cursor = "pointer";
+            head.title = collapsed ? "点击展开" : "点击收起";
+            head.addEventListener("click", (function (platName, nowCollapsed) {
+              return function () { hotCollapsed[platName] = !nowCollapsed; renderHot(); };
+            })(p.name, collapsed));
           }
           g.appendChild(head);
           var finPinHeadShown = false;
@@ -4202,6 +4218,21 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
           hotExpanded = {};
           renderHot();
           toast("已全部换一批");
+        });
+      }
+      var hotExpandAllBtn = $("#hot-expand-all");
+      if (hotExpandAllBtn) {
+        hotExpandAllBtn.addEventListener("click", function () {
+          hotCollapsed["金融"] = false;
+          HOT_PLATFORMS.forEach(function (p) { if (!p.fin) hotCollapsed[p.name] = false; });
+          renderHot();
+        });
+      }
+      var hotCollapseAllBtn = $("#hot-collapse-all");
+      if (hotCollapseAllBtn) {
+        hotCollapseAllBtn.addEventListener("click", function () {
+          hotCollapsed = {};
+          renderHot();
         });
       }
 
