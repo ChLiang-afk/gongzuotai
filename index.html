@@ -4342,6 +4342,66 @@ renderTopicFilters();
 renderTopics();
 updateStats();
 gotoView("home");
+
+      /* ---------- 打开时从 GitHub 拉最新热点数据（绕过服务器整点拉取与浏览器缓存） ---------- */
+      (function refreshHotFromRemote() {
+        var RAW_URL = "https://raw.githubusercontent.com/ChLiang-afk/gongzuotai/main/index.html";
+        function extractHotData(text) {
+          var mUp = text.match(/var HOT_UPDATED\s*=\s*"([^"]*)"/);
+          if (!mUp) return null;
+          var key = "var HOT_PLATFORMS = ";
+          var start = text.indexOf(key);
+          if (start < 0) return null;
+          var i = text.indexOf("[", start + key.length);
+          if (i < 0) return null;
+          var depth = 0, inStr = false, esc = false, j = i;
+          for (; j < text.length; j++) {
+            var ch = text[j];
+            if (inStr) {
+              if (esc) { esc = false; }
+              else if (ch === "\\") { esc = true; }
+              else if (ch === '"') { inStr = false; }
+            } else {
+              if (ch === '"') { inStr = true; }
+              else if (ch === "[") { depth++; }
+              else if (ch === "]") { depth--; if (depth === 0) { j++; break; } }
+            }
+          }
+          if (depth !== 0) return null;
+          var arr;
+          try { arr = JSON.parse(text.slice(i, j)); } catch (e) { return null; }
+          if (!Array.isArray(arr)) return null;
+          return { platforms: arr, updated: mUp[1] };
+        }
+        function doFetch() {
+          var ctrl = null, timer = null;
+          try {
+            if (window.AbortController) {
+              ctrl = new AbortController();
+              timer = setTimeout(function () { try { ctrl.abort(); } catch (e) {} }, 10000);
+            }
+          } catch (e) {}
+          var opts = { cache: "no-store" };
+          if (ctrl) opts.signal = ctrl.signal;
+          fetch(RAW_URL, opts).then(function (res) {
+            if (timer) clearTimeout(timer);
+            if (!res.ok) return null;
+            return res.text();
+          }).then(function (text) {
+            if (!text) return;
+            var data = extractHotData(text);
+            if (!data) return;
+            if (data.updated === HOT_UPDATED) return;
+            HOT_PLATFORMS = data.platforms;
+            HOT_UPDATED = data.updated;
+            renderHot();
+            renderHomeHot();
+            updateStats();
+          }).catch(function () { /* 静默用内置数据 */ });
+        }
+        if (document.readyState === "complete") { doFetch(); }
+        else { window.addEventListener("load", doFetch); }
+      })();
 </script>
 </body>
 </html>
