@@ -4024,7 +4024,7 @@ $("#tt-kw").addEventListener("keydown", function (e) { if (e.key === "Enter") ge
         var kw = hotKeyword.trim();
         var finTotal = HOT_PLATFORMS.reduce(function (s, p) { return s + (HOT_FIN_PLATFORMS[p.name] ? p.items.length : 0); }, 0);
         var allTotal = HOT_PLATFORMS.reduce(function (s, p) { return s + p.items.length; }, 0);
-        $("#hot-meta").textContent = "2026-11-15 实时热榜 · 30 分钟更新 · 金融精选 " + finTotal + " 条（大媒体 · 已去重筛选）· 通用热榜 " + (allTotal - finTotal) + " 条 · 共 " + allTotal + " 条";
+        $("#hot-meta").textContent = HOT_UPDATED.slice(0, 10) + " 实时热榜 · 30 分钟更新 · 金融精选 " + finTotal + " 条（大媒体 · 已去重筛选）· 通用热榜 " + (allTotal - finTotal) + " 条 · 共 " + allTotal + " 条";
         /* 各平台金融合并成一个「金融」组，与微博、知乎等平台组并列；组内财联社置顶在最前 */
         var finMerged = { name: "金融", rank: "", color: "#c8102e", fin: true, finGroup: true, updated: "", items: [] };
         HOT_PLATFORMS.forEach(function (p) {
