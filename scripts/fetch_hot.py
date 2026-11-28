@@ -192,8 +192,21 @@ def fetch_fin_sina(seen):
             title = item.get('rich_text') or item.get('docurl')
             if not title: continue
             
+            # Top-level docurl is now the sina.cn mobile detail page
+            # (finance.sina.cn/7x24/detail-....d.html), which the hot-plaza
+            # rules forbid: on phones it jumps to the bank channel page.
+            # The desktop article address lives inside ext as docurl:
+            # finance.sina.com.cn/7x24/<date>/doc-<id>.shtml (verified
+            # 2026-11-27 12:27 CST: opens as its own page, title matches).
+            # /roll/ is kept as a fallback for older items.
             url = item.get('docurl', '')
-            if not url or 'finance.sina.com.cn/roll/' not in url or not re.search(r'/doc-[a-zA-Z0-9_-]+\.shtml', url):
+            try:
+                ext_url = (json.loads(item.get('ext') or '{}') or {}).get('docurl', '')
+            except Exception:
+                ext_url = ''
+            if ext_url:
+                url = ext_url
+            if not url or 'finance.sina.com.cn/' not in url or not re.search(r'/(roll|7x24)/\d{4}-\d{2}-\d{2}/doc-[a-zA-Z0-9_-]+\.shtml', url):
                 continue
                 
             title = parse_fin_title(title)
