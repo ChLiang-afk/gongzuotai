@@ -261,7 +261,6 @@ def fetch_finance(store):
     ]
     
     last_fin = store.get_last_fin()
-    last_pinned = store.get_last_pinned()
     last_fin_dict = {g["name"]: g for g in last_fin if "name" in g}
     
     new_fin_groups = []
@@ -278,9 +277,9 @@ def fetch_finance(store):
             if p is not None and len(p) > 0:
                 pinned = p
                 pinned_fresh = True
-            elif not pinned and last_pinned:
-                pinned = last_pinned
-                print("Warning: CLS pinned empty, using history")
+            # 2026-11-28 取消置顶回落：财联社接口已死（404），置顶每轮都
+            # 从历史记录里把同一批 11-13 的旧条捞回来，永远不变。
+            # 置顶只认当轮活取，取不到就是没有，不再从历史续。
         elif name == "新浪财经":
             items = fetch_fin_sina(seen)
         else:
@@ -305,10 +304,6 @@ def fetch_finance(store):
                 "items": items
             })
             
-    if not pinned and last_pinned:
-        pinned = last_pinned
-        print("Warning: CLS pinned overall empty, using history")
-        
     return pinned, new_fin_groups, pinned_fresh
 
 def _find_balanced_json_span(text, start_idx):
